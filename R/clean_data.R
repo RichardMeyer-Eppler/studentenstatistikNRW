@@ -93,5 +93,4 @@ create_factors <- function(df)  {
   )
 
   return(df_factor)
-
 }

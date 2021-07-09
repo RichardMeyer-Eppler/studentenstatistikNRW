@@ -7,7 +7,8 @@ Authors@R:
            family = "Meyer-Eppler",
            role = c("aut", "cre"),
            email = "richard.meyer-eppler@uv.ruhr-uni-bochum.de")
-Description: What the package does (one paragraph).
+Description: Student statistics for the German state North Rhine-Westphalia
+    obtained from the Landesdatenbank NRW. Packaged for R.
 License: MIT + file LICENSE
 URL: 
     https://github.com/RichardMeyer-Eppler/studentenstatistikNRW
