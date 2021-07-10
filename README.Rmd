@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,6 +13,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(studentenstatistikNRW)
 ```
 
 # studentenstatistikNRW
@@ -20,21 +24,35 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/studentenstatistikNRW)](https://CRAN.R-project.org/package=studentenstatistikNRW)
 <!-- badges: end -->
 
-The goal of studentenstatistikNRW is to ...
+## Overview
+
+This package contains all student statistics tables ("21311 Statistik der Studenten") of the Landesdatenbank NRW. The data is obtained using the [wiesbaden package](https://github.com/sumtxt/wiesbaden) by Moritz Marbach. 
 
 ## Installation
 
 And the development version from [GitHub](https://github.com/) with:
 
-``` r
+```{r}
 # install.packages("remotes")
 remotes::install_github("RichardMeyer-Eppler/studentenstatistikNRW")
 ```
+
 ## Data
 
 This package provides the following tables:
 
-* `?table_21311LS001A`: Studierende / Studenten, Land, Hochschulen, Studienfach, Fachsemester, Angestrebte Abschlussprüfung, Semester
+```{r, echo = FALSE}
+knitr::kable(
+  studentenstatistikNRW::df_table %>% 
+  dplyr::mutate(
+    tablename = paste0(
+      "`?df_",
+      tablename,
+      "`"
+    )
+  )
+)
+```
 
 ## Data license for the Destatis data
 
