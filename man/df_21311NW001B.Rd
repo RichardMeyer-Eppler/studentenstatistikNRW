@@ -5,7 +5,7 @@
 \alias{df_21311NW001B}
 \title{21311NW001B - Studierende / Studenten, Land, Hochschulen, Fachsemester, Nationalität, Hörerstatus, Angestrebte Abschlussprüfung, Semester}
 \format{
-A tibble with:
+A tibble with 214.109 rows and 8 variables:
 \describe{
 \item{bil002}{Studierende / Studenten}
 \item{dland}{Land}
@@ -18,12 +18,50 @@ A tibble with:
 }
 }
 \source{
-\url{https://www.landesdatenbank.nrw.de}, 2021-07-10
+\url{https://www.landesdatenbank.nrw.de}, 2021-07-11
 }
 \usage{
 df_21311NW001B
 }
 \description{
-The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\strong{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\strong{Education and Culture}) -> 213 Hochschulen (\strong{Universities}) -> 21311 Statistik der Studenten (\strong{Student Statistics}).
+The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
+}
+\details{
+Table: Data summary\tabular{ll}{
+    \tab  \cr
+   Name \tab df_21311NW001B \cr
+   Number of rows \tab 214109 \cr
+   Number of columns \tab 8 \cr
+   _______________________ \tab  \cr
+   Column type frequency: \tab  \cr
+   factor \tab 7 \cr
+   numeric \tab 1 \cr
+   ________________________ \tab  \cr
+   Group variables \tab None \cr
+}
+
+
+\strong{Variable type: factor}\tabular{lrrlrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
+   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 214109 \cr
+   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Uni: 13377, Uni: 12722, Uni: 11084, Tec: 9301 \cr
+   bilfs1 \tab 0 \tab 1 \tab FALSE \tab 20 \tab 1. : 18335, 3. : 16867, 5. : 15835, 7. : 14371 \cr
+   nat \tab 0 \tab 1 \tab FALSE \tab 2 \tab Deu: 133414, Aus: 80695 \cr
+   bilhn1 \tab 0 \tab 1 \tab FALSE \tab 2 \tab Hau: 180817, Neb: 33292 \cr
+   bilap1 \tab 0 \tab 1 \tab FALSE \tab 59 \tab Bac: 25225, Dip: 20206, Pro: 16443, Dip: 13514 \cr
+   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 11675, WS : 11581, WS : 11114, WS : 10778 \cr
+}
+
+
+\strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
+   bil002_val \tab 0 \tab 1 \tab 60.91 \tab 213.05 \tab 1 \tab 2 \tab 7 \tab 34 \tab 11242 \tab ▇▁▁▁▁ \cr
+}
+
+
+NULL
+}
+\examples{
+df_21311NW001B
 }
 \keyword{datasets}

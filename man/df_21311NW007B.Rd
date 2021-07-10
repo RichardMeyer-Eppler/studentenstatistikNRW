@@ -5,7 +5,7 @@
 \alias{df_21311NW007B}
 \title{21311NW007B - Studierende / Studenten, Land, Hochschulen, Studienfach, Nationalität, Semester}
 \format{
-A tibble with:
+A tibble with 51.779 rows and 6 variables:
 \describe{
 \item{bil002}{Studierende / Studenten}
 \item{dland}{Land}
@@ -16,12 +16,48 @@ A tibble with:
 }
 }
 \source{
-\url{https://www.landesdatenbank.nrw.de}, 2021-07-10
+\url{https://www.landesdatenbank.nrw.de}, 2021-07-11
 }
 \usage{
 df_21311NW007B
 }
 \description{
-The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\strong{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\strong{Education and Culture}) -> 213 Hochschulen (\strong{Universities}) -> 21311 Statistik der Studenten (\strong{Student Statistics}).
+The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
+}
+\details{
+Table: Data summary\tabular{ll}{
+    \tab  \cr
+   Name \tab df_21311NW007B \cr
+   Number of rows \tab 51779 \cr
+   Number of columns \tab 6 \cr
+   _______________________ \tab  \cr
+   Column type frequency: \tab  \cr
+   factor \tab 5 \cr
+   numeric \tab 1 \cr
+   ________________________ \tab  \cr
+   Group variables \tab None \cr
+}
+
+
+\strong{Variable type: factor}\tabular{lrrlrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
+   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 51779 \cr
+   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Uni: 3306, Uni: 3144, Uni: 2969, Uni: 2645 \cr
+   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 234 \tab Wir: 1908, Bet: 1690, Mas: 1303, Ele: 1258 \cr
+   nat \tab 0 \tab 1 \tab FALSE \tab 2 \tab Deu: 27259, Aus: 24520 \cr
+   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 3206, WS : 3127, WS : 3034, WS : 2940 \cr
+}
+
+
+\strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
+   bil002_val \tab 0 \tab 1 \tab 251.87 \tab 651.51 \tab 1 \tab 14 \tab 65 \tab 246 \tab 23106 \tab ▇▁▁▁▁ \cr
+}
+
+
+NULL
+}
+\examples{
+df_21311NW007B
 }
 \keyword{datasets}

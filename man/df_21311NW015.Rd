@@ -5,7 +5,7 @@
 \alias{df_21311NW015}
 \title{21311NW015 - Studienanfänger, Geschlecht, Studienfach, Land, Semester}
 \format{
-A tibble with:
+A tibble with 7.579 rows and 5 variables:
 \describe{
 \item{bil016}{Studienanfänger}
 \item{ges}{Geschlecht}
@@ -15,12 +15,47 @@ A tibble with:
 }
 }
 \source{
-\url{https://www.landesdatenbank.nrw.de}, 2021-07-10
+\url{https://www.landesdatenbank.nrw.de}, 2021-07-11
 }
 \usage{
 df_21311NW015
 }
 \description{
-The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\strong{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\strong{Education and Culture}) -> 213 Hochschulen (\strong{Universities}) -> 21311 Statistik der Studenten (\strong{Student Statistics}).
+The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
+}
+\details{
+Table: Data summary\tabular{ll}{
+    \tab  \cr
+   Name \tab df_21311NW015 \cr
+   Number of rows \tab 7579 \cr
+   Number of columns \tab 5 \cr
+   _______________________ \tab  \cr
+   Column type frequency: \tab  \cr
+   factor \tab 4 \cr
+   numeric \tab 1 \cr
+   ________________________ \tab  \cr
+   Group variables \tab None \cr
+}
+
+
+\strong{Variable type: factor}\tabular{lrrlrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
+   ges \tab 0 \tab 1 \tab FALSE \tab 2 \tab wei: 3808, män: 3771 \cr
+   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 233 \tab Agr: 44, Ang: 44, Arc: 44, Arc: 44 \cr
+   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 7579 \cr
+   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 378, WS : 376, WS : 375, WS : 371 \cr
+}
+
+
+\strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
+   bil016_val \tab 0 \tab 1 \tab 239.22 \tab 541.14 \tab 1 \tab 15 \tab 54 \tab 198.5 \tab 6083 \tab ▇▁▁▁▁ \cr
+}
+
+
+NULL
+}
+\examples{
+df_21311NW015
 }
 \keyword{datasets}

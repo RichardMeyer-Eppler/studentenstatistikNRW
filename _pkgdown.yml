@@ -3,4 +3,28 @@ reference:
 - title: Data
   desc: Included data sets
   contents:
-  - table_21311LS001A
+  - df_21311LS001A
+  - df_21311LS002A
+  - df_21311NW001A
+  - df_21311NW001B
+  - df_21311NW002A
+  - df_21311NW002B
+  - df_21311NW002C
+  - df_21311NW003A
+  - df_21311NW003B
+  - df_21311NW004A
+  - df_21311NW004B
+  - df_21311NW005A
+  - df_21311NW005B
+  - df_21311NW006A
+  - df_21311NW006B
+  - df_21311NW007A
+  - df_21311NW007B
+  - df_21311NW008
+  - df_21311NW009
+  - df_21311NW010
+  - df_21311NW011
+  - df_21311NW012
+  - df_21311NW013
+  - df_21311NW014
+  - df_21311NW015

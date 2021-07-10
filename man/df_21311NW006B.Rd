@@ -5,7 +5,7 @@
 \alias{df_21311NW006B}
 \title{21311NW006B - Studierende / Studenten, Land, Hochschulen, Studienfach, Hochschulsemester, Nationalität, Semester}
 \format{
-A tibble with:
+A tibble with 633.244 rows and 7 variables:
 \describe{
 \item{bil002}{Studierende / Studenten}
 \item{dland}{Land}
@@ -17,12 +17,49 @@ A tibble with:
 }
 }
 \source{
-\url{https://www.landesdatenbank.nrw.de}, 2021-07-10
+\url{https://www.landesdatenbank.nrw.de}, 2021-07-11
 }
 \usage{
 df_21311NW006B
 }
 \description{
-The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\strong{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\strong{Education and Culture}) -> 213 Hochschulen (\strong{Universities}) -> 21311 Statistik der Studenten (\strong{Student Statistics}).
+The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
+}
+\details{
+Table: Data summary\tabular{ll}{
+    \tab  \cr
+   Name \tab df_21311NW006B \cr
+   Number of rows \tab 633244 \cr
+   Number of columns \tab 7 \cr
+   _______________________ \tab  \cr
+   Column type frequency: \tab  \cr
+   factor \tab 6 \cr
+   numeric \tab 1 \cr
+   ________________________ \tab  \cr
+   Group variables \tab None \cr
+}
+
+
+\strong{Variable type: factor}\tabular{lrrlrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
+   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 633244 \cr
+   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Uni: 45888, Uni: 39230, Uni: 38449, Uni: 35934 \cr
+   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 234 \tab Wir: 25164, Bet: 22286, Mas: 19745, Ele: 19726 \cr
+   bilsh1 \tab 0 \tab 1 \tab FALSE \tab 20 \tab 1. : 39779, 3. : 39059, 7. : 38766, 5. : 38516 \cr
+   nat \tab 0 \tab 1 \tab FALSE \tab 2 \tab Deu: 391441, Aus: 241803 \cr
+   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 38107, WS : 37270, WS : 36202, WS : 35003 \cr
+}
+
+
+\strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
+   skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
+   bil002_val \tab 0 \tab 1 \tab 20.6 \tab 62.75 \tab 1 \tab 2 \tab 5 \tab 16 \tab 6663 \tab ▇▁▁▁▁ \cr
+}
+
+
+NULL
+}
+\examples{
+df_21311NW006B
 }
 \keyword{datasets}

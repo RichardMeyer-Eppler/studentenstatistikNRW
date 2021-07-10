@@ -32,7 +32,7 @@ This package contains all student statistics tables ("21311 Statistik der Studen
 
 And the development version from [GitHub](https://github.com/) with:
 
-```{r}
+```{r, eval = FALSE}
 # install.packages("remotes")
 remotes::install_github("RichardMeyer-Eppler/studentenstatistikNRW")
 ```

@@ -25,20 +25,6 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("remotes")
 remotes::install_github("RichardMeyer-Eppler/studentenstatistikNRW")
-#> Using github PAT from envvar GITHUB_PAT
-#> Downloading GitHub repo RichardMeyer-Eppler/studentenstatistikNRW@HEAD
-#> 
-#>          checking for file 'C:\Users\Richard\AppData\Local\Temp\RtmpCKvBNg\remotes2cc015ad619d\RichardMeyer-Eppler-studentenstatistikNRW-c44efd4/DESCRIPTION' ...  v  checking for file 'C:\Users\Richard\AppData\Local\Temp\RtmpCKvBNg\remotes2cc015ad619d\RichardMeyer-Eppler-studentenstatistikNRW-c44efd4/DESCRIPTION'
-#>       -  preparing 'studentenstatistikNRW':
-#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   v  checking DESCRIPTION meta-information
-#>       -  checking for LF line-endings in source and make files and shell scripts
-#>   -  checking for empty or unneeded directories
-#>      NB: this package now depends on R (>=        NB: this package now depends on R (>= 3.5.0)
-#>        WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  'studentenstatistikNRW/data/df_metadata.rda'  WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  'studentenstatistikNRW/data/df_table.rda'  WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  'studentenstatistikNRW/data/df_value_labels.rda'  WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  'studentenstatistikNRW/data/table_21311LS001A.rda'
-#>   -  building 'studentenstatistikNRW_0.0.0.9000.tar.gz'
-#>      
-#> 
-#> Warning: package 'studentenstatistikNRW' is in use and will not be installed
 ```
 
 ## Data
