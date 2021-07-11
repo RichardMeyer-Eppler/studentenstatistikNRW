@@ -16,15 +16,19 @@ A tibble with 58.698 rows and 6 variables:
 }
 }
 \source{
-\url{https://www.landesdatenbank.nrw.de}, 2021-07-11
+The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2021-07-11) using the code 21311NW002B. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
+
+Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.
 }
 \usage{
 df_21311NW002B
 }
 \description{
-The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
+The table is sourced from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
 }
 \details{
+The following summary is automatically generated using \code{skimr::skim()}
+
 Table: Data summary\tabular{ll}{
     \tab  \cr
    Name \tab df_21311NW002B \cr
@@ -53,9 +57,6 @@ Table: Data summary\tabular{ll}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
    bil002_val \tab 0 \tab 1 \tab 222.18 \tab 674.72 \tab 1 \tab 5 \tab 26 \tab 137 \tab 14294 \tab ▇▁▁▁▁ \cr
 }
-
-
-NULL
 }
 \examples{
 df_21311NW002B

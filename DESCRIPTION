@@ -1,28 +1,29 @@
 Package: studentenstatistikNRW
-Title: Student Statistics from the Landesdatenbank NRW (Table
-    Series 21311)
+Title: Student Statistics from the Landesdatenbank NRW (Table Series
+    21311)
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Richard",
            family = "Meyer-Eppler",
            role = c("aut", "cre"),
-           email = "richard.meyer-eppler@uv.ruhr-uni-bochum.de")
-Description: Student statistics for the German state North Rhine-Westphalia
-    obtained from the Landesdatenbank NRW. Packaged for R.
+           email = "richard.meyereppler@gmail.com")
+Description: Student statistics for the German state North
+    Rhine-Westphalia obtained from the Landesdatenbank NRW. Packaged for
+    R.
 License: MIT + file LICENSE
-URL: 
-    https://github.com/RichardMeyer-Eppler/studentenstatistikNRW
+URL: https://github.com/RichardMeyer-Eppler/studentenstatistikNRW
 BugReports: 
     https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/issues
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     magrittr
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
-Depends: 
-    R (>= 2.10)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

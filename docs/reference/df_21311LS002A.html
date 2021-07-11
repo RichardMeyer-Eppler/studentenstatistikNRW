@@ -45,6 +45,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -56,9 +58,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -79,12 +87,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -117,15 +119,15 @@
     </div>
 
     <div class="ref-description">
-    <p>The table is sourced from the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (<em>Education, Social Benefits, Health, Administration of Justice</em>) -&gt; 21 Bildung und Kultur (<em>Education and Culture</em>) -&gt; 213 Hochschulen (<em>Universities</em>) -&gt; 21311 Statistik der Studenten (<em>Student Statistics</em>).</p>
+    <p>The table is sourced from the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a> from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (<em>Education, Social Benefits, Health, Administration of Justice</em>) -&gt; 21 Bildung und Kultur (<em>Education and Culture</em>) -&gt; 213 Hochschulen (<em>Universities</em>) -&gt; 21311 Statistik der Studenten (<em>Student Statistics</em>).</p>
     </div>
 
-    <pre class="usage"><span class='no'>df_21311LS002A</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='va'>df_21311LS002A</span></code></pre></div>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble with 801.357 rows and 7 variables:</p><dl'>
+    <p>A tibble with 801.357 rows and 7 variables:</p><dl>
 <dt>bil002</dt><dd><p>Studierende / Studenten</p></dd>
 <dt>dland</dt><dd><p>Land</p></dd>
 <dt>bilhs1</dt><dd><p>Hochschulen</p></dd>
@@ -138,10 +140,12 @@
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://www.landesdatenbank.nrw.de'>https://www.landesdatenbank.nrw.de</a>, 2021-07-11</p>
+    <p>The data in this package was obtained from the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a> (retrieved on 2021-07-11) using the code 21311LS002A. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): <a href='http://www.govdata.de/dl-de/by-2-0'>Data licence Germany – attribution – Version 2.0</a>. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.</p>
+<p>Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Table: Data summary</p><table class='table'>
+    <p>The following summary is automatically generated using <code><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skimr::skim()</a></code></p>
+<p>Table: Data summary</p><table class='table'>
 <tr><td></td><td></td></tr>
 <tr><td>Name</td><td>df_21311LS002A</td></tr>
 <tr><td>Number of rows</td><td>801357</td></tr>
@@ -175,10 +179,23 @@
 
 
 
-<p>NULL</p>
-
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df_21311LS002A</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'df_21311LS002A' not found</span></div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>df_21311LS002A</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 801,357 x 7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    dland    bilhs1            bilsf1     bilsh1   bilap1       semest bil002_val</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 3. Hoch~ Master (FH)~ WS 20~          2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 8. Hoch~ Master (FH)~ WS 20~          1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 9. Hoch~ Master (FH)~ WS 20~          8</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 10. Hoc~ Master (FH)~ WS 20~          1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 11. Hoc~ Master (FH)~ WS 20~          1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 12. Hoc~ Master (FH)~ WS 20~          2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> Nordrhe~ Hochschule Macro~ Betriebsw~ 14. Hoc~ Master (FH)~ WS 20~          1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> Nordrhe~ Hochschule Macro~ Film und ~ 1. Hoch~ Bachelor (F~ WS 20~         29</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> Nordrhe~ Hochschule Macro~ Film und ~ 1. Hoch~ Bachelor (F~ WS 20~         29</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> Nordrhe~ Hochschule Macro~ Film und ~ 1. Hoch~ Bachelor (F~ WS 20~         37</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># ... with 801,347 more rows</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -190,11 +207,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Richard Meyer-Eppler.</p>
+  <p><p>Developed by Richard Meyer-Eppler.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -202,6 +219,8 @@
 
   
 
+
+  
 
   </body>
 </html>
