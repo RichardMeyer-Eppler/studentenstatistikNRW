@@ -40,7 +40,7 @@ remotes::install_github("RichardMeyer-Eppler/studentenstatistikNRW")
 
 ## Data
 
-The table below lists all tables part of this package. They are all part of the student statistics tables ("21311 Statistik der Studenten") of the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de/):
+The table below lists all tables included by the package. They are all part of the student statistics tables ("21311 Statistik der Studenten") of the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de/):
 
 ```{r, echo = FALSE}
 knitr::kable(
@@ -59,7 +59,7 @@ knitr::kable(
 
 The downloaded raw data cannot be included in this package, as it has a size of roughly 200 MB. The licence requires a list of all changes as part of the source notes (see below). These are the data transformation steps performed:
 
-* Column names are transformed using `janitor::clean_names`.
+* Column names are transformed using `janitor::clean_names()`.
 * Technical columns ending in "QUAL", "ERR", or "LOCK" are removed.
 * The original data uses value labels with separate lookup tables. For the R package, these labels are transformed into factors using the description from the lookup tables.
 
