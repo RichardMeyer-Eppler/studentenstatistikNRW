@@ -8,10 +8,10 @@ tibble.}
 clean_df(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{Data frame returned by \code{\link[wiesbaden:retrieve_data]{wiesbaden::retrieve_data()}}}
 }
 \value{
-
+Tibble with cleaned column names and removed columns
 }
 \description{
 Cleans column names, removes unwanted columns and turns data frame into a
@@ -19,6 +19,11 @@ tibble.
 }
 \examples{
 \dontrun{
+df <- wiesbaden::retrieve_data(
+  tablename = "21311LS001A",
+  genesis = c(db = "nrw")
+)
+
 clean_df(df)
 }
 }

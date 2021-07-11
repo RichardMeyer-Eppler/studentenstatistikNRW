@@ -12,7 +12,7 @@
 #'  \item{semest}{Semester}
 #' }
 #' @details
-#' The following summary is automatically generated using `skimr::skim()`
+#' The following summary is automatically generated using [skimr::skim()]
 #' 
 #' ```{r, results = 'asis', echo = FALSE}
 #'  skimr::skim(df_21311NW002B)

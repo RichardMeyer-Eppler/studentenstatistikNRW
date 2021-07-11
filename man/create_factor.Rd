@@ -3,7 +3,7 @@
 \name{create_factor}
 \alias{create_factor}
 \title{Turns character vector into a factor. The labels for the levels are retrieved
-by joining \code{df_value_labels}.}
+by joining \link{df_value_labels}.}
 \usage{
 create_factor(x)
 }
@@ -15,7 +15,7 @@ create_factor(x)
 }
 \description{
 Turns character vector into a factor. The labels for the levels are retrieved
-by joining \code{df_value_labels}.
+by joining \link{df_value_labels}.
 }
 \examples{
 \dontrun{

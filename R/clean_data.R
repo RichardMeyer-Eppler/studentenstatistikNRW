@@ -1,13 +1,18 @@
 #' Cleans column names, removes unwanted columns and turns data frame into a
 #' tibble.
 #'
-#' @param df
+#' @param df Data frame returned by [wiesbaden::retrieve_data()]
 #'
-#' @return
+#' @return Tibble with cleaned column names and removed columns
 #' @export
 #'
 #' @examples
 #' \dontrun{
+#' df <- wiesbaden::retrieve_data(
+#'   tablename = "21311LS001A",
+#'   genesis = c(db = "nrw")
+#' )
+#'
 #' clean_df(df)
 #' }
 clean_df <- function(df)  {
@@ -33,7 +38,7 @@ clean_df <- function(df)  {
 }
 
 #' Turns character vector into a factor. The labels for the levels are retrieved
-#' by joining `df_value_labels`.
+#' by joining [df_value_labels].
 #'
 #' @param x
 #'
@@ -69,7 +74,7 @@ create_factor <- function(x) {
 }
 
 #' Turns all character vectors of the data frame or tibble into vectors using
-#' \code{create_factor}.
+#' [create_factor()].
 #'
 #' @param df
 #'

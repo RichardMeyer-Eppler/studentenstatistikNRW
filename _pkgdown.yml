@@ -1,8 +1,10 @@
-destination: docs
+url: https://richardmeyer-eppler.github.io/studentenstatistikNRW
+
 reference:
 - title: Data
   desc: Included data sets
   contents:
+  - tables
   - df_21311LS001A
   - df_21311LS002A
   - df_21311NW001A

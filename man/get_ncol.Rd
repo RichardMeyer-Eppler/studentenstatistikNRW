@@ -15,3 +15,6 @@ Formatted string with number of columns
 \description{
 Get formatted number of columns / variables in a data frame
 }
+\examples{
+get_ncol(mtcars)
+}

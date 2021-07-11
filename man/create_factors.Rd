@@ -3,7 +3,7 @@
 \name{create_factors}
 \alias{create_factors}
 \title{Turns all character vectors of the data frame or tibble into vectors using
-\code{create_factor}.}
+\code{\link[=create_factor]{create_factor()}}.}
 \usage{
 create_factors(df)
 }
@@ -15,7 +15,7 @@ create_factors(df)
 }
 \description{
 Turns all character vectors of the data frame or tibble into vectors using
-\code{create_factor}.
+\code{\link[=create_factor]{create_factor()}}.
 }
 \examples{
 \dontrun{

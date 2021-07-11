@@ -27,7 +27,7 @@ df_21311NW002C
 The table is sourced from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (\emph{Education, Social Benefits, Health, Administration of Justice}) -> 21 Bildung und Kultur (\emph{Education and Culture}) -> 213 Hochschulen (\emph{Universities}) -> 21311 Statistik der Studenten (\emph{Student Statistics}).
 }
 \details{
-The following summary is automatically generated using \code{skimr::skim()}
+The following summary is automatically generated using \code{\link[skimr:skim]{skimr::skim()}}
 
 Table: Data summary\tabular{ll}{
     \tab  \cr
