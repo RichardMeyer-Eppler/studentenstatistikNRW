@@ -95,7 +95,7 @@
 <div id="data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h2>
-<p>The table below lists all tables part of this package. They are all part of the student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/">Landesdatenbank NRW</a>:</p>
+<p>The table below lists all tables included by the package. They are all part of the student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/">Landesdatenbank NRW</a>:</p>
 <table class="table">
 <colgroup>
 <col width="12%">
@@ -214,7 +214,7 @@
 <a href="#data-manipulation" class="anchor"></a>Data manipulation</h2>
 <p>The downloaded raw data cannot be included in this package, as it has a size of roughly 200 MB. The licence requires a list of all changes as part of the source notes (see below). These are the data transformation steps performed:</p>
 <ul>
-<li>Column names are transformed using <code>janitor::clean_names</code>.</li>
+<li>Column names are transformed using <code>janitor::clean_names()</code>.</li>
 <li>Technical columns ending in “QUAL”, “ERR”, or “LOCK” are removed.</li>
 <li>The original data uses value labels with separate lookup tables. For the R package, these labels are transformed into factors using the description from the lookup tables.</li>
 </ul>
