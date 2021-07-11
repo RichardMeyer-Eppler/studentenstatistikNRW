@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get formatted number of rows in a data frame — get_nrow • studentenstatistikNRW</title>
+<title>Student statistics tables ("21311 Statistik der Studenten") — tables • studentenstatistikNRW</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get formatted number of rows in a data frame — get_nrow" />
-<meta property="og:description" content="Get formatted number of rows in a data frame" />
+<meta property="og:title" content="Student statistics tables ("21311 Statistik der Studenten") — tables" />
+<meta property="og:description" content="The table list is sourced using wiesbaden::retrieve_datalist(). Data source is the Landesdatenbank NRW from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (Education, Social Benefits, Health, Administration of Justice) -&amp;gt; 21 Bildung und Kultur (Education and Culture) -&amp;gt; 213 Hochschulen (Universities) -&amp;gt; 21311 Statistik der Studenten (Student Statistics)." />
 
 
 
@@ -111,33 +111,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get formatted number of rows in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/util.R'><code>R/util.R</code></a></small>
-    <div class="hidden name"><code>get_nrow.Rd</code></div>
+    <h1>Student statistics tables ("21311 Statistik der Studenten")</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/tables.R'><code>R/tables.R</code></a></small>
+    <div class="hidden name"><code>tables.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get formatted number of rows in a data frame</p>
+    <p>The table list is sourced using <code>wiesbaden::retrieve_datalist()</code>. Data source is the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a> from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (<em>Education, Social Benefits, Health, Administration of Justice</em>) -&gt; 21 Bildung und Kultur (<em>Education and Culture</em>) -&gt; 213 Hochschulen (<em>Universities</em>) -&gt; 21311 Statistik der Studenten (<em>Student Statistics</em>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_nrow</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>tables</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>df</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Formatted string with number of rows</p>
+    <p>A tibble with 25 rows and 2 variables:</p><dl>
+<dt>tablename</dt><dd><p>Table name</p></dd>
+<dt>description</dt><dd><p>Description</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>The data in this package was obtained from the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a> (retrieved on 2021-07-11) using the code 21311. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): <a href='http://www.govdata.de/dl-de/by-2-0'>Data licence Germany – attribution – Version 2.0</a>. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.</p>
+<p>Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_nrow</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in get_nrow(mtcars): could not find function "get_nrow"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='va'>tables</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 25 x 2</span>
+#&gt;    tablename   description                                                      
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                            
+#&gt; <span style='color: #BCBCBC;'> 1</span> 21311LS001A Studierende / Studenten, Land, Hochschulen, Studienfach, Fachsem…
+#&gt; <span style='color: #BCBCBC;'> 2</span> 21311LS002A Studierende / Studenten, Land, Hochschulen, Studienfach, Hochsch…
+#&gt; <span style='color: #BCBCBC;'> 3</span> 21311NW001A Studierende / Studenten, Land, Hochschulen, Fachsemester, Geschl…
+#&gt; <span style='color: #BCBCBC;'> 4</span> 21311NW001B Studierende / Studenten, Land, Hochschulen, Fachsemester, Nation…
+#&gt; <span style='color: #BCBCBC;'> 5</span> 21311NW002A Studierende / Studenten, Land, Hochschulen, Fachsemester, Geschl…
+#&gt; <span style='color: #BCBCBC;'> 6</span> 21311NW002B Studierende / Studenten, Land, Hochschulen, Fachsemester, Nation…
+#&gt; <span style='color: #BCBCBC;'> 7</span> 21311NW002C Studierende / Studenten, Land, Fachsemester, Nationalität, Gesch…
+#&gt; <span style='color: #BCBCBC;'> 8</span> 21311NW003A Studierende / Studenten, Land, Hochschulen, Geschlecht, Hörersta…
+#&gt; <span style='color: #BCBCBC;'> 9</span> 21311NW003B Studierende / Studenten, Land, Hochschulen, Nationalität, Hörers…
+#&gt; <span style='color: #BCBCBC;'>10</span> 21311NW004A Studierende / Studenten, Land, Studienfach, Geschlecht, Hörersta…
+#&gt; <span style='color: #949494;'># … with 15 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
