@@ -2,8 +2,7 @@
 % Please edit documentation in R/clean_data.R
 \name{clean_df}
 \alias{clean_df}
-\title{Cleans column names, removes unwanted columns and turns data frame into a
-tibble.}
+\title{Cleans column names, removes unwanted columns and turns data frame into a tibble.}
 \usage{
 clean_df(df)
 }
@@ -14,8 +13,7 @@ clean_df(df)
 Tibble with cleaned column names and removed columns
 }
 \description{
-Cleans column names, removes unwanted columns and turns data frame into a
-tibble.
+Cleans column names, removes unwanted columns and turns data frame into a tibble.
 }
 \examples{
 \dontrun{

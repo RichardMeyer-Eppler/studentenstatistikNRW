@@ -8,17 +8,16 @@
 create_factors(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{Data frame returned by \code{\link[wiesbaden:retrieve_data]{wiesbaden::retrieve_data()}}}
 }
 \value{
-
+Data frame with all character vectors turned into factors. If a match
+can be found, levels will be retrieved from \link{value_labels}.
 }
 \description{
 Turns all character vectors of the data frame or tibble into vectors using
 \code{\link[=create_factor]{create_factor()}}.
 }
 \examples{
-\dontrun{
-create_factors(df)
-}
+create_factors(value_labels)
 }

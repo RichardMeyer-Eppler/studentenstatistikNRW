@@ -16,5 +16,5 @@ Formatted string with number of columns
 Get formatted number of columns / variables in a data frame
 }
 \examples{
-get_ncol(mtcars)
+studentenstatistikNRW:::get_ncol(mtcars)
 }

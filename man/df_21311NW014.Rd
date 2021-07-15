@@ -5,18 +5,10 @@
 \alias{df_21311NW014}
 \title{21311NW014 - Studienanfänger, Geschlecht, Hochschulen, Studienfach, Land, Semester}
 \format{
-A tibble with 42.939 rows and 6 variables:
-\describe{
-\item{bil016}{Studienanfänger}
-\item{ges}{Geschlecht}
-\item{bilhs1}{Hochschulen}
-\item{bilsf1}{Studienfach}
-\item{dland}{Land}
-\item{semest}{Semester}
-}
+A tibble with 42.939 rows and 6 variables: \describe{ \item{bil016}{Studienanfänger} \item{ges}{Geschlecht} \item{bilhs1}{Hochschulen} \item{bilsf1}{Studienfach} \item{dland}{Land} \item{semest}{Semester} }
 }
 \source{
-The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2021-07-11) using the code 21311NW014. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
+The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2021-07-12) using the code '21311NW014'. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
 
 Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.
 }
@@ -28,7 +20,6 @@ The table is sourced from the \href{https://www.landesdatenbank.nrw.de}{Landesda
 }
 \details{
 The following summary is automatically generated using \code{\link[skimr:skim]{skimr::skim()}}
-
 Table: Data summary\tabular{ll}{
     \tab  \cr
    Name \tab df_21311NW014 \cr
@@ -60,5 +51,6 @@ Table: Data summary\tabular{ll}{
 }
 \examples{
 df_21311NW014
+
 }
 \keyword{datasets}

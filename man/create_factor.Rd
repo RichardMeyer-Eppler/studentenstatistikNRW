@@ -3,22 +3,20 @@
 \name{create_factor}
 \alias{create_factor}
 \title{Turns character vector into a factor. The labels for the levels are retrieved
-by joining \link{df_value_labels}.}
+by joining \link{value_labels}.}
 \usage{
 create_factor(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{Character vector containing value labels from the Landesdatenbank NRW}
 }
 \value{
-
+Factor using the description from \link{value_labels}
 }
 \description{
 Turns character vector into a factor. The labels for the levels are retrieved
-by joining \link{df_value_labels}.
+by joining \link{value_labels}.
 }
 \examples{
-\dontrun{
-create_factor(x)
-}
+create_factor(value_labels[["value_label"]])
 }

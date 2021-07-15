@@ -1,10 +1,16 @@
 url: https://richardmeyer-eppler.github.io/studentenstatistikNRW
 
 reference:
-- title: Data
-  desc: Included data sets
+- title: Metadata for all tables in this package
+  desc: `tables` includes all table names, `metadata` lists the variables for each table and `value_labels` contains all labels for each variable.
   contents:
   - tables
+  - metadata
+  - value_labels
+
+- title: Data
+  desc: All tables with student statistics included in this package.
+  contents:
   - df_21311LS001A
   - df_21311LS002A
   - df_21311NW001A

@@ -16,5 +16,5 @@ Formatted string with number of rows
 Get formatted number of rows in a data frame
 }
 \examples{
-get_nrow(mtcars)
+studentenstatistikNRW:::get_nrow(mtcars)
 }

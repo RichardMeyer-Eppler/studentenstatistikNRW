@@ -1,25 +1,4 @@
-#' 21311NW011 - Studierende / Studenten, Land, Geschlecht, Hörerstatus, Semester
-#'
-#' The table is sourced from the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de) from the series 2 Bildung, Sozialleistungen, Gesundheit, Rechtspflege (*Education, Social Benefits, Health, Administration of Justice*) -> 21 Bildung und Kultur (*Education and Culture*) -> 213 Hochschulen (*Universities*) -> 21311 Statistik der Studenten (*Student Statistics*).
-#'
-#' @format A tibble with `r get_nrow(df_21311NW011)` rows and `r get_ncol(df_21311NW011)` variables:
-#' \describe{
-#'  \item{bil002}{Studierende / Studenten}
-#'  \item{dland}{Land}
-#'  \item{ges}{Geschlecht}
-#'  \item{bilhn1}{Hörerstatus}
-#'  \item{semest}{Semester}
-#' }
-#' @details
-#' The following summary is automatically generated using [skimr::skim()]
-#' 
-#' ```{r, results = 'asis', echo = FALSE}
-#'  skimr::skim(df_21311NW011)
-#' ```
-#' @examples
-#' df_21311NW011
-#' @source The data in this package was obtained from the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de) (retrieved on 2021-07-11) using the code 21311NW011. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): [Data licence Germany – attribution – Version 2.0](http://www.govdata.de/dl-de/by-2-0). Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
-#'
-#' Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.
+#' @format NULL
+#' @templateVar df_table_name df_21311NW011
+#' @template dataset_documentation
 'df_21311NW011'
-

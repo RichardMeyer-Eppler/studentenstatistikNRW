@@ -1,5 +1,4 @@
-#' Cleans column names, removes unwanted columns and turns data frame into a
-#' tibble.
+#' Cleans column names, removes unwanted columns and turns data frame into a tibble.
 #'
 #' @param df Data frame returned by [wiesbaden::retrieve_data()]
 #'
@@ -21,10 +20,10 @@ clean_df <- function(df)  {
       case = "snake"
     ) %>%
     dplyr::select(
-      -tidyselect::starts_with(
+      -dplyr::starts_with(
         "id21311"
       ),
-      -tidyselect::ends_with(
+      -dplyr::ends_with(
         c(
           "qual",
           "err",
@@ -32,23 +31,21 @@ clean_df <- function(df)  {
         )
       )
     ) %>%
-    tibble::as_tibble()
+    dplyr::as_tibble()
 
   return(df_cleaned)
 }
 
 #' Turns character vector into a factor. The labels for the levels are retrieved
-#' by joining [df_value_labels].
+#' by joining [value_labels].
 #'
-#' @param x
+#' @param x Character vector containing value labels from the Landesdatenbank NRW
 #'
-#' @return
+#' @return Factor using the description from [value_labels]
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_factor(x)
-#' }
+#' create_factor(value_labels[["value_label"]])
 create_factor <- function(x) {
   factor <- forcats::fct_relabel(
     x,
@@ -57,7 +54,10 @@ create_factor <- function(x) {
         "value_label"
       ) %>%
       dplyr::left_join(
-        df_value_labels
+        value_labels,
+        by = c(
+          "value_label"
+        )
       ) %>%
       dplyr::mutate(
         description = dplyr::coalesce(
@@ -76,15 +76,14 @@ create_factor <- function(x) {
 #' Turns all character vectors of the data frame or tibble into vectors using
 #' [create_factor()].
 #'
-#' @param df
+#' @param df Data frame returned by [wiesbaden::retrieve_data()]
 #'
-#' @return
+#' @return Data frame with all character vectors turned into factors. If a match
+#'   can be found, levels will be retrieved from [value_labels].
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_factors(df)
-#' }
+#' create_factors(value_labels)
 create_factors <- function(df)  {
 
   df_factor <- df %>%
@@ -99,3 +98,5 @@ create_factors <- function(df)  {
 
   return(df_factor)
 }
+
+utils::globalVariables("where")
