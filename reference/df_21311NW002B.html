@@ -154,7 +154,7 @@ Table: Data summary</p><table class='table'>
 <p><strong>Variable type: factor</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
 <tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 58698</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Uni: 880, Uni: 880, Uni: 880, Fer: 880</td></tr>
+<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Fer: 880, Tec: 880, Tec: 880, Tec: 880</td></tr>
 <tr><td>bilfs1</td><td>0</td><td>1</td><td>FALSE</td><td>20</td><td>1. : 4345, 3. : 4251, 5. : 4147, 7. : 3888</td></tr>
 <tr><td>nat</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Deu: 33274, Aus: 25424</td></tr>
 <tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 3596, WS : 3531, WS : 3348, WS : 3260</td></tr>
@@ -172,18 +172,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW002B</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 58,698 x 6</span>
-#&gt;    dland       bilhs1                        bilfs1    nat    semest  bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Auslä… WS 201…         17
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Auslä… WS 201…         18
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Auslä… WS 201…         21
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Deuts… WS 201…        164
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Deuts… WS 201…        207
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-… Hochschule Macromedia für an… 1. Fachs… Deuts… WS 201…        201
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-… Hochschule Macromedia für an… 2. Fachs… Auslä… WS 201…          2
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-… Hochschule Macromedia für an… 2. Fachs… Auslä… WS 201…          1
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-… Hochschule Macromedia für an… 2. Fachs… Auslä… WS 201…          3
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-… Hochschule Macromedia für an… 2. Fachs… Deuts… WS 201…         36
+#&gt;    dland           bilhs1              bilfs1        nat     semest   bil002_val
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2003…         21
+#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2004…          9
+#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2005…          7
+#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2006…         18
+#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2007…         20
+#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2008…         42
+#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2009…         27
+#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2010…         34
+#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2011…         47
+#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-West… Alanus Hochschule,… 1. Fachsemes… Auslän… WS 2012…         44
 #&gt; <span style='color: #949494;'># … with 58,688 more rows</span></div><div class='input'>
 </div></pre>
   </div>
