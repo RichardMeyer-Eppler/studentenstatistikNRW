@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get formatted number of columns / variables in a data frame — get_ncol • studentenstatistikNRW</title>
+<title>Get text for the R file documenting a table — document_table • studentenstatistikNRW</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get formatted number of columns / variables in a data frame — get_ncol" />
-<meta property="og:description" content="Get formatted number of columns / variables in a data frame" />
+<meta property="og:title" content="Get text for the R file documenting a table — document_table" />
+<meta property="og:description" content="Get text for the R file documenting a table" />
 
 
 
@@ -111,33 +111,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get formatted number of columns / variables in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/util.R'><code>R/util.R</code></a></small>
-    <div class="hidden name"><code>get_ncol.Rd</code></div>
+    <h1>Get text for the R file documenting a table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/document.R'><code>R/document.R</code></a></small>
+    <div class="hidden name"><code>document_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get formatted number of columns / variables in a data frame</p>
+    <p>Get text for the R file documenting a table</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>document_table</span><span class='op'>(</span><span class='va'>table_name</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>df</p></td>
+      <th>table_name</th>
+      <td><p>Valid table name existing in <a href='tables.html'>tables</a></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Formatted string with number of columns</p>
+    <p>Character vector for the r file creating the roxygen dataset documentation</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>studentenstatistikNRW</span><span class='fu'>:::</span><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "11"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>document_table</span><span class='op'>(</span><span class='st'>"df_21311LS002A"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "#' @format NULL"                             
+#&gt; [2] "#' @templateVar df_table_name df_21311LS002A"
+#&gt; [3] "#' @template dataset_documentation"          
+#&gt; [4] "'df_21311LS002A'"                            </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

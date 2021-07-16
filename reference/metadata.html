@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get formatted number of columns / variables in a data frame — get_ncol • studentenstatistikNRW</title>
+<title>Metadata containing the variables for each student statistics table — metadata • studentenstatistikNRW</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get formatted number of columns / variables in a data frame — get_ncol" />
-<meta property="og:description" content="Get formatted number of columns / variables in a data frame" />
+<meta property="og:title" content="Metadata containing the variables for each student statistics table — metadata" />
+<meta property="og:description" content="The metadata for each table name in tables is sourced using wiesbaden::retrieve_metadata(). Data source is the Landesdatenbank NRW." />
 
 
 
@@ -111,33 +111,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get formatted number of columns / variables in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/util.R'><code>R/util.R</code></a></small>
-    <div class="hidden name"><code>get_ncol.Rd</code></div>
+    <h1>Metadata containing the variables for each student statistics table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/metadata.R'><code>R/metadata.R</code></a></small>
+    <div class="hidden name"><code>metadata.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get formatted number of columns / variables in a data frame</p>
+    <p>The metadata for each table name in <a href='tables.html'>tables</a> is sourced using <code><a href='https://rdrr.io/pkg/wiesbaden/man/retrieve_metadata.html'>wiesbaden::retrieve_metadata()</a></code>. Data source is the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>metadata</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>df</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Formatted string with number of columns</p>
+    <p>A tibble with 154 rows and 4 variables:</p><dl>
+<dt>tablename</dt><dd><p>Table name</p></dd>
+<dt>name</dt><dd><p>Variable name</p></dd>
+<dt>description</dt><dd><p>Variable description</p></dd>
+<dt>unit</dt><dd><p>Unit for each measure</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>The data in this package was obtained from the <a href='https://www.landesdatenbank.nrw.de'>Landesdatenbank NRW</a> (retrieved on 2021-07-11). The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): <a href='http://www.govdata.de/dl-de/by-2-0'>Data licence Germany – attribution – Version 2.0</a>. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>studentenstatistikNRW</span><span class='fu'>:::</span><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "11"</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>metadata</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 154 x 4</span>
+#&gt;    tablename   name   description                  unit    
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'> 1</span> 21311LS001A BIL002 Studierende / Studenten      <span style='color: #949494;'>"</span>Anzahl<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #BCBCBC;'> 2</span> 21311LS001A DLAND  Land                         <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 3</span> 21311LS001A BILHS1 Hochschulen                  <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 4</span> 21311LS001A BILSF1 Studienfach                  <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 5</span> 21311LS001A BILFS1 Fachsemester                 <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 6</span> 21311LS001A BILAP1 Angestrebte Abschlussprüfung <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 7</span> 21311LS001A SEMEST Semester                     <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'> 8</span> 21311LS002A BIL002 Studierende / Studenten      <span style='color: #949494;'>"</span>Anzahl<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> 21311LS002A DLAND  Land                         <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #BCBCBC;'>10</span> 21311LS002A BILHS1 Hochschulen                  <span style='color: #949494;'>""</span>      
+#&gt; <span style='color: #949494;'># … with 144 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

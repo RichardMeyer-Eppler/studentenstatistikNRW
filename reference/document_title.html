@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get formatted number of columns / variables in a data frame — get_ncol • studentenstatistikNRW</title>
+<title>Get title for roxygen data table documentation — document_title • studentenstatistikNRW</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get formatted number of columns / variables in a data frame — get_ncol" />
-<meta property="og:description" content="Get formatted number of columns / variables in a data frame" />
+<meta property="og:title" content="Get title for roxygen data table documentation — document_title" />
+<meta property="og:description" content="Get title for roxygen data table documentation" />
 
 
 
@@ -111,33 +111,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get formatted number of columns / variables in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/util.R'><code>R/util.R</code></a></small>
-    <div class="hidden name"><code>get_ncol.Rd</code></div>
+    <h1>Get title for roxygen data table documentation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/blob/master/R/document.R'><code>R/document.R</code></a></small>
+    <div class="hidden name"><code>document_title.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get formatted number of columns / variables in a data frame</p>
+    <p>Get title for roxygen data table documentation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>document_title</span><span class='op'>(</span><span class='va'>table_name</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>df</p></td>
+      <th>table_name</th>
+      <td><p>String with table name or code</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Formatted string with number of columns</p>
+    <p>Title as character (Table code - Table description)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>studentenstatistikNRW</span><span class='fu'>:::</span><span class='fu'>get_ncol</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "11"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>document_title</span><span class='op'>(</span><span class='st'>"21311LS001A"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "21311LS001A - Studierende / Studenten, Land, Hochschulen, Studienfach, Fachsemester, Angestrebte AbschlussprÃ¼fung, Semester"</div><div class='input'><span class='fu'>document_title</span><span class='op'>(</span><span class='st'>"df_21311LS001A"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "21311LS001A - Studierende / Studenten, Land, Hochschulen, Studienfach, Fachsemester, Angestrebte AbschlussprÃ¼fung, Semester"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
