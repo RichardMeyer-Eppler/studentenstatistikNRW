@@ -20,6 +20,7 @@ Imports:
 Suggests: 
     dplyr,
     forcats,
+    gtools,
     here,
     knitr,
     janitor,

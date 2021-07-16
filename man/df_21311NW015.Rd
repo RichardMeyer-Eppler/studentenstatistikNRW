@@ -37,7 +37,7 @@ Table: Data summary\tabular{ll}{
 \strong{Variable type: factor}\tabular{lrrlrl}{
    skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
    ges \tab 0 \tab 1 \tab FALSE \tab 2 \tab wei: 3808, män: 3771 \cr
-   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 233 \tab Agr: 44, Ang: 44, Arc: 44, Arc: 44 \cr
+   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 233 \tab Agr: 44, All: 44, All: 44, Ang: 44 \cr
    dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 7579 \cr
    semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 378, WS : 376, WS : 375, WS : 371 \cr
 }

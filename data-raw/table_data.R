@@ -31,6 +31,15 @@ list_df_wrangled <- list_df %>%
   # Turns character vector into a factor. The labels for the levels are retrieved by joining `value_labels`
   purrr::map(
     studentenstatistikNRW::create_factors
+  ) %>%
+  # Sorts table by all factors.
+  purrr::map(
+    dplyr::arrange,
+    dplyr::across(
+      where(
+        is.factor
+      )
+    )
   )
 
 # Create rda files for each data frame

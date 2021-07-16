@@ -44,33 +44,49 @@ clean_df <- function(df)  {
 #' @return Factor using the description from [value_labels]
 #' @export
 #'
+#' @importFrom gtools mixedsort
+#' @importFrom rlang .data
+#'
 #' @examples
 #' create_factor(value_labels[["value_label"]])
 create_factor <- function(x) {
-  factor <- forcats::fct_relabel(
+
+  df_factor <- tibble::as_tibble_col(
     x,
-    ~ .x %>%
-      tibble::as_tibble_col(
-        "value_label"
-      ) %>%
-      dplyr::left_join(
-        value_labels,
-        by = c(
-          "value_label"
-        )
-      ) %>%
-      dplyr::mutate(
-        description = dplyr::coalesce(
-          description,
-          .x
-        )
-      ) %>%
-      dplyr::pull(
-        description
-      )
+    "value_label"
+  ) %>%
+  dplyr::left_join(
+    value_labels,
+    by = c(
+      "value_label"
+    )
+  ) %>%
+  dplyr::mutate(
+    factor_level = dplyr::coalesce(
+      .data$description,
+      .data$value_label
+    ),
+    factor = forcats::as_factor(
+      factor_level
+    )
   )
 
-  return(factor)
+  ordered_levels <- df_factor %>%
+    dplyr::distinct(
+      factor_level
+    ) %>%
+    dplyr::pull(
+      factor_level
+    ) %>%
+    gtools::mixedsort()
+
+
+  factor_ordered <- forcats::fct_relevel(
+    df_factor[["factor"]],
+    ordered_levels
+  )
+
+  return(factor_ordered)
 }
 
 #' Turns all character vectors of the data frame or tibble into vectors using
