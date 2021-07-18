@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>6</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>5</td></tr>
+<tr><td>character</td><td>5</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,20 +151,20 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 6690</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Deu: 88, Fer: 88, FH : 88, FH : 88</td></tr>
-<tr><td>nat</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Deu: 3684, Aus: 3006</td></tr>
-<tr><td>bilhn1</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Hau: 4579, Neb: 2111</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 398, WS : 392, WS : 375, WS : 366</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILHS1</td><td>0</td><td>1</td><td>6</td><td>6</td><td>0</td><td>174</td><td>0</td></tr>
+<tr><td>NAT</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILHN1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>1949.43</td><td>6087.9</td><td>1</td><td>13</td><td>132</td><td>967.75</td><td>68398</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>1949.43</td><td>6087.9</td><td>1</td><td>13</td><td>132</td><td>967.75</td><td>68398</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -172,18 +172,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW003B</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,690 x 6</span>
-#&gt;    dland            bilhs1               nat      bilhn1    semest    bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2003/…         51
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2004/…         29
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2005/…         32
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2006/…         42
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2007/…         59
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2008/…         87
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2009/…         91
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2010/…         85
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2011/…        114
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-Westf… Alanus Hochschule, … Ausländ… Haupthör… WS 2012/…        129
+#&gt;    DLAND      BILHS1     NAT        BILHN1     SEMEST     BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05         HS0034     NATA       BILHN01    WS 2017/18     41
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05         HS0034     NATA       BILHN01    WS 2018/19     46
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05         HS0034     NATA       BILHN01    WS 2019/20     49
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05         HS0034     NATD       BILHN01    WS 2017/18    561
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05         HS0034     NATD       BILHN01    WS 2018/19    653
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05         HS0034     NATD       BILHN01    WS 2019/20    710
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05         HS0040     NATA       BILHN01    WS 2006/07      1
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05         HS0040     NATA       BILHN01    WS 2008/09      1
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05         HS0040     NATA       BILHN01    WS 2009/10      2
+#&gt; <span style='color: #BCBCBC;'>10</span> 05         HS0040     NATA       BILHN01    WS 2011/12      1
 #&gt; <span style='color: #949494;'># … with 6,680 more rows</span></div><div class='input'>
 </div></pre>
   </div>

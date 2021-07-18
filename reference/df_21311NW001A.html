@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>8</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>7</td></tr>
+<tr><td>character</td><td>7</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,22 +151,22 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 239664</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Uni: 15140, Uni: 14905, Uni: 12164, Tec: 10890</td></tr>
-<tr><td>bilfs1</td><td>0</td><td>1</td><td>FALSE</td><td>20</td><td>1. : 20315, 3. : 18801, 5. : 17675, 7. : 16003</td></tr>
-<tr><td>ges</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>män: 122221, wei: 117443</td></tr>
-<tr><td>bilhn1</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Hau: 200113, Neb: 39551</td></tr>
-<tr><td>bilap1</td><td>0</td><td>1</td><td>FALSE</td><td>59</td><td>Bac: 27553, Dip: 21997, Pro: 17090, Dip: 14374</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 13009, WS : 12862, WS : 12436, WS : 12023</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILHS1</td><td>0</td><td>1</td><td>6</td><td>6</td><td>0</td><td>174</td><td>0</td></tr>
+<tr><td>BILFS1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>20</td><td>0</td></tr>
+<tr><td>GES</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILHN1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILAP1</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>59</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>54.42</td><td>162.34</td><td>1</td><td>2</td><td>8</td><td>37</td><td>6840</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>54.42</td><td>162.34</td><td>1</td><td>2</td><td>8</td><td>37</td><td>6840</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -174,18 +174,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW001A</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 239,664 x 8</span>
-#&gt;    dland     bilhs1       bilfs1    ges   bilhn1  bilap1      semest  bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 200…          2
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          7
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          7
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          2
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          1
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          2
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Abschlussp… WS 201…          1
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Bachelor (… WS 200…          4
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Bachelor (… WS 200…          9
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhei… Alanus Hoch… 1. Fachs… männ… Haupth… Bachelor (… WS 200…         13
+#&gt;    DLAND     BILHS1     BILFS1     GES      BILHN1    BILAP1    SEMEST    BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lb&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05        HS0034     FACHS01    GESM     BILHN01   AP84      WS 2017/…     80
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05        HS0034     FACHS01    GESM     BILHN01   AP84      WS 2018/…     94
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05        HS0034     FACHS01    GESM     BILHN01   AP84      WS 2019/…     90
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05        HS0034     FACHS01    GESM     BILHN01   AP90      WS 2019/…      7
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05        HS0034     FACHS01    GESM     BILHN01   AP96      WS 2018/…      4
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05        HS0034     FACHS01    GESM     BILHN01   AP97      WS 2017/…     12
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05        HS0034     FACHS01    GESM     BILHN01   AP97      WS 2018/…     11
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05        HS0034     FACHS01    GESW     BILHN01   AP84      WS 2017/…     81
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05        HS0034     FACHS01    GESW     BILHN01   AP84      WS 2018/…    108
+#&gt; <span style='color: #BCBCBC;'>10</span> 05        HS0034     FACHS01    GESW     BILHN01   AP84      WS 2019/…    115
 #&gt; <span style='color: #949494;'># … with 239,654 more rows</span></div><div class='input'>
 </div></pre>
   </div>

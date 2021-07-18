@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>6</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>5</td></tr>
+<tr><td>character</td><td>5</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,20 +151,20 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 7137</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Deu: 88, Fer: 88, FH : 88, FH : 88</td></tr>
-<tr><td>ges</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>män: 3614, wei: 3523</td></tr>
-<tr><td>bilhn1</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Hau: 4888, Neb: 2249</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 418, WS : 417, WS : 402, WS : 388</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILHS1</td><td>0</td><td>1</td><td>6</td><td>6</td><td>0</td><td>174</td><td>0</td></tr>
+<tr><td>GES</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILHN1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>1827.34</td><td>4621.62</td><td>1</td><td>29</td><td>213</td><td>891</td><td>39636</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>1827.34</td><td>4621.62</td><td>1</td><td>29</td><td>213</td><td>891</td><td>39636</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -172,18 +172,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW003A</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7,137 x 6</span>
-#&gt;    dland            bilhs1                ges     bilhn1    semest    bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2003/…         89
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2004/…         66
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2005/…         72
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2006/…        118
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2007/…        136
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2008/…        152
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2009/…        159
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2010/…        189
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2011/…        234
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-Westf… Alanus Hochschule, A… männli… Haupthör… WS 2012/…        250
+#&gt;    DLAND      BILHS1     GES        BILHN1     SEMEST     BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05         HS0034     GESM       BILHN01    WS 2017/18    305
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05         HS0034     GESM       BILHN01    WS 2018/19    353
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05         HS0034     GESM       BILHN01    WS 2019/20    367
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05         HS0034     GESW       BILHN01    WS 2017/18    297
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05         HS0034     GESW       BILHN01    WS 2018/19    346
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05         HS0034     GESW       BILHN01    WS 2019/20    392
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05         HS0040     GESM       BILHN01    WS 2006/07     34
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05         HS0040     GESM       BILHN01    WS 2007/08     69
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05         HS0040     GESM       BILHN01    WS 2008/09     75
+#&gt; <span style='color: #BCBCBC;'>10</span> 05         HS0040     GESM       BILHN01    WS 2009/10     84
 #&gt; <span style='color: #949494;'># … with 7,127 more rows</span></div><div class='input'>
 </div></pre>
   </div>

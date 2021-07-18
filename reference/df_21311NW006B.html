@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>7</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>6</td></tr>
+<tr><td>character</td><td>6</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,21 +151,21 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 633244</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Uni: 45888, Uni: 39230, Uni: 38449, Uni: 35934</td></tr>
-<tr><td>bilsf1</td><td>0</td><td>1</td><td>FALSE</td><td>234</td><td>Wir: 25164, Bet: 22286, Mas: 19745, Ele: 19726</td></tr>
-<tr><td>bilsh1</td><td>0</td><td>1</td><td>FALSE</td><td>20</td><td>1. : 39779, 3. : 39059, 7. : 38766, 5. : 38516</td></tr>
-<tr><td>nat</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Deu: 391441, Aus: 241803</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 38107, WS : 37270, WS : 36202, WS : 35003</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILHS1</td><td>0</td><td>1</td><td>6</td><td>6</td><td>0</td><td>174</td><td>0</td></tr>
+<tr><td>BILSF1</td><td>0</td><td>1</td><td>5</td><td>5</td><td>0</td><td>234</td><td>0</td></tr>
+<tr><td>BILSH1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>20</td><td>0</td></tr>
+<tr><td>NAT</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>20.6</td><td>62.75</td><td>1</td><td>2</td><td>5</td><td>16</td><td>6663</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>20.6</td><td>62.75</td><td>1</td><td>2</td><td>5</td><td>16</td><td>6663</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -173,18 +173,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW006B</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 633,244 x 7</span>
-#&gt;    dland        bilhs1          bilsf1    bilsh1       nat    semest  bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 200…         12
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 200…          1
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 200…          1
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          2
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          5
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          7
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          1
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          4
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          2
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-W… Alanus Hochsch… Architek… 1. Hochschu… Auslä… WS 201…          1
+#&gt;    DLAND      BILHS1     BILSF1     BILSH1     NAT        SEMEST     BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05         HS0034     SF021      HOCHS03    NATD       WS 2019/20      2
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05         HS0034     SF021      HOCHS08    NATD       WS 2019/20      1
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05         HS0034     SF021      HOCHS09    NATD       WS 2019/20      8
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05         HS0034     SF021      HOCHS10    NATD       WS 2019/20      1
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05         HS0034     SF021      HOCHS11    NATD       WS 2019/20      1
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05         HS0034     SF021      HOCHS12    NATD       WS 2019/20      2
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05         HS0034     SF021      HOCHS14    NATD       WS 2019/20      1
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05         HS0034     SF054      HOCHS01    NATA       WS 2017/18      2
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05         HS0034     SF054      HOCHS01    NATA       WS 2018/19      3
+#&gt; <span style='color: #BCBCBC;'>10</span> 05         HS0034     SF054      HOCHS01    NATA       WS 2019/20      9
 #&gt; <span style='color: #949494;'># … with 633,234 more rows</span></div><div class='input'>
 </div></pre>
   </div>

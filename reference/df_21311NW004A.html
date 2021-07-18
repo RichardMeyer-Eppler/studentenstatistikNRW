@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>6</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>5</td></tr>
+<tr><td>character</td><td>5</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,20 +151,20 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 13451</td></tr>
-<tr><td>bilsf1</td><td>0</td><td>1</td><td>FALSE</td><td>234</td><td>Ang: 88, Arc: 88, Bau: 88, Bet: 88</td></tr>
-<tr><td>ges</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>män: 6768, wei: 6683</td></tr>
-<tr><td>bilhn1</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>Hau: 8403, Neb: 5048</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 646, WS : 646, WS : 644, WS : 644</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILSF1</td><td>0</td><td>1</td><td>5</td><td>5</td><td>0</td><td>234</td><td>0</td></tr>
+<tr><td>GES</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILHN1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>969.57</td><td>2994.3</td><td>1</td><td>8</td><td>86</td><td>496</td><td>40048</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>969.57</td><td>2994.3</td><td>1</td><td>8</td><td>86</td><td>496</td><td>40048</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -172,18 +172,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW004A</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,451 x 6</span>
-#&gt;    dland               bilsf1       ges      bilhn1     semest     bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 1998/99        138
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 1999/00        175
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2000/01        183
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2001/02        195
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2002/03        195
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2003/04        191
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2004/05         57
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2005/06         50
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2006/07         43
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-Westfalen Afrikanistik männlich Haupthörer WS 2007/08         30
+#&gt;    DLAND      BILSF1     GES        BILHN1     SEMEST     BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05         SF001      GESM       BILHN01    WS 1998/99    108
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05         SF001      GESM       BILHN01    WS 1999/00    107
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05         SF001      GESM       BILHN01    WS 2000/01    102
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05         SF001      GESM       BILHN01    WS 2001/02    111
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05         SF001      GESM       BILHN01    WS 2002/03    125
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05         SF001      GESM       BILHN01    WS 2003/04    138
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05         SF001      GESM       BILHN01    WS 2004/05     79
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05         SF001      GESM       BILHN01    WS 2005/06     82
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05         SF001      GESM       BILHN01    WS 2006/07     70
+#&gt; <span style='color: #BCBCBC;'>10</span> 05         SF001      GESM       BILHN01    WS 2007/08     52
 #&gt; <span style='color: #949494;'># … with 13,441 more rows</span></div><div class='input'>
 </div></pre>
   </div>

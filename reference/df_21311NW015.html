@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>5</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>4</td></tr>
+<tr><td>character</td><td>4</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,19 +151,19 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>ges</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>wei: 3808, män: 3771</td></tr>
-<tr><td>bilsf1</td><td>0</td><td>1</td><td>FALSE</td><td>233</td><td>Agr: 44, All: 44, All: 44, Ang: 44</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 7579</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 378, WS : 376, WS : 375, WS : 371</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>GES</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>BILSF1</td><td>0</td><td>1</td><td>5</td><td>5</td><td>0</td><td>233</td><td>0</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil016_val</td><td>0</td><td>1</td><td>239.22</td><td>541.14</td><td>1</td><td>15</td><td>54</td><td>198.5</td><td>6083</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL016</td><td>0</td><td>1</td><td>239.22</td><td>541.14</td><td>1</td><td>15</td><td>54</td><td>198.5</td><td>6083</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -171,18 +171,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW015</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7,579 x 5</span>
-#&gt;    ges      bilsf1       dland               semest     bil016_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> männlich Afrikanistik Nordrhein-Westfalen WS 1998/99         11
-#&gt; <span style='color: #BCBCBC;'> 2</span> männlich Afrikanistik Nordrhein-Westfalen WS 1999/00         20
-#&gt; <span style='color: #BCBCBC;'> 3</span> männlich Afrikanistik Nordrhein-Westfalen WS 2000/01         14
-#&gt; <span style='color: #BCBCBC;'> 4</span> männlich Afrikanistik Nordrhein-Westfalen WS 2001/02         12
-#&gt; <span style='color: #BCBCBC;'> 5</span> männlich Afrikanistik Nordrhein-Westfalen WS 2002/03          5
-#&gt; <span style='color: #BCBCBC;'> 6</span> männlich Afrikanistik Nordrhein-Westfalen WS 2003/04         18
-#&gt; <span style='color: #BCBCBC;'> 7</span> männlich Afrikanistik Nordrhein-Westfalen WS 2004/05          2
-#&gt; <span style='color: #BCBCBC;'> 8</span> männlich Afrikanistik Nordrhein-Westfalen WS 2005/06          2
-#&gt; <span style='color: #BCBCBC;'> 9</span> männlich Afrikanistik Nordrhein-Westfalen WS 2006/07          4
-#&gt; <span style='color: #BCBCBC;'>10</span> männlich Afrikanistik Nordrhein-Westfalen WS 2007/08          4
+#&gt;    GES        BILSF1     DLAND      SEMEST     BIL016
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> GESM       SF001      05         WS 1998/99      8
+#&gt; <span style='color: #BCBCBC;'> 2</span> GESM       SF001      05         WS 1999/00      7
+#&gt; <span style='color: #BCBCBC;'> 3</span> GESM       SF001      05         WS 2000/01     10
+#&gt; <span style='color: #BCBCBC;'> 4</span> GESM       SF001      05         WS 2001/02     10
+#&gt; <span style='color: #BCBCBC;'> 5</span> GESM       SF001      05         WS 2002/03      9
+#&gt; <span style='color: #BCBCBC;'> 6</span> GESM       SF001      05         WS 2003/04     12
+#&gt; <span style='color: #BCBCBC;'> 7</span> GESM       SF001      05         WS 2004/05      9
+#&gt; <span style='color: #BCBCBC;'> 8</span> GESM       SF001      05         WS 2005/06     17
+#&gt; <span style='color: #BCBCBC;'> 9</span> GESM       SF001      05         WS 2006/07      2
+#&gt; <span style='color: #BCBCBC;'>10</span> GESM       SF001      05         WS 2007/08      1
 #&gt; <span style='color: #949494;'># … with 7,569 more rows</span></div><div class='input'>
 </div></pre>
   </div>

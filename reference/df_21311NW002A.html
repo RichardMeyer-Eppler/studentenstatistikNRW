@@ -143,7 +143,7 @@ Table: Data summary</p><table class='table'>
 <tr><td>Number of columns</td><td>6</td></tr>
 <tr><td>_______________________</td><td></td></tr>
 <tr><td>Column type frequency:</td><td></td></tr>
-<tr><td>factor</td><td>5</td></tr>
+<tr><td>character</td><td>5</td></tr>
 <tr><td>numeric</td><td>1</td></tr>
 <tr><td>________________________</td><td></td></tr>
 <tr><td>Group variables</td><td>None</td></tr>
@@ -151,20 +151,20 @@ Table: Data summary</p><table class='table'>
 
 
 
-<p><strong>Variable type: factor</strong></p><table class='table'>
-<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>ordered</td><td>n_unique</td><td>top_counts</td></tr>
-<tr><td>dland</td><td>0</td><td>1</td><td>FALSE</td><td>1</td><td>Nor: 63000</td></tr>
-<tr><td>bilhs1</td><td>0</td><td>1</td><td>FALSE</td><td>172</td><td>Deu: 880, Fer: 880, Tec: 880, Tec: 880</td></tr>
-<tr><td>bilfs1</td><td>0</td><td>1</td><td>FALSE</td><td>20</td><td>1. : 4711, 3. : 4595, 5. : 4499, 7. : 4187</td></tr>
-<tr><td>ges</td><td>0</td><td>1</td><td>FALSE</td><td>2</td><td>män: 32354, wei: 30646</td></tr>
-<tr><td>semest</td><td>0</td><td>1</td><td>FALSE</td><td>22</td><td>WS : 3918, WS : 3826, WS : 3651, WS : 3531</td></tr>
+<p><strong>Variable type: character</strong></p><table class='table'>
+<tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>min</td><td>max</td><td>empty</td><td>n_unique</td><td>whitespace</td></tr>
+<tr><td>DLAND</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>BILHS1</td><td>0</td><td>1</td><td>6</td><td>6</td><td>0</td><td>174</td><td>0</td></tr>
+<tr><td>BILFS1</td><td>0</td><td>1</td><td>7</td><td>7</td><td>0</td><td>20</td><td>0</td></tr>
+<tr><td>GES</td><td>0</td><td>1</td><td>4</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+<tr><td>SEMEST</td><td>0</td><td>1</td><td>10</td><td>10</td><td>0</td><td>22</td><td>0</td></tr>
 </table>
 
 
 
 <p><strong>Variable type: numeric</strong></p><table class='table'>
 <tr><td>skim_variable</td><td>n_missing</td><td>complete_rate</td><td>mean</td><td>sd</td><td>p0</td><td>p25</td><td>p50</td><td>p75</td><td>p100</td><td>hist</td></tr>
-<tr><td>bil002_val</td><td>0</td><td>1</td><td>207.01</td><td>515.21</td><td>1</td><td>6</td><td>33</td><td>158</td><td>8335</td><td>▇▁▁▁▁</td></tr>
+<tr><td>BIL002</td><td>0</td><td>1</td><td>207.01</td><td>515.21</td><td>1</td><td>6</td><td>33</td><td>158</td><td>8335</td><td>▇▁▁▁▁</td></tr>
 </table>
 
 
@@ -172,18 +172,18 @@ Table: Data summary</p><table class='table'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>df_21311NW002A</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 63,000 x 6</span>
-#&gt;    dland           bilhs1               bilfs1       ges     semest   bil002_val
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2003…         27
-#&gt; <span style='color: #BCBCBC;'> 2</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2004…         22
-#&gt; <span style='color: #BCBCBC;'> 3</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2005…         20
-#&gt; <span style='color: #BCBCBC;'> 4</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2006…         52
-#&gt; <span style='color: #BCBCBC;'> 5</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2007…         26
-#&gt; <span style='color: #BCBCBC;'> 6</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2008…         54
-#&gt; <span style='color: #BCBCBC;'> 7</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2009…         39
-#&gt; <span style='color: #BCBCBC;'> 8</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2010…         77
-#&gt; <span style='color: #BCBCBC;'> 9</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2011…         73
-#&gt; <span style='color: #BCBCBC;'>10</span> Nordrhein-West… Alanus Hochschule, … 1. Fachseme… männli… WS 2012…         71
+#&gt;    DLAND      BILHS1     BILFS1     GES        SEMEST     BIL002
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;hvn_lbll&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 05         HS0034     FACHS01    GESM       WS 2017/18     92
+#&gt; <span style='color: #BCBCBC;'> 2</span> 05         HS0034     FACHS01    GESM       WS 2018/19    109
+#&gt; <span style='color: #BCBCBC;'> 3</span> 05         HS0034     FACHS01    GESM       WS 2019/20     97
+#&gt; <span style='color: #BCBCBC;'> 4</span> 05         HS0034     FACHS01    GESW       WS 2017/18     89
+#&gt; <span style='color: #BCBCBC;'> 5</span> 05         HS0034     FACHS01    GESW       WS 2018/19    116
+#&gt; <span style='color: #BCBCBC;'> 6</span> 05         HS0034     FACHS01    GESW       WS 2019/20    125
+#&gt; <span style='color: #BCBCBC;'> 7</span> 05         HS0034     FACHS02    GESM       WS 2017/18     18
+#&gt; <span style='color: #BCBCBC;'> 8</span> 05         HS0034     FACHS02    GESM       WS 2018/19     28
+#&gt; <span style='color: #BCBCBC;'> 9</span> 05         HS0034     FACHS02    GESM       WS 2019/20     31
+#&gt; <span style='color: #BCBCBC;'>10</span> 05         HS0034     FACHS02    GESW       WS 2017/18     20
 #&gt; <span style='color: #949494;'># … with 62,990 more rows</span></div><div class='input'>
 </div></pre>
   </div>
