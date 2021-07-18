@@ -17,3 +17,9 @@ Data frame with labeled values
 \description{
 Set value labels using \link[labelled:val_labels]{labelled::set_value_labels}
 }
+\examples{
+label_values(
+  df_21311LS001A,
+  table_name = "21311LS001A"
+)
+}

@@ -17,3 +17,9 @@ Data frame with labeled variables
 \description{
 Set variable labels using \link[labelled:var_label]{labelled::set_variable_labels}
 }
+\examples{
+label_variables(
+  df_21311LS001A,
+  table_name = "21311LS001A"
+)
+}
