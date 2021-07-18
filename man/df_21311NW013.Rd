@@ -27,24 +27,24 @@ Table: Data summary\tabular{ll}{
    Number of columns \tab 4 \cr
    _______________________ \tab  \cr
    Column type frequency: \tab  \cr
-   factor \tab 3 \cr
+   character \tab 3 \cr
    numeric \tab 1 \cr
    ________________________ \tab  \cr
    Group variables \tab None \cr
 }
 
 
-\strong{Variable type: factor}\tabular{lrrlrl}{
-   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
-   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 44 \cr
-   nat \tab 0 \tab 1 \tab FALSE \tab 2 \tab Aus: 22, Deu: 22 \cr
-   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 2, WS : 2, WS : 2, WS : 2 \cr
+\strong{Variable type: character}\tabular{lrrrrrrr}{
+   skim_variable \tab n_missing \tab complete_rate \tab min \tab max \tab empty \tab n_unique \tab whitespace \cr
+   DLAND \tab 0 \tab 1 \tab 2 \tab 2 \tab 0 \tab 1 \tab 0 \cr
+   NAT \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 2 \tab 0 \cr
+   SEMEST \tab 0 \tab 1 \tab 10 \tab 10 \tab 0 \tab 22 \tab 0 \cr
 }
 
 
 \strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
-   bil002_val \tab 0 \tab 1 \tab 296402.2 \tab 241190.6 \tab 49717 \tab 63023.25 \tab 252554 \tab 465787 \tab 684797 \tab ▇▁▂▃▃ \cr
+   BIL002 \tab 0 \tab 1 \tab 296402.2 \tab 241190.6 \tab 49717 \tab 63023.25 \tab 252554 \tab 465787 \tab 684797 \tab ▇▁▂▃▃ \cr
 }
 }
 \examples{

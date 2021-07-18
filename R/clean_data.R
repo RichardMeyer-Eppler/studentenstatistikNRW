@@ -16,9 +16,9 @@
 #' }
 clean_df <- function(df)  {
   df_cleaned <- df %>%
-    janitor::clean_names(
-      case = "snake"
-    ) %>%
+    # janitor::clean_names(
+    #   case = "snake"
+    # ) %>%
     dplyr::select(
       -dplyr::starts_with(
         "id21311"
@@ -30,6 +30,14 @@ clean_df <- function(df)  {
           "lock"
         )
       )
+    ) %>%
+    dplyr::rename_with(
+      .fn = gsub,
+      .cols = tidyselect::ends_with(
+        "_val"
+      ),
+      pattern = "_val",
+      replacement = ""
     ) %>%
     dplyr::as_tibble()
 

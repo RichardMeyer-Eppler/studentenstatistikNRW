@@ -27,28 +27,28 @@ Table: Data summary\tabular{ll}{
    Number of columns \tab 8 \cr
    _______________________ \tab  \cr
    Column type frequency: \tab  \cr
-   factor \tab 7 \cr
+   character \tab 7 \cr
    numeric \tab 1 \cr
    ________________________ \tab  \cr
    Group variables \tab None \cr
 }
 
 
-\strong{Variable type: factor}\tabular{lrrlrl}{
-   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
-   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 239664 \cr
-   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Uni: 15140, Uni: 14905, Uni: 12164, Tec: 10890 \cr
-   bilfs1 \tab 0 \tab 1 \tab FALSE \tab 20 \tab 1. : 20315, 3. : 18801, 5. : 17675, 7. : 16003 \cr
-   ges \tab 0 \tab 1 \tab FALSE \tab 2 \tab män: 122221, wei: 117443 \cr
-   bilhn1 \tab 0 \tab 1 \tab FALSE \tab 2 \tab Hau: 200113, Neb: 39551 \cr
-   bilap1 \tab 0 \tab 1 \tab FALSE \tab 59 \tab Bac: 27553, Dip: 21997, Pro: 17090, Dip: 14374 \cr
-   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 13009, WS : 12862, WS : 12436, WS : 12023 \cr
+\strong{Variable type: character}\tabular{lrrrrrrr}{
+   skim_variable \tab n_missing \tab complete_rate \tab min \tab max \tab empty \tab n_unique \tab whitespace \cr
+   DLAND \tab 0 \tab 1 \tab 2 \tab 2 \tab 0 \tab 1 \tab 0 \cr
+   BILHS1 \tab 0 \tab 1 \tab 6 \tab 6 \tab 0 \tab 174 \tab 0 \cr
+   BILFS1 \tab 0 \tab 1 \tab 7 \tab 7 \tab 0 \tab 20 \tab 0 \cr
+   GES \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 2 \tab 0 \cr
+   BILHN1 \tab 0 \tab 1 \tab 7 \tab 7 \tab 0 \tab 2 \tab 0 \cr
+   BILAP1 \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 59 \tab 0 \cr
+   SEMEST \tab 0 \tab 1 \tab 10 \tab 10 \tab 0 \tab 22 \tab 0 \cr
 }
 
 
 \strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
-   bil002_val \tab 0 \tab 1 \tab 54.42 \tab 162.34 \tab 1 \tab 2 \tab 8 \tab 37 \tab 6840 \tab ▇▁▁▁▁ \cr
+   BIL002 \tab 0 \tab 1 \tab 54.42 \tab 162.34 \tab 1 \tab 2 \tab 8 \tab 37 \tab 6840 \tab ▇▁▁▁▁ \cr
 }
 }
 \examples{

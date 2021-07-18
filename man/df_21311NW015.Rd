@@ -27,25 +27,25 @@ Table: Data summary\tabular{ll}{
    Number of columns \tab 5 \cr
    _______________________ \tab  \cr
    Column type frequency: \tab  \cr
-   factor \tab 4 \cr
+   character \tab 4 \cr
    numeric \tab 1 \cr
    ________________________ \tab  \cr
    Group variables \tab None \cr
 }
 
 
-\strong{Variable type: factor}\tabular{lrrlrl}{
-   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
-   ges \tab 0 \tab 1 \tab FALSE \tab 2 \tab wei: 3808, män: 3771 \cr
-   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 233 \tab Agr: 44, All: 44, All: 44, Ang: 44 \cr
-   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 7579 \cr
-   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 378, WS : 376, WS : 375, WS : 371 \cr
+\strong{Variable type: character}\tabular{lrrrrrrr}{
+   skim_variable \tab n_missing \tab complete_rate \tab min \tab max \tab empty \tab n_unique \tab whitespace \cr
+   GES \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 2 \tab 0 \cr
+   BILSF1 \tab 0 \tab 1 \tab 5 \tab 5 \tab 0 \tab 233 \tab 0 \cr
+   DLAND \tab 0 \tab 1 \tab 2 \tab 2 \tab 0 \tab 1 \tab 0 \cr
+   SEMEST \tab 0 \tab 1 \tab 10 \tab 10 \tab 0 \tab 22 \tab 0 \cr
 }
 
 
 \strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
-   bil016_val \tab 0 \tab 1 \tab 239.22 \tab 541.14 \tab 1 \tab 15 \tab 54 \tab 198.5 \tab 6083 \tab ▇▁▁▁▁ \cr
+   BIL016 \tab 0 \tab 1 \tab 239.22 \tab 541.14 \tab 1 \tab 15 \tab 54 \tab 198.5 \tab 6083 \tab ▇▁▁▁▁ \cr
 }
 }
 \examples{

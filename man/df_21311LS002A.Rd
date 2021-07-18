@@ -27,27 +27,27 @@ Table: Data summary\tabular{ll}{
    Number of columns \tab 7 \cr
    _______________________ \tab  \cr
    Column type frequency: \tab  \cr
-   factor \tab 6 \cr
+   character \tab 6 \cr
    numeric \tab 1 \cr
    ________________________ \tab  \cr
    Group variables \tab None \cr
 }
 
 
-\strong{Variable type: factor}\tabular{lrrlrl}{
-   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
-   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 801357 \cr
-   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Uni: 69710, Uni: 69128, Uni: 53576, Uni: 45978 \cr
-   bilsf1 \tab 0 \tab 1 \tab FALSE \tab 234 \tab Ger: 29102, Wir: 28897, Mat: 28025, Che: 24156 \cr
-   bilsh1 \tab 0 \tab 1 \tab FALSE \tab 20 \tab 20.: 58995, 13.: 49735, 11.: 49537, 9. : 48102 \cr
-   bilap1 \tab 0 \tab 1 \tab FALSE \tab 59 \tab Bac: 97664, Pro: 90045, Mas: 71913, Bac: 68888 \cr
-   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 48361, WS : 47698, WS : 46596, WS : 45738 \cr
+\strong{Variable type: character}\tabular{lrrrrrrr}{
+   skim_variable \tab n_missing \tab complete_rate \tab min \tab max \tab empty \tab n_unique \tab whitespace \cr
+   DLAND \tab 0 \tab 1 \tab 2 \tab 2 \tab 0 \tab 1 \tab 0 \cr
+   BILHS1 \tab 0 \tab 1 \tab 6 \tab 6 \tab 0 \tab 174 \tab 0 \cr
+   BILSF1 \tab 0 \tab 1 \tab 5 \tab 5 \tab 0 \tab 234 \tab 0 \cr
+   BILSH1 \tab 0 \tab 1 \tab 7 \tab 7 \tab 0 \tab 20 \tab 0 \cr
+   BILAP1 \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 59 \tab 0 \cr
+   SEMEST \tab 0 \tab 1 \tab 10 \tab 10 \tab 0 \tab 22 \tab 0 \cr
 }
 
 
 \strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
-   bil002_val \tab 0 \tab 1 \tab 16.27 \tab 48.03 \tab 1 \tab 1 \tab 4 \tab 12 \tab 4181 \tab ▇▁▁▁▁ \cr
+   BIL002 \tab 0 \tab 1 \tab 16.27 \tab 48.03 \tab 1 \tab 1 \tab 4 \tab 12 \tab 4181 \tab ▇▁▁▁▁ \cr
 }
 }
 \examples{

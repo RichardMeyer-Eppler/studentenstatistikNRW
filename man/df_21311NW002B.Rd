@@ -27,26 +27,26 @@ Table: Data summary\tabular{ll}{
    Number of columns \tab 6 \cr
    _______________________ \tab  \cr
    Column type frequency: \tab  \cr
-   factor \tab 5 \cr
+   character \tab 5 \cr
    numeric \tab 1 \cr
    ________________________ \tab  \cr
    Group variables \tab None \cr
 }
 
 
-\strong{Variable type: factor}\tabular{lrrlrl}{
-   skim_variable \tab n_missing \tab complete_rate \tab ordered \tab n_unique \tab top_counts \cr
-   dland \tab 0 \tab 1 \tab FALSE \tab 1 \tab Nor: 58698 \cr
-   bilhs1 \tab 0 \tab 1 \tab FALSE \tab 172 \tab Fer: 880, Tec: 880, Tec: 880, Tec: 880 \cr
-   bilfs1 \tab 0 \tab 1 \tab FALSE \tab 20 \tab 1. : 4345, 3. : 4251, 5. : 4147, 7. : 3888 \cr
-   nat \tab 0 \tab 1 \tab FALSE \tab 2 \tab Deu: 33274, Aus: 25424 \cr
-   semest \tab 0 \tab 1 \tab FALSE \tab 22 \tab WS : 3596, WS : 3531, WS : 3348, WS : 3260 \cr
+\strong{Variable type: character}\tabular{lrrrrrrr}{
+   skim_variable \tab n_missing \tab complete_rate \tab min \tab max \tab empty \tab n_unique \tab whitespace \cr
+   DLAND \tab 0 \tab 1 \tab 2 \tab 2 \tab 0 \tab 1 \tab 0 \cr
+   BILHS1 \tab 0 \tab 1 \tab 6 \tab 6 \tab 0 \tab 174 \tab 0 \cr
+   BILFS1 \tab 0 \tab 1 \tab 7 \tab 7 \tab 0 \tab 20 \tab 0 \cr
+   NAT \tab 0 \tab 1 \tab 4 \tab 4 \tab 0 \tab 2 \tab 0 \cr
+   SEMEST \tab 0 \tab 1 \tab 10 \tab 10 \tab 0 \tab 22 \tab 0 \cr
 }
 
 
 \strong{Variable type: numeric}\tabular{lrrrrrrrrrl}{
    skim_variable \tab n_missing \tab complete_rate \tab mean \tab sd \tab p0 \tab p25 \tab p50 \tab p75 \tab p100 \tab hist \cr
-   bil002_val \tab 0 \tab 1 \tab 222.18 \tab 674.72 \tab 1 \tab 5 \tab 26 \tab 137 \tab 14294 \tab ▇▁▁▁▁ \cr
+   BIL002 \tab 0 \tab 1 \tab 222.18 \tab 674.72 \tab 1 \tab 5 \tab 26 \tab 137 \tab 14294 \tab ▇▁▁▁▁ \cr
 }
 }
 \examples{
