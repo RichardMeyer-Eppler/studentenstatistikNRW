@@ -16,9 +16,6 @@
 #' }
 clean_df <- function(df)  {
   df_cleaned <- df %>%
-    # janitor::clean_names(
-    #   case = "snake"
-    # ) %>%
     dplyr::select(
       -dplyr::starts_with(
         "id21311"

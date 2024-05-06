@@ -20,7 +20,7 @@ reference:
   - document_items
   - document_table
   - document_title
-  - get_nocl
+  - get_ncol
   - get_nrow
   - label_values
   - label_variables

@@ -24,7 +24,6 @@ Suggests:
     gtools,
     here,
     knitr,
-    janitor,
     purrr,
     rmarkdown,
     skimr,
