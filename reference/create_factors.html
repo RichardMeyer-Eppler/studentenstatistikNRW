@@ -77,8 +77,12 @@ can be found, levels will be retrieved from <a href="value_labels.html">value_la
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">create_factors</span><span class="op">(</span><span class="va">value_labels</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in dplyr::mutate(., dplyr::across(where(is.character), create_factor)):</span> <span style="color: #00BBBB;">ℹ</span> In argument: `dplyr::across(where(is.character), create_factor)`.</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `across()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Can't compute column `value_label`.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `dplyr_internal_error()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Can't compute column `variable`.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `dplyr::mutate()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> In argument: `factor_level = dplyr::coalesce(.data$description,</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   .data$value_label)`.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `.data$description`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Column `description` not found in `.data`.</span>
 </code></pre></div>
     </div>
   </div>

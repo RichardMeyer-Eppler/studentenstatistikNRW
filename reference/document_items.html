@@ -59,7 +59,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>table_name</dt>
-<dd><p>Table name</p></dd>
+<dd><p>String with table name or code</p></dd>
 
 </dl></div>
     <div id="value">
@@ -69,6 +69,17 @@
 <p>Character vector containing the roxygen item list to be used in the format/describe section</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">document_items</span><span class="op">(</span>table_name <span class="op">=</span> <span class="va">tables</span><span class="op">[[</span><span class="fl">1</span>, <span class="st">"tablename"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\\item{BIL002}{Studierende}"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "\\item{BIL040}{Ausländische Studierende}"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "\\item{BIL045}{Nebenhörer}"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "\\item{BIL046}{Beurlaubte}"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "\\item{DLAND}{Land}"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "\\item{SEMEST}{Semester}"                </span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
