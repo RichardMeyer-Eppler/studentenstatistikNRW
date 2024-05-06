@@ -25,7 +25,7 @@ pkgdown_tables_index <-
 
 # Replaces table documentation in _pkgdown.yml
 pkdown_yml_new <- c(
-  pkgdown_yml[1:pkgdown_tables_index+1],
+  pkgdown_yml[1:pkgdown_tables_index+2],
   paste0(
     "  - df_",
     tables[["tablename"]]

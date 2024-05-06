@@ -41,7 +41,8 @@ value_labels <- purrr::map_dfr(
   list_value_labels_wrangled,
   dplyr::bind_rows,
   .id = "variable"
-)
+) |>
+  tibble::as_tibble()
 
 usethis::use_data(
   value_labels,
@@ -65,7 +66,9 @@ variable_info <- list_variable_info |>
   purrr::list_rbind() |>
   dplyr::filter(
     description != ""
-  )
+  ) |>
+  dplyr::arrange(variable) |>
+  tibble::as_tibble()
 
 usethis::use_data(
   variable_info,

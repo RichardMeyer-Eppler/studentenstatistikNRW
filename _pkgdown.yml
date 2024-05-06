@@ -1,5 +1,3 @@
-template:
-  bootstrap: 5
 
 reference:
 - title: Metadata for all tables in this package
@@ -10,6 +8,7 @@ reference:
   - tables
   - metadata
   - value_labels
+  - variable_info
 
 - title: Functions
   desc: Functions included in this package
@@ -28,6 +27,7 @@ reference:
 
 - title: Data
   desc: All tables with student statistics included in this package.
+  contents:
   - df_21311LJ001
   - df_21311LJ002
   - df_21311LJ003
