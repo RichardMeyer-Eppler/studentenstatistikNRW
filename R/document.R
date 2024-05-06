@@ -27,9 +27,9 @@ document_items <- function(table_name)  {
     dplyr::mutate(
       roxygen_desc_items = paste0(
         "\\item{",
-        tolower(
-          .data$name
-        ),
+        #tolower(
+          .data$name,
+        #),
         "}{",
         .data$description_meta,
         "}"
@@ -67,11 +67,11 @@ document_format_section <- function(table_name) {
 
   description_items <- document_items(table_name)
 
-  description_items <- stringi::stri_encode(
-    str = description_items,
-    from = "ISO-8859-1",
-    to = "UTF-8"
-  )
+  # description_items <- stringi::stri_encode(
+  #   str = description_items,
+  #   from = "ISO-8859-1",
+  #   to = "UTF-8"
+  # )
 
   format_section <- c(
     format_string,
@@ -171,9 +171,10 @@ document_title <- function(table_name) {
     ) %>%
     dplyr::pull(
       .data$title
-    ) %>%
-    stringi::stri_encode(
-      from = "ISO-8859-1",
-      to = "UTF-8"
     )
+  # %>%
+  #   stringi::stri_encode(
+  #     from = "ISO-8859-1",
+  #     to = "UTF-8"
+  #   )
 }

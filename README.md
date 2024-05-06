@@ -372,11 +372,11 @@ size of roughly 200 MB. The licence requires a list of all changes as
 part of the source notes (see below). These are the data transformation
 steps performed:
 
-- Column names are transformed using `janitor::clean_names()`.
 - Technical columns ending in “QUAL”, “ERR”, or “LOCK” are removed.
-- The original data uses value labels with separate lookup tables. For
-  the R package, these labels are transformed into factors using the
-  description from the lookup tables.
+- The original data uses variable and value labels with separate lookup
+  tables. For the R package, these labels are added using
+  `labelled::set_variable_labels` and `labelled::set_value_labels`,
+  respectively.
 
 ## License for the data from the Landesdatenbank NRW / Destatis
 
@@ -392,8 +392,8 @@ Resource Identifiers (URI) to identify their tables.
 
 Paragraph 3 stipulates that “changes, editing, new designs or other
 amendments must be marked as such in the source note”. Compared to the
-raw data, the following changes were made: (1) column names were changed
-to lower case, (2) some technical columns were excluded and (3) value
-labels were turned into factors using the description of each value
-label. The code for all these transformations is available through this
-package.
+raw data, the following changes were made: (1) technical columns ending
+in “QUAL”, “ERR”, or “LOCK” were removed, and (2) variable and value
+labels were added to each table using the
+[labelled](https://larmarange.github.io/labelled/) package. The code for
+all these transformations is available through this package.

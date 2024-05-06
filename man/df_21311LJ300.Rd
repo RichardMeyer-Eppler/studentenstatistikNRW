@@ -3,14 +3,14 @@
 \docType{data}
 \name{df_21311LJ300}
 \alias{df_21311LJ300}
-\title{21311LJ300 - StudienanfÃ¤nger im 1. Hochschulsemester, StudienanfÃ¤nger im 1. Fachsemester, Geschlecht, FÃ¤cherbelegungen, Studienfach, Land, Studienjahr}
+\title{21311LJ300 - Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächerbelegungen, Studienfach, Land, Studienjahr}
 \format{
-A tibble with 33.040 rows and 7 variables: \describe{ \item{bil041}{StudienanfÃ¤nger im 1. Hochschulsemester} \item{bil042}{StudienanfÃ¤nger im 1. Fachsemester} \item{ges}{Geschlecht} \item{bilnwfb}{FÃ¤cherbelegungen} \item{bilnwsf1}{Studienfach} \item{dland}{Land} \item{sjahr}{Studienjahr} }
+A tibble with 33.040 rows and 7 variables: \describe{ \item{BIL041}{Studienanfänger im 1. Hochschulsemester} \item{BIL042}{Studienanfänger im 1. Fachsemester} \item{GES}{Geschlecht} \item{BILNWFB}{Fächerbelegungen} \item{BILNWSF1}{Studienfach} \item{DLAND}{Land} \item{SJAHR}{Studienjahr} }
 }
 \source{
-The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2021-07-12) using the code '21311LJ300'. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
+The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2024-05-05) using the code '21311LJ300'. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
 
-Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.
+Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: Compared to the raw data, the following changes were made: (1) technical columns ending in "QUAL", "ERR", or "LOCK" were removed, and (2) variable and value labels were added to each table using the \href{https://larmarange.github.io/labelled/}{labelled} package. The code for all these transformations is available through this package.
 }
 \usage{
 df_21311LJ300
@@ -20,6 +20,7 @@ The table is sourced from the \href{https://www.landesdatenbank.nrw.de}{Landesda
 }
 \details{
 The following summary is automatically generated using \code{\link[skimr:skim]{skimr::skim()}}
+
 Table: Data summary\tabular{ll}{
     \tab  \cr
    Name \tab df_21311LJ300 \cr
@@ -52,6 +53,7 @@ Table: Data summary\tabular{ll}{
 }
 \examples{
 library(labelled)
+
 df_21311LJ300
 
 }

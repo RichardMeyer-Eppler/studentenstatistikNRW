@@ -3,14 +3,14 @@
 \docType{data}
 \name{df_21311LJ161}
 \alias{df_21311LJ161}
-\title{21311LJ161 - Studierende, Geschlecht, Hochschule (Standorte), Studienfach, FÃ¤cherbelegungen, Land, Semester}
+\title{21311LJ161 - Studierende, Geschlecht, Hochschule (Standorte), Studienfach, Fächerbelegungen, Land, Semester}
 \format{
-A tibble with 211.739 rows and 7 variables: \describe{ \item{bil002}{Studierende} \item{ges}{Geschlecht} \item{bilhs5}{Hochschule (Standorte)} \item{bilnwsf1}{Studienfach} \item{bilnwfb}{FÃ¤cherbelegungen} \item{dland}{Land} \item{semest}{Semester} }
+A tibble with 211.739 rows and 7 variables: \describe{ \item{BIL002}{Studierende} \item{GES}{Geschlecht} \item{BILHS5}{Hochschule (Standorte)} \item{BILNWSF1}{Studienfach} \item{BILNWFB}{Fächerbelegungen} \item{DLAND}{Land} \item{SEMEST}{Semester} }
 }
 \source{
-The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2021-07-12) using the code '21311LJ161'. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
+The data in this package was obtained from the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW} (retrieved on 2024-05-05) using the code '21311LJ161'. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): \href{http://www.govdata.de/dl-de/by-2-0}{Data licence Germany – attribution – Version 2.0}. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.
 
-Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.
+Paragraph 3 stipulates that 'changes, editing, new designs or other amendments must be marked as such in the source note'. Compared to the raw data, the following changes were made: Compared to the raw data, the following changes were made: (1) technical columns ending in "QUAL", "ERR", or "LOCK" were removed, and (2) variable and value labels were added to each table using the \href{https://larmarange.github.io/labelled/}{labelled} package. The code for all these transformations is available through this package.
 }
 \usage{
 df_21311LJ161
@@ -20,6 +20,7 @@ The table is sourced from the \href{https://www.landesdatenbank.nrw.de}{Landesda
 }
 \details{
 The following summary is automatically generated using \code{\link[skimr:skim]{skimr::skim()}}
+
 Table: Data summary\tabular{ll}{
     \tab  \cr
    Name \tab df_21311LJ161 \cr
@@ -52,6 +53,7 @@ Table: Data summary\tabular{ll}{
 }
 \examples{
 library(labelled)
+
 df_21311LJ161
 
 }
