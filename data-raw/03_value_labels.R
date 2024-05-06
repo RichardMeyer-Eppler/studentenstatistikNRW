@@ -42,6 +42,7 @@ value_labels <- purrr::map_dfr(
   dplyr::bind_rows,
   .id = "variable"
 ) |>
+  dplyr::arrange(variable) |>
   tibble::as_tibble()
 
 usethis::use_data(
