@@ -4,99 +4,89 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Student statistics for the German state North Rhine-Westphalia obtained from the Landesdatenbank NRW. Packaged for R.">
 <title>Student Statistics from the Landesdatenbank NRW (Table Series 21311) • studentenstatistikNRW</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Student Statistics from the Landesdatenbank NRW (Table Series 21311)">
-<meta property="og:description" content="Student statistics for the German state North Rhine-Westphalia 
-    obtained from the Landesdatenbank NRW. Packaged for R.">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Student Statistics from the Landesdatenbank NRW (Table Series 21311)">
+<meta property="og:description" content="Student statistics for the German state North Rhine-Westphalia obtained from the Landesdatenbank NRW. Packaged for R.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">studentenstatistikNRW</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">studentenstatistikNRW</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="studentenstatistiknrw" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#studentenstatistiknrw" class="anchor"></a>studentenstatistikNRW</h1></div>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="studentenstatistiknrw">studentenstatistikNRW<a class="anchor" aria-label="anchor" href="#studentenstatistiknrw"></a>
+</h1></div>
 <!-- badges: start -->
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p>This package contains all student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/">Landesdatenbank NRW</a>. The package is created by downloading the data using the <a href="https://github.com/sumtxt/wiesbaden">wiesbaden package</a> by Moritz Marbach.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>This package contains all student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/" class="external-link">Landesdatenbank NRW</a>. The package is created by downloading the data using the <a href="https://github.com/sumtxt/wiesbaden" class="external-link">wiesbaden package</a> by Moritz Marbach.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>The package is not yet on CRAN. Install the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>The package is not yet on CRAN. Install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Package remotes needs to be installed!</span>
-<span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"RichardMeyer-Eppler/studentenstatistikNRW"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Package remotes needs to be installed!</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"RichardMeyer-Eppler/studentenstatistikNRW"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h2>
-<p>The table below lists all tables included by the package. They are all part of the student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/">Landesdatenbank NRW</a>:</p>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
+<p>The table below lists all tables included by the package. They are all part of the student statistics tables (“21311 Statistik der Studenten”) of the <a href="https://www.landesdatenbank.nrw.de/" class="external-link">Landesdatenbank NRW</a>:</p>
 <table class="table">
 <colgroup>
-<col width="12%">
-<col width="87%">
+<col width="7%">
+<col width="92%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">tablename</th>
@@ -104,176 +94,1386 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311LS001A.html">?df_21311LS001A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Fachsemester, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ001.html">?df_21311LJ001</a></code></td>
+<td align="left">Studierende, Ausländische Studierende, Nebenhörer, Beurlaubte, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311LS002A.html">?df_21311LS002A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Hochschulsemester, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ002.html">?df_21311LJ002</a></code></td>
+<td align="left">Studierende, Ausländische Studierende, Nebenhörer, Beurlaubte, Geschlecht, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW001A.html">?df_21311NW001A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Fachsemester, Geschlecht, Hörerstatus, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ003.html">?df_21311LJ003</a></code></td>
+<td align="left">Studierende, Nationalität, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW001B.html">?df_21311NW001B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Fachsemester, Nationalität, Hörerstatus, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ004.html">?df_21311LJ004</a></code></td>
+<td align="left">Studierende, Geschlecht, Nationalität, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW002A.html">?df_21311NW002A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Fachsemester, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ005.html">?df_21311LJ005</a></code></td>
+<td align="left">Studierende, Nebenhörer, Hochschulart, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW002B.html">?df_21311NW002B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Fachsemester, Nationalität, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ006.html">?df_21311LJ006</a></code></td>
+<td align="left">Studierende, Nebenhörer, Geschlecht, Hochschulart, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW002C.html">?df_21311NW002C</a></code></td>
-<td align="left">Studierende / Studenten, Land, Fachsemester, Nationalität, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ007.html">?df_21311LJ007</a></code></td>
+<td align="left">Studierende, Nationalität, Hochschulart, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW003A.html">?df_21311NW003A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Geschlecht, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ008.html">?df_21311LJ008</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW003B.html">?df_21311NW003B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Nationalität, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ009.html">?df_21311LJ009</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW004A.html">?df_21311NW004A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Studienfach, Geschlecht, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ010.html">?df_21311LJ010</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW004B.html">?df_21311NW004B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Studienfach, Nationalität, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ011.html">?df_21311LJ011</a></code></td>
+<td align="left">Studierende, Fachsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW005A.html">?df_21311NW005A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Hochschulsemester, Geschlecht, Hörerstatus, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ012.html">?df_21311LJ012</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW005B.html">?df_21311NW005B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Hochschulsemester, Nationalität, Hörerstatus, Angestrebte Abschlussprüfung, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ013.html">?df_21311LJ013</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW006A.html">?df_21311NW006A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Hochschulsemester, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ014.html">?df_21311LJ014</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW006B.html">?df_21311NW006B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Hochschulsemester, Nationalität, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ015.html">?df_21311LJ015</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW007A.html">?df_21311NW007A</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ016.html">?df_21311LJ016</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW007B.html">?df_21311NW007B</a></code></td>
-<td align="left">Studierende / Studenten, Land, Hochschulen, Studienfach, Nationalität, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ017.html">?df_21311LJ017</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW008.html">?df_21311NW008</a></code></td>
-<td align="left">Studierende / Studenten, Land, Nationalität, Geschlecht, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ018.html">?df_21311LJ018</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Fachsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW009.html">?df_21311NW009</a></code></td>
-<td align="left">Studierende / Studenten, Land, Nationalität, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ019.html">?df_21311LJ019</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW010.html">?df_21311NW010</a></code></td>
-<td align="left">Studierende / Studenten, Land, Nationalität, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ020.html">?df_21311LJ020</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW011.html">?df_21311NW011</a></code></td>
-<td align="left">Studierende / Studenten, Land, Geschlecht, Hörerstatus, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ021.html">?df_21311LJ021</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW012.html">?df_21311NW012</a></code></td>
-<td align="left">Studierende / Studenten, Land, Geschlecht, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ022.html">?df_21311LJ022</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Fachsemester, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW013.html">?df_21311NW013</a></code></td>
-<td align="left">Studierende / Studenten, Land, Nationalität, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ023.html">?df_21311LJ023</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Land, Semester</td>
 </tr>
 <tr class="even">
-<td align="left"><code><a href="reference/df_21311NW014.html">?df_21311NW014</a></code></td>
-<td align="left">Studienanfänger, Geschlecht, Hochschulen, Studienfach, Land, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ024.html">?df_21311LJ024</a></code></td>
+<td align="left">Studierende, Abschlussprüfung, Land, Semester</td>
 </tr>
 <tr class="odd">
-<td align="left"><code><a href="reference/df_21311NW015.html">?df_21311NW015</a></code></td>
-<td align="left">Studienanfänger, Geschlecht, Studienfach, Land, Semester</td>
+<td align="left"><code><a href="reference/df_21311LJ025.html">?df_21311LJ025</a></code></td>
+<td align="left">Studierende, Geschlecht, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ026.html">?df_21311LJ026</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ027.html">?df_21311LJ027</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ028.html">?df_21311LJ028</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ029.html">?df_21311LJ029</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ030.html">?df_21311LJ030</a></code></td>
+<td align="left">Studierende, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ031.html">?df_21311LJ031</a></code></td>
+<td align="left">Studierende, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ032.html">?df_21311LJ032</a></code></td>
+<td align="left">Studierende, Geschlecht, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ033.html">?df_21311LJ033</a></code></td>
+<td align="left">Studierende, Geschlecht, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ034.html">?df_21311LJ034</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ035.html">?df_21311LJ035</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ036.html">?df_21311LJ036</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ037.html">?df_21311LJ037</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ038.html">?df_21311LJ038</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ039.html">?df_21311LJ039</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ040.html">?df_21311LJ040</a></code></td>
+<td align="left">Studierende, Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ041.html">?df_21311LJ041</a></code></td>
+<td align="left">Studierende, Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ042.html">?df_21311LJ042</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ043.html">?df_21311LJ043</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ044.html">?df_21311LJ044</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ045.html">?df_21311LJ045</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ046.html">?df_21311LJ046</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ047.html">?df_21311LJ047</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ048.html">?df_21311LJ048</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ049.html">?df_21311LJ049</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ050.html">?df_21311LJ050</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ051.html">?df_21311LJ051</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ052.html">?df_21311LJ052</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ053.html">?df_21311LJ053</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ054.html">?df_21311LJ054</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ055.html">?df_21311LJ055</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ056.html">?df_21311LJ056</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ057.html">?df_21311LJ057</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ058.html">?df_21311LJ058</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ059.html">?df_21311LJ059</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ060.html">?df_21311LJ060</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ061.html">?df_21311LJ061</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Hochschulsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ062.html">?df_21311LJ062</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ063.html">?df_21311LJ063</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ064.html">?df_21311LJ064</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ065.html">?df_21311LJ065</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Fachsemester, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ066.html">?df_21311LJ066</a></code></td>
+<td align="left">Studierende, Nebenhörer, Hochschule, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ067.html">?df_21311LJ067</a></code></td>
+<td align="left">Studierende, Nebenhörer, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ068.html">?df_21311LJ068</a></code></td>
+<td align="left">Studierende, Nebenhörer, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ069.html">?df_21311LJ069</a></code></td>
+<td align="left">Studierende, Nebenhörer, Geschlecht, Hochschule, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ070.html">?df_21311LJ070</a></code></td>
+<td align="left">Studierende, Nebenhörer, Geschlecht, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ071.html">?df_21311LJ071</a></code></td>
+<td align="left">Studierende, Nebenhörer, Geschlecht, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ072.html">?df_21311LJ072</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Hochschulart, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ073.html">?df_21311LJ073</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Hochschule, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ074.html">?df_21311LJ074</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ075.html">?df_21311LJ075</a></code></td>
+<td align="left">Studierende, Hochschulsemester, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ076.html">?df_21311LJ076</a></code></td>
+<td align="left">Studierende, Fachsemester, Hochschulart, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ077.html">?df_21311LJ077</a></code></td>
+<td align="left">Studierende, Fachsemester, Hochschule, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ078.html">?df_21311LJ078</a></code></td>
+<td align="left">Studierende, Fachsemester, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ079.html">?df_21311LJ079</a></code></td>
+<td align="left">Studierende, Fachsemester, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ080.html">?df_21311LJ080</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Hochschulart, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ081.html">?df_21311LJ081</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Hochschule, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ082.html">?df_21311LJ082</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ083.html">?df_21311LJ083</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulsemester, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ084.html">?df_21311LJ084</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Hochschulart, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ085.html">?df_21311LJ085</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Hochschule, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ086.html">?df_21311LJ086</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Hochschulen insgesamt, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ087.html">?df_21311LJ087</a></code></td>
+<td align="left">Studierende, Geschlecht, Fachsemester, Hochschule (Standorte), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ088.html">?df_21311LJ088</a></code></td>
+<td align="left">Studierende, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ089.html">?df_21311LJ089</a></code></td>
+<td align="left">Studierende, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ090.html">?df_21311LJ090</a></code></td>
+<td align="left">Studierende, Hochschulart, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ091.html">?df_21311LJ091</a></code></td>
+<td align="left">Studierende, Hochschule, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ092.html">?df_21311LJ092</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ093.html">?df_21311LJ093</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ094.html">?df_21311LJ094</a></code></td>
+<td align="left">Studierende, Hochschulart, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ095.html">?df_21311LJ095</a></code></td>
+<td align="left">Studierende, Hochschule, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ096.html">?df_21311LJ096</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ097.html">?df_21311LJ097</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ098.html">?df_21311LJ098</a></code></td>
+<td align="left">Studierende, Hochschulart, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ099.html">?df_21311LJ099</a></code></td>
+<td align="left">Studierende, Hochschule, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ100.html">?df_21311LJ100</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ101.html">?df_21311LJ101</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ102.html">?df_21311LJ102</a></code></td>
+<td align="left">Studierende, Geschlecht, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ103.html">?df_21311LJ103</a></code></td>
+<td align="left">Studierende, Geschlecht, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ104.html">?df_21311LJ104</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ105.html">?df_21311LJ105</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ106.html">?df_21311LJ106</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ107.html">?df_21311LJ107</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Abschlussprüfung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ108.html">?df_21311LJ108</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ109.html">?df_21311LJ109</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ110.html">?df_21311LJ110</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ111.html">?df_21311LJ111</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ112.html">?df_21311LJ112</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ113.html">?df_21311LJ113</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ114.html">?df_21311LJ114</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ115.html">?df_21311LJ115</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ116.html">?df_21311LJ116</a></code></td>
+<td align="left">Studierende, Hochschulart, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ117.html">?df_21311LJ117</a></code></td>
+<td align="left">Studierende, Hochschule, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ118.html">?df_21311LJ118</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ119.html">?df_21311LJ119</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ120.html">?df_21311LJ120</a></code></td>
+<td align="left">Studierende, Hochschulart, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ121.html">?df_21311LJ121</a></code></td>
+<td align="left">Studierende, Hochschule, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ122.html">?df_21311LJ122</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ123.html">?df_21311LJ123</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ124.html">?df_21311LJ124</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ125.html">?df_21311LJ125</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ126.html">?df_21311LJ126</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ127.html">?df_21311LJ127</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Abschlussprüfung, Fächergruppe, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ128.html">?df_21311LJ128</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ129.html">?df_21311LJ129</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ130.html">?df_21311LJ130</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ131.html">?df_21311LJ131</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Abschlussprüfung, Studienbereich, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ132.html">?df_21311LJ132</a></code></td>
+<td align="left">Studierende, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ133.html">?df_21311LJ133</a></code></td>
+<td align="left">Studierende, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ134.html">?df_21311LJ134</a></code></td>
+<td align="left">Studierende, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ135.html">?df_21311LJ135</a></code></td>
+<td align="left">Studierende, Geschlecht, Studienfach, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ136.html">?df_21311LJ136</a></code></td>
+<td align="left">Studierende, Geschlecht, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ137.html">?df_21311LJ137</a></code></td>
+<td align="left">Studierende, Geschlecht, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ138.html">?df_21311LJ138</a></code></td>
+<td align="left">Studierende, Hochschulart, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ139.html">?df_21311LJ139</a></code></td>
+<td align="left">Studierende, Hochschule, Studienfach, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ140.html">?df_21311LJ140</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ141.html">?df_21311LJ141</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Studienfach, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ142.html">?df_21311LJ142</a></code></td>
+<td align="left">Studierende, Hochschulart, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ143.html">?df_21311LJ143</a></code></td>
+<td align="left">Studierende, Hochschule, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ144.html">?df_21311LJ144</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ145.html">?df_21311LJ145</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ146.html">?df_21311LJ146</a></code></td>
+<td align="left">Studierende, Hochschulart, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ147.html">?df_21311LJ147</a></code></td>
+<td align="left">Studierende, Hochschule, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ148.html">?df_21311LJ148</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ149.html">?df_21311LJ149</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ150.html">?df_21311LJ150</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ151.html">?df_21311LJ151</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Studienfach, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ152.html">?df_21311LJ152</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ153.html">?df_21311LJ153</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Studienfach, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ154.html">?df_21311LJ154</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ155.html">?df_21311LJ155</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ156.html">?df_21311LJ156</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ157.html">?df_21311LJ157</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ158.html">?df_21311LJ158</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ159.html">?df_21311LJ159</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ160.html">?df_21311LJ160</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ161.html">?df_21311LJ161</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ162.html">?df_21311LJ162</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ163.html">?df_21311LJ163</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ164.html">?df_21311LJ164</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ165.html">?df_21311LJ165</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ166.html">?df_21311LJ166</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ167.html">?df_21311LJ167</a></code></td>
+<td align="left">Studierende, Prüfungsgruppe (nach Lehrämtern), Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ168.html">?df_21311LJ168</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ169.html">?df_21311LJ169</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ170.html">?df_21311LJ170</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Studienfach, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ171.html">?df_21311LJ171</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ172.html">?df_21311LJ172</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe, Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ173.html">?df_21311LJ173</a></code></td>
+<td align="left">Studierende, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Studienfach, Fächerbelegungen, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ174.html">?df_21311LJ174</a></code></td>
+<td align="left">Studierende, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ175.html">?df_21311LJ175</a></code></td>
+<td align="left">Studierende, Geschlecht, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ176.html">?df_21311LJ176</a></code></td>
+<td align="left">Studierende, Hochschulart, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ177.html">?df_21311LJ177</a></code></td>
+<td align="left">Studierende, Hochschule, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ178.html">?df_21311LJ178</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ179.html">?df_21311LJ179</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ180.html">?df_21311LJ180</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ181.html">?df_21311LJ181</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ182.html">?df_21311LJ182</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ183.html">?df_21311LJ183</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Ort des Erwerbs der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ184.html">?df_21311LJ184</a></code></td>
+<td align="left">Studierende, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ185.html">?df_21311LJ185</a></code></td>
+<td align="left">Studierende, Geschlecht, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ186.html">?df_21311LJ186</a></code></td>
+<td align="left">Studierende, Hochschulart, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ187.html">?df_21311LJ187</a></code></td>
+<td align="left">Studierende, Hochschule, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ188.html">?df_21311LJ188</a></code></td>
+<td align="left">Studierende, Hochschulen insgesamt, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ189.html">?df_21311LJ189</a></code></td>
+<td align="left">Studierende, Hochschule (Standorte), Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ190.html">?df_21311LJ190</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ191.html">?df_21311LJ191</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ192.html">?df_21311LJ192</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulen insgesamt, Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ193.html">?df_21311LJ193</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschule (Standorte), Land der Hochschulzugangsberechtigung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ194.html">?df_21311LJ194</a></code></td>
+<td align="left">Studierende, Art des Studiums, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ195.html">?df_21311LJ195</a></code></td>
+<td align="left">Studierende, Geschlecht, Art des Studiums, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ196.html">?df_21311LJ196</a></code></td>
+<td align="left">Studierende, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ197.html">?df_21311LJ197</a></code></td>
+<td align="left">Studierende, Geschlecht, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ198.html">?df_21311LJ198</a></code></td>
+<td align="left">Studierende, Hochschulart, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ199.html">?df_21311LJ199</a></code></td>
+<td align="left">Studierende, Fächergruppe, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ200.html">?df_21311LJ200</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ201.html">?df_21311LJ201</a></code></td>
+<td align="left">Studierende, Geschlecht, Fächergruppe, Zeitmodell des Studiums, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ202.html">?df_21311LJ202</a></code></td>
+<td align="left">Studierende, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ203.html">?df_21311LJ203</a></code></td>
+<td align="left">Studierende, Geschlecht, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ204.html">?df_21311LJ204</a></code></td>
+<td align="left">Studierende, Hochschulart, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ205.html">?df_21311LJ205</a></code></td>
+<td align="left">Studierende, Fächergruppe, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ206.html">?df_21311LJ206</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ207.html">?df_21311LJ207</a></code></td>
+<td align="left">Studierende, Geschlecht, Fächergruppe, Regelstudienzeit, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ208.html">?df_21311LJ208</a></code></td>
+<td align="left">Studierende, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ209.html">?df_21311LJ209</a></code></td>
+<td align="left">Studierende, Geschlecht, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ210.html">?df_21311LJ210</a></code></td>
+<td align="left">Studierende, Hochschulart, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ211.html">?df_21311LJ211</a></code></td>
+<td align="left">Studierende, Fächergruppe, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ212.html">?df_21311LJ212</a></code></td>
+<td align="left">Studierende, Geschlecht, Hochschulart, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ213.html">?df_21311LJ213</a></code></td>
+<td align="left">Studierende, Geschlecht, Fächergruppe, Altersgruppen (unter 18, 1-Jahres-Schritte, 60 und mehr), Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ214.html">?df_21311LJ214</a></code></td>
+<td align="left">Ausländische Studierende, Bildungsherkunft, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ215.html">?df_21311LJ215</a></code></td>
+<td align="left">Ausländische Studierende, Kontinente, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ216.html">?df_21311LJ216</a></code></td>
+<td align="left">Ausländische Studierende, Staatsangehörigkeit, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ217.html">?df_21311LJ217</a></code></td>
+<td align="left">Ausländische Studierende, Bildungsherkunft, Kontinente, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ218.html">?df_21311LJ218</a></code></td>
+<td align="left">Ausländische Studierende, Bildungsherkunft, Staatsangehörigkeit, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ219.html">?df_21311LJ219</a></code></td>
+<td align="left">Ausländische Studierende, Geschlecht, Bildungsherkunft, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ220.html">?df_21311LJ220</a></code></td>
+<td align="left">Ausländische Studierende, Geschlecht, Kontinente, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ221.html">?df_21311LJ221</a></code></td>
+<td align="left">Ausländische Studierende, Geschlecht, Staatsangehörigkeit, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ222.html">?df_21311LJ222</a></code></td>
+<td align="left">Ausländische Studierende, Geschlecht, Bildungsherkunft, Kontinente, Land, Semester</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ223.html">?df_21311LJ223</a></code></td>
+<td align="left">Ausländische Studierende, Geschlecht, Bildungsherkunft, Staatsangehörigkeit, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ224.html">?df_21311LJ224</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ225.html">?df_21311LJ225</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Geschlecht, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ226.html">?df_21311LJ226</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Nationalität, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ227.html">?df_21311LJ227</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Nationalität, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ228.html">?df_21311LJ228</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ229.html">?df_21311LJ229</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ230.html">?df_21311LJ230</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Nationalität, Hochschulart, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ231.html">?df_21311LJ231</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ232.html">?df_21311LJ232</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Prüfungsgruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ233.html">?df_21311LJ233</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Prüfungsgruppe (nach Lehrämtern), Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ234.html">?df_21311LJ234</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ235.html">?df_21311LJ235</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Prüfungsgruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ236.html">?df_21311LJ236</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Prüfungsgruppe (nach Lehrämtern), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ237.html">?df_21311LJ237</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Prüfungsgruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ238.html">?df_21311LJ238</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Prüfungsgruppe (nach Lehrämtern), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ239.html">?df_21311LJ239</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Prüfungsgruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ240.html">?df_21311LJ240</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Prüfungsgruppe (nach Lehrämtern), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ241.html">?df_21311LJ241</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ242.html">?df_21311LJ242</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulen insgesamt, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ243.html">?df_21311LJ243</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule (Standorte), Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ244.html">?df_21311LJ244</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ245.html">?df_21311LJ245</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulen insgesamt, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ246.html">?df_21311LJ246</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule (Standorte), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ247.html">?df_21311LJ247</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ248.html">?df_21311LJ248</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ249.html">?df_21311LJ249</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ250.html">?df_21311LJ250</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ251.html">?df_21311LJ251</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ252.html">?df_21311LJ252</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ253.html">?df_21311LJ253</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulart, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ254.html">?df_21311LJ254</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ255.html">?df_21311LJ255</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulen insgesamt, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ256.html">?df_21311LJ256</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule (Standorte), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ257.html">?df_21311LJ257</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ258.html">?df_21311LJ258</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ259.html">?df_21311LJ259</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulen insgesamt, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ260.html">?df_21311LJ260</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule (Standorte), Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ261.html">?df_21311LJ261</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ262.html">?df_21311LJ262</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ263.html">?df_21311LJ263</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulen insgesamt, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ264.html">?df_21311LJ264</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschule (Standorte), Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ265.html">?df_21311LJ265</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ266.html">?df_21311LJ266</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ267.html">?df_21311LJ267</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulart, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ268.html">?df_21311LJ268</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ269.html">?df_21311LJ269</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulen insgesamt, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ270.html">?df_21311LJ270</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule (Standorte), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ271.html">?df_21311LJ271</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ272.html">?df_21311LJ272</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ273.html">?df_21311LJ273</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulen insgesamt, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ274.html">?df_21311LJ274</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule (Standorte), Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ275.html">?df_21311LJ275</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ276.html">?df_21311LJ276</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ277.html">?df_21311LJ277</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulen insgesamt, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ278.html">?df_21311LJ278</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschule (Standorte), Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ279.html">?df_21311LJ279</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulart, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ280.html">?df_21311LJ280</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ281.html">?df_21311LJ281</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulen insgesamt, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ282.html">?df_21311LJ282</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule (Standorte), Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ283.html">?df_21311LJ283</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulart, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ284.html">?df_21311LJ284</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ285.html">?df_21311LJ285</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschulen insgesamt, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ286.html">?df_21311LJ286</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Abschlussprüfung, Hochschule (Standorte), Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ287.html">?df_21311LJ287</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulart, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ288.html">?df_21311LJ288</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ289.html">?df_21311LJ289</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulen insgesamt, Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ290.html">?df_21311LJ290</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule (Standorte), Fächergruppe, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ291.html">?df_21311LJ291</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulart, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ292.html">?df_21311LJ292</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ293.html">?df_21311LJ293</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschulen insgesamt, Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ294.html">?df_21311LJ294</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Abschlussprüfung, Hochschule (Standorte), Studienbereich, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ295.html">?df_21311LJ295</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächerbelegungen, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ296.html">?df_21311LJ296</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Studienfach, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ297.html">?df_21311LJ297</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächerbelegungen, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ298.html">?df_21311LJ298</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Studienfach, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ299.html">?df_21311LJ299</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächerbelegungen, Studienfach, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ300.html">?df_21311LJ300</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächerbelegungen, Studienfach, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ301.html">?df_21311LJ301</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ303.html">?df_21311LJ303</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ305.html">?df_21311LJ305</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ306.html">?df_21311LJ306</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächergruppe, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ307.html">?df_21311LJ307</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ308.html">?df_21311LJ308</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächergruppe, Schulform der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ309.html">?df_21311LJ309</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ310.html">?df_21311LJ310</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ311.html">?df_21311LJ311</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ312.html">?df_21311LJ312</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächergruppe, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ313.html">?df_21311LJ313</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ314.html">?df_21311LJ314</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächergruppe, Jahre seit Erwerb der Hochschulzugangsberechtigung, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ315.html">?df_21311LJ315</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ316.html">?df_21311LJ316</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ317.html">?df_21311LJ317</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Hochschulart, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ318.html">?df_21311LJ318</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Fächergruppe, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ319.html">?df_21311LJ319</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Hochschulart, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ320.html">?df_21311LJ320</a></code></td>
+<td align="left">Studienanfänger im 1. Hochschulsemester, Studienanfänger im 1. Fachsemester, Geschlecht, Fächergruppe, Altersgruppen (unter 18, 1-Jahres-Schritte, 35 und mehr), Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ321.html">?df_21311LJ321</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Bildungsherkunft, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ322.html">?df_21311LJ322</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Kontinente, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ323.html">?df_21311LJ323</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Geschlecht, Bildungsherkunft, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ324.html">?df_21311LJ324</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Geschlecht, Kontinente, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ325.html">?df_21311LJ325</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Bildungsherkunft, Kontinente, Land, Studienjahr</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ326.html">?df_21311LJ326</a></code></td>
+<td align="left">Ausländische Studienanfänger im 1. Hochschulsemester, Ausländische Studienanfänger im 1. Fachsemester, Geschlecht, Bildungsherkunft, Kontinente, Land, Studienjahr</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/df_21311LJ327.html">?df_21311LJ327</a></code></td>
+<td align="left">Beurlaubte, Grund der Beurlaubung, Land, Semester</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/df_21311LJ328.html">?df_21311LJ328</a></code></td>
+<td align="left">Beurlaubte, Geschlecht, Grund der Beurlaubung, Land, Semester</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="data-manipulation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-manipulation" class="anchor"></a>Data manipulation</h2>
+<div class="section level2">
+<h2 id="data-manipulation">Data manipulation<a class="anchor" aria-label="anchor" href="#data-manipulation"></a>
+</h2>
 <p>The downloaded raw data cannot be included in this package, as it has a size of roughly 200 MB. The licence requires a list of all changes as part of the source notes (see below). These are the data transformation steps performed:</p>
 <ul>
-<li>Column names are transformed using <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">janitor::clean_names()</a></code>.</li>
+<li>Column names are transformed using <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html" class="external-link">janitor::clean_names()</a></code>.</li>
 <li>Technical columns ending in “QUAL”, “ERR”, or “LOCK” are removed.</li>
 <li>The original data uses value labels with separate lookup tables. For the R package, these labels are transformed into factors using the description from the lookup tables.</li>
 </ul>
 </div>
-<div id="license-for-the-data-from-the-landesdatenbank-nrw--destatis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license-for-the-data-from-the-landesdatenbank-nrw--destatis" class="anchor"></a>License for the data from the Landesdatenbank NRW / Destatis</h2>
-<p>The data in this package was obtained from the <a href="https://www.landesdatenbank.nrw.de/">Landesdatenbank NRW</a> using the code “21311” for “Statistik der Studenten”. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): <a href="http://www.govdata.de/dl-de/by-2-0">Data licence Germany – attribution – Version 2.0</a>. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.</p>
+<div class="section level2">
+<h2 id="license-for-the-data-from-the-landesdatenbank-nrw--destatis">License for the data from the Landesdatenbank NRW / Destatis<a class="anchor" aria-label="anchor" href="#license-for-the-data-from-the-landesdatenbank-nrw--destatis"></a>
+</h2>
+<p>The data in this package was obtained from the <a href="https://www.landesdatenbank.nrw.de/" class="external-link">Landesdatenbank NRW</a> using the code “21311” for “Statistik der Studenten”. The licence for data obtained from the Landesdatenbank NRW / Destatis is available here (see paragraph 2 section 2): <a href="http://www.govdata.de/dl-de/by-2-0" class="external-link">Data licence Germany – attribution – Version 2.0</a>. Paragraph 2 section 3 requires including a reference to the dataset (URI) if available. To the best of my knowledge, the Landesdatenbank NRW does not yet provide Uniform Resource Identifiers (URI) to identify their tables.</p>
 <p>Paragraph 3 stipulates that “changes, editing, new designs or other amendments must be marked as such in the source note”. Compared to the raw data, the following changes were made: (1) column names were changed to lower case, (2) some technical columns were excluded and (3) value labels were turned into factors using the description of each value label. The code for all these transformations is available through this package.</p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/">https://​github.com/​RichardMeyer-Eppler/​studentenstatistikNRW/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/issues">
-    https://​github.com/​RichardMeyer-Eppler/​studentenstatistikNRW/​issues</a>
-</li>
+<li><a href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing studentenstatistikNRW</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Richard Meyer-Eppler <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=studentenstatistikNRW"><img src="https://www.r-pkg.org/badges/version/studentenstatistikNRW" alt="CRAN status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=studentenstatistikNRW" class="external-link"><img src="https://www.r-pkg.org/badges/version/studentenstatistikNRW" alt="CRAN status"></a></li>
 </ul>
 </div>
-</div>
+
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p>Developed by Richard Meyer-Eppler.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
