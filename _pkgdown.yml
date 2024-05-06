@@ -1,9 +1,6 @@
 
 reference:
-- title: Metadata for all tables in this package
-  desc: >
-    `tables` includes all table names, `metadata` lists the variables for each
-    table and `value_labels` contains all labels for each variable.
+- title: Metadata
   contents:
   - tables
   - metadata
@@ -11,7 +8,6 @@ reference:
   - variable_info
 
 - title: Functions
-  desc: Functions included in this package
   contents:
   - clean_df
   - create_factor
@@ -22,6 +18,7 @@ reference:
   - document_title
   - get_ncol
   - get_nrow
+  - get_table_name
   - label_values
   - label_variables
 

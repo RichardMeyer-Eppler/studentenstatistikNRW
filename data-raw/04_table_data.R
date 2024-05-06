@@ -96,10 +96,7 @@ purrr::pwalk(
 
 # Create table documentation for every data frame
 table_documentation <- purrr::map(
-  paste0(
-    "df_",
-    table_names
-  ),
+  table_names,
   studentenstatistikNRW::document_table
 )
 
@@ -109,8 +106,9 @@ purrr::walk2(
   here::here(
     "R",
     paste0(
-      "df_",
-      table_names,
+      get_table_name(
+        table_names
+      ),
       ".R"
     )
   ),

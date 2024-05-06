@@ -7,11 +7,14 @@
 document_format_section(table_name)
 }
 \arguments{
-\item{table_name}{Table name as character}
+\item{table_name}{String with table name or code}
 }
 \value{
 Character vector containing the roxygen format section
 }
 \description{
 Get roxygen format section for a given table name
+}
+\examples{
+document_format_section(table_name = tables[[1, "tablename"]])
 }

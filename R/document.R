@@ -1,17 +1,21 @@
 #' Gets the item list for each table used in the roxygen documentation
 #'
-#' @param table_name Table name
+#' @param table_name String with table name or code
 #'
 #' @return Character vector containing the roxygen item list to be used in the format/describe section
+#' @export
+#'
 #' @importFrom rlang .data
+#'
+#' @examples
+#' document_items(table_name = tables[[1, "tablename"]])
 document_items <- function(table_name)  {
 
   items <- studentenstatistikNRW::tables %>%
     dplyr::filter(
-      .data$tablename == gsub(
-        table_name,
-        pattern = "df_",
-        replacement = ""
+      .data$tablename == get_table_name(
+        table_name = table_name,
+        prefix = FALSE
       )
     ) %>%
     dplyr::left_join(
@@ -44,11 +48,16 @@ document_items <- function(table_name)  {
 
 #' Get roxygen format section for a given table name
 #'
-#' @param table_name Table name as character
+#' @param table_name String with table name or code
 #'
 #' @return Character vector containing the roxygen format section
 #' @export
+#'
+#' @examples
+#' document_format_section(table_name = tables[[1, "tablename"]])
 document_format_section <- function(table_name) {
+
+  table_name <- get_table_name(table_name)
 
   df <- eval(
     rlang::sym(
@@ -80,19 +89,6 @@ document_format_section <- function(table_name) {
     "}"
   )
 
-  # format_section <- c(
-  #   format_string,
-  #   "\\describe{",
-  #   "  \\item{bil002}{Studierende / Studenten}",
-  #   "  \\item{dland}{Land}",
-  #   "  \\item{bilhs1}{Hochschulen}",
-  #   "  \\item{bilsf1}{Studienfach}",
-  #   "  \\item{bilsh1}{Hochschulsemester}",
-  #   "  \\item{bilap1}{Angestrebte Abschlusspruefung}",
-  #   "  \\item{semest}{Semester}",
-  #   "}"
-  # )
-
   return(format_section)
 }
 
@@ -104,16 +100,15 @@ document_format_section <- function(table_name) {
 #' @export
 #'
 #' @examples
-#' document_table("df_21311LS002A")
+#' document_table(table_name = tables[[1, "tablename"]])
 document_table <- function(table_name)  {
 
   stopifnot(
     "table_name must be a dataset included in studentenstatistikNRW" =
       match(
-        gsub(
-          table_name,
-          pattern = "df_",
-          replacement = ""
+        get_table_name(
+          table_name = table_name,
+          prefix = FALSE
         ),
         tables[["tablename"]]
       ) > 0
@@ -129,12 +124,16 @@ document_table <- function(table_name)  {
       "#' @format NULL",
       paste0(
         "#' @templateVar df_table_name ",
-        table_name
+        get_table_name(
+          table_name = table_name
+        )
       ),
       "#' @template dataset_documentation",
       paste0(
         "'",
-        table_name,
+        get_table_name(
+          table_name = table_name
+        ),
         "'"
       )
     )
@@ -151,15 +150,13 @@ document_table <- function(table_name)  {
 #' @importFrom rlang .data
 #'
 #' @examples
-#' document_title("21311LS001A")
-#' document_title("df_21311LS001A")
+#' document_title(table_name = tables[[1, "tablename"]])
 document_title <- function(table_name) {
   tables %>%
     dplyr::filter(
-      .data$tablename == gsub(
-        table_name,
-        pattern = "df_",
-        replacement = ""
+      .data$tablename == get_table_name(
+        table_name = table_name,
+        prefix = FALSE
       )
     ) %>%
     dplyr::mutate(

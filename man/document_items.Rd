@@ -7,11 +7,14 @@
 document_items(table_name)
 }
 \arguments{
-\item{table_name}{Table name}
+\item{table_name}{String with table name or code}
 }
 \value{
 Character vector containing the roxygen item list to be used in the format/describe section
 }
 \description{
 Gets the item list for each table used in the roxygen documentation
+}
+\examples{
+document_items(table_name = tables[[1, "tablename"]])
 }

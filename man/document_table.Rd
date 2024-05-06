@@ -16,5 +16,5 @@ Character vector for the r file creating the roxygen dataset documentation
 Get text for the R file documenting a table
 }
 \examples{
-document_table("df_21311LS002A")
+document_table(table_name = tables[[1, "tablename"]])
 }

@@ -16,6 +16,5 @@ Title as character (Table code - Table description)
 Get title for roxygen data table documentation
 }
 \examples{
-document_title("21311LS001A")
-document_title("df_21311LS001A")
+document_title(table_name = tables[[1, "tablename"]])
 }

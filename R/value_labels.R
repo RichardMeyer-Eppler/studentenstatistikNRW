@@ -1,6 +1,6 @@
 #' Value labels for all variables in the student statistics tables
 #'
-#' The table list is sourced using [wiesbaden::retrieve_valuelabel()]. Data source is the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de).
+#' The value labels are sourced using [wiesbaden::retrieve_valuelabel()]. Data source is the [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de).
 #'
 #' @format A tibble with `r get_nrow(value_labels)` rows and `r get_ncol(value_labels)` variables:
 #' \describe{

@@ -21,7 +21,7 @@ Paragraph 3 stipulates that 'changes, editing, new designs or other amendments m
 value_labels
 }
 \description{
-The table list is sourced using \code{\link[wiesbaden:retrieve_valuelabel]{wiesbaden::retrieve_valuelabel()}}. Data source is the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW}.
+The value labels are sourced using \code{\link[wiesbaden:retrieve_valuelabel]{wiesbaden::retrieve_valuelabel()}}. Data source is the \href{https://www.landesdatenbank.nrw.de}{Landesdatenbank NRW}.
 }
 \examples{
 value_labels

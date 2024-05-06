@@ -74,7 +74,22 @@ create_factor <- function(x) {
     factor = forcats::as_factor(
       factor_level
     )
-  )
+  ) %>%
+    dplyr::left_join(
+      value_labels,
+      by = c(
+        "value_label"
+      )
+    ) %>%
+    dplyr::mutate(
+      factor_level = dplyr::coalesce(
+        .data$description,
+        .data$value_label
+      ),
+      factor = forcats::as_factor(
+        factor_level
+      )
+    )
 
   ordered_levels <- df_factor %>%
     dplyr::distinct(
@@ -116,6 +131,17 @@ create_factors <- function(df)  {
       create_factor
     )
   )
+
+  value_labels |>
+    dplyr::mutate(
+      dplyr::across(
+        where(
+          is.character
+        ),
+        create_factor
+      )
+    )
+
 
   return(df_factor)
 }
