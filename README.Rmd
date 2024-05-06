@@ -44,7 +44,7 @@ The table below lists all tables included by the package. They are all part of t
 
 ```{r, echo = FALSE}
 knitr::kable(
-  studentenstatistikNRW::tables %>% 
+  studentenstatistikNRW::tables |> 
   dplyr::mutate(
     tablename = paste0(
       "`?df_",

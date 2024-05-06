@@ -16,8 +16,8 @@ document_items <- function(table_name)  {
     ) %>%
     dplyr::left_join(
       studentenstatistikNRW::metadata,
-      by = c(
-        "tablename"
+      by = dplyr::join_by(
+        "tablename" == "table"
       ),
       suffix = c(
         "",

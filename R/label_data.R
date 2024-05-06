@@ -24,7 +24,7 @@ label_variables <- function(df, table_name) {
 
   metadata_df <- metadata %>%
     dplyr::filter(
-      .data$tablename == table_name
+      .data$table == table_name
     )
 
   var_labels <- setNames(
@@ -69,7 +69,7 @@ label_values <- function(df, table_name) {
 
   val_labels <- metadata %>%
     dplyr::filter(
-      .data[["tablename"]] == table_name
+      .data[["table"]] == table_name
     ) %>%
     dplyr::left_join(
       value_labels,

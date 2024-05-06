@@ -5,7 +5,7 @@
 \alias{metadata}
 \title{Metadata containing the variables for each student statistics table}
 \format{
-A tibble with 154 rows and 4 variables:
+A tibble with 1.881 rows and 4 variables:
 \describe{
 \item{tablename}{Table name}
 \item{name}{Variable name}

@@ -5,7 +5,7 @@
 \alias{tables}
 \title{Student statistics tables ("21311 Statistik der Studenten")}
 \format{
-A tibble with 25 rows and 2 variables:
+A tibble with 326 rows and 2 variables:
 \describe{
 \item{tablename}{Table name}
 \item{description}{Description}

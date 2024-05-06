@@ -5,7 +5,7 @@
 \alias{value_labels}
 \title{Value labels for all variables in the student statistics tables}
 \format{
-A tibble with 614 rows and 3 variables:
+A tibble with 1.056 rows and 3 variables:
 \describe{
 \item{variable}{Variable}
 \item{value_label}{Value label (the name is misleading, this is effectively an ID)}
