@@ -49,6 +49,7 @@ Table: Data summary\tabular{ll}{
 }
 }
 \examples{
+library(labelled)
 df_21311LJ188
 
 }

@@ -7,6 +7,7 @@
 #' <%= document_format_section(df_table_name) %>
 #'
 #' @examples
+#' library(labelled)
 #' <%= df_table_name %>
 #'
 #' @details
