@@ -9,7 +9,7 @@ Authors@R:
 Description: Student statistics for the German state North Rhine-Westphalia 
     obtained from the Landesdatenbank NRW. Packaged for R.
 License: MIT + file LICENSE
-URL: https://github.com/RichardMeyer-Eppler/studentenstatistikNRW
+URL: https://github.com/RichardMeyer-Eppler/studentenstatistikNRW, https://richardmeyer-eppler.github.io/studentenstatistikNRW/
 BugReports: 
     https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/issues
 Depends: 
