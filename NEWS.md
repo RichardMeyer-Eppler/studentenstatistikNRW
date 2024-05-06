@@ -1,3 +1,3 @@
-1# studentenstatistikNRW 0.0.0.9000
+# studentenstatistikNRW (development version)
 
-* Added a `NEWS.md` file to track changes to the package.
+* Initial CRAN submission.
