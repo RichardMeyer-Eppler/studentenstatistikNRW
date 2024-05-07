@@ -10,8 +10,6 @@ reference:
 - title: Functions
   contents:
   - clean_df
-  - create_factor
-  - create_factors
   - document_format_section
   - document_items
   - document_table
