@@ -1,0 +1,128 @@
+---
+title: "Using labelled data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using labelled data}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(studentenstatistikNRW)
+library(labelled)
+library(gtsummary)
+```
+
+# Resources on Using the Labelled Package
+* [Joseph Larmarange - Labelled Package](https://larmarange.github.io/labelled/index.html)
+* [Daniel D. Sjoberg - gtsummary Package](https://www.danieldsjoberg.com/gtsummary/)
+* [Shannon Pileggi - Leveraging labelled data in R](https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/)
+* [Shannon Pileggi - Polished summary tables in R with gtsummary](https://www.pipinghotdata.com/posts/2021-07-14-polished-summary-tables-in-r-with-gtsummary/)
+* [Shannon Pileggi - The case for variable labels in R](https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/)
+
+# Example data frame
+
+Select a random table in `studententstatistikNRW::tables`:
+
+```{r df}
+# https://stackoverflow.com/questions/9057006/getting-strings-recognized-as-variable-names-in-r
+df <- get(
+  get_table_name(
+    tables |> 
+      dplyr::slice_sample(n = 1) |> 
+      dplyr::pull(tablename)
+  )
+) 
+
+df
+```
+
+# Variable labels
+
+Show variable labels with `labelled::var_label` for all variables:
+
+```{r var-label}
+
+labelled::var_label(
+  x = df
+)
+
+```
+
+# Look for
+
+`labelled::look_for` is meant to help users finding variables in large datasets:
+
+```{r look-for}
+# All variables
+labelled::look_for(
+  df
+)
+
+# All variables starting with "BIL"
+labelled::look_for(
+  df,
+  "BIL"
+)
+
+```
+
+For more details:
+
+```{r look-for-details}
+# Default printing
+labelled::look_for(
+  df,
+  details = "full"
+)
+
+# Tibble
+labelled::look_for(
+  df,
+  details = "full"
+) |> 
+  tibble::as_tibble()
+
+# List columns as character
+labelled::look_for(
+  df,
+  details = "full"
+) |> 
+  labelled::convert_list_columns_to_character()
+```
+
+# Factors
+
+Use `labelled::to_factor` for easy factor conversion:
+
+```{r to-factor}
+df_factor <- df |>  
+  labelled::to_factor(
+    levels = "labels",
+    ordered = TRUE,
+    sort_levels = "labels",
+    strict = FALSE, # Convert to factor only if all values have a defined label?
+    labelled_only = TRUE # for a data.frame, convert only labelled variables to factors?
+  )
+
+df_factor
+```
+
+# GT Summary
+
+```{r gt-summary}
+
+df_factor |> 
+  gtsummary::tbl_summary()
+
+```
+
