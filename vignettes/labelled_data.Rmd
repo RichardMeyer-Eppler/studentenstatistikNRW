@@ -79,13 +79,8 @@ labelled::look_for(
 For more details:
 
 ```{r look-for-details}
-# Default printing
-labelled::look_for(
-  df,
-  details = "full"
-)
 
-# Tibble
+# Tibble as opposed to default printing
 labelled::look_for(
   df,
   details = "full"
