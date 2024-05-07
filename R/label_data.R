@@ -9,17 +9,17 @@
 #' @importFrom rlang .data
 #'
 #' @examples
+#' library(labelled)
+#'
 #' label_variables(
-#'   df_21311LS001A,
-#'   table_name = "21311LS001A"
+#'   df = df_21311LJ001,
+#'   table_name = "21311LJ001"
 #' )
 label_variables <- function(df, table_name) {
 
-  table_name <- gsub(
+  table_name <- get_table_name(
     table_name,
-    pattern = "df_",
-    replacement = "",
-    ignore.case = TRUE
+    prefix = FALSE
   )
 
   metadata_df <- metadata %>%
@@ -54,17 +54,17 @@ label_variables <- function(df, table_name) {
 #' @importFrom rlang .data
 #'
 #' @examples
+#' library(labelled)
+#'
 #' label_values(
-#'   df_21311LS001A,
-#'   table_name = "21311LS001A"
+#'   df = df_21311LJ001,
+#'   table_name = "21311LJ001"
 #' )
 label_values <- function(df, table_name) {
 
-  table_name <- gsub(
+  table_name <- get_table_name(
     table_name,
-    pattern = "df_",
-    replacement = "",
-    ignore.case = TRUE
+    prefix = FALSE
   )
 
   val_labels <- metadata %>%
