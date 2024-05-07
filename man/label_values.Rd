@@ -18,8 +18,10 @@ Data frame with labeled values
 Set value labels using \link[labelled:val_labels]{labelled::set_value_labels}
 }
 \examples{
+library(labelled)
+
 label_values(
-  df_21311LS001A,
-  table_name = "21311LS001A"
+  df = df_21311LJ001,
+  table_name = "21311LJ001"
 )
 }

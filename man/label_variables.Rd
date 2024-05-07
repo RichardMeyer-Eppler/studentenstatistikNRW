@@ -18,8 +18,10 @@ Data frame with labeled variables
 Set variable labels using \link[labelled:var_label]{labelled::set_variable_labels}
 }
 \examples{
+library(labelled)
+
 label_variables(
-  df_21311LS001A,
-  table_name = "21311LS001A"
+  df = df_21311LJ001,
+  table_name = "21311LJ001"
 )
 }
