@@ -16,6 +16,7 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     gtools,
+    gtsummary,
     labelled,
     rlang
 Suggests: 
