@@ -1,0 +1,84 @@
+---
+title: "Links for German Higher Education"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Links for German Higher Education}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(studentenstatistikNRW)
+```
+
+# Official Statistics
+
+* [Destatis - Bildung, Forschung und Kultur -> Hochschulen](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/_inhalt.html)
+* [Destatis - Klassifikationen zu Hochschulen](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/Methoden/klassifikationen.html)
+* [Destatis Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/hochschulen-327)
+* [Eurostat - Tertiary education statistics](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Tertiary_education_statistics)
+* [OECD Data - Education](https://data.oecd.org/education.htm)
+
+## States
+
+* [IT.NRW - Hochschulstatistik](https://www.it.nrw/hochschulstatistik)
+* [IT.NRW - Gesellschaft und Staat -> Bildung und Kultur -> Hochschulen](https://www.it.nrw/statistik/gesellschaft-und-staat/bildung-und-kultur/hochschulen)
+* [Bayerisches Landesamt für Statistik - Hochschulstatistik](https://www.statistik.bayern.de/service/erhebungen/bildung_soziales/hochschulen/hochschulstatistik/index.html)
+* [Landesamt für Statistik Niedersachsen - Hochschulen und Studierende](https://www.statistik.niedersachsen.de/hochschulen-studierende-hochschulfinanzen-niedersachsen)
+* [Statistisches Amt für Hamburg und Schleswig-Holstein - Hochschulen, Wissenschaft](https://www.statistik-nord.de/zahlen-fakten/bildung-rechtspflege/hochschulen-wissenschaft)
+* Nutzt D3 Viz!
+* [Statistisches Landesamt Baden-Württemberg - Hochschulen](https://www.statistik-bw.de/BildungKultur/Hochschulen)
+* [Hessisches Statistisches Landesamt - Bildung](https://statistik.hessen.de/unsere-zahlen/bildung)
+* [Weitere](https://hochschulstatistik.de/adbhsstat/login)
+
+# Databases
+
+* [GENESIS - Database of the
+Federal Statistical Office of Germany](https://www-genesis.destatis.de)
+* [Gemeinsames Statistikportal - Statistische Ämter des Bundes un der Länder](https://www.statistikportal.de)
+* [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de)
+* [Bildungsmonitoring](https://www.bildungsmonitoring.de)
+* [Regionalstatistik](https://www.regionalstatistik.de)
+* [OECD Data Explorer](https://data-explorer.oecd.org)
+* [CHE - Hochschuldaten](https://hochschuldaten.che.de)
+
+# Official Agencies
+
+* [Hochschulrektorenkonferenz](https://www.hrk.de)
+* [Kultusminister Konferenz](https://www.kmk.org/)
+* [Wissenschaftsrat](https://www.wissenschaftsrat.de)
+* [German Academic Exchange Service](https://www.daad.de)
+* [Deutscher Bildungsserver](https://www.bildungsserver.de)
+
+# Other Organizations
+
+* [Centrum für Hochschulentwicklung](https://www.che.de)
+* [Rheform](https://www.rheform.de/)
+
+# Various Links
+
+* [Hochschulen in Deutschland im Überblick - Google Maps](https://studieren.de/landkarte-unis-deutschland.0.html)
+
+* [https://studieren.de/suche.0.html?lt=university&rs=list&sort=alphabetical](https://studieren.de/suche.0.html?lt=university&rs=list&sort=alphabetical)
+
+* [Ländercheck Wissenschaft](https://laendercheck-wissenschaft.de/)
+
+* [Die Länderchecks des Stifterverbandes](https://stifterverband.shinyapps.io/Laenderchecks/)
+
+* [Wissenschaftsrat - Was kommt nach dem Wachstum? Der demografische Wandel erreicht das Hochschulsystem](https://www.wissenschaftsrat.de/download/2024/VS_Bericht_2024_Jan)
+
+* [CHE - European Higher Education Sector Observatory](https://www.che.de/projekt/european-higher-education-sector-observatory/)
+* [Hochschulkompass](https://www.hochschulkompass.de)
+
+* [Bildungsmonitoring - 05--F Nordrhein-Westfalen - Hochschulen und Berufsakademien](https://www.bildungsmonitoring.de/bildung/online?operation=statistic&levelindex=0&levelid=1715598325071&code=05--F#abreadcrumb)
+
+* [European Commission 2023 - European Education Area midterm review process report](https://education.ec.europa.eu/sites/default/files/2023-11/European%20Education%20Area%20midterm%20review%20process%20report%20231123.pdf)
+
+* (https://www.study-in-germany.de/en/plan-your-studies/study-options/higher-education-system/)
