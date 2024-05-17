@@ -52,6 +52,9 @@
 <li>
       <a href="../articles/labelled_data.html">Using labelled data</a>
     </li>
+    <li>
+      <a href="../articles/links-higher-education.html">Links for German Higher Education</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -267,8 +270,9 @@ variables in large datasets:</p>
 <span><span class="co">#&gt;                                               [FG10-SB83] Außerhalb der Studie~</span></span>
 <span><span class="co">#&gt;  5   DLAND    Land           chr+lbl  0       [05] Nordrhein-Westfalen         </span></span>
 <span><span class="co">#&gt;  6   SEMEST   Semester       chr      0                                        </span></span>
-<span><span class="co">#&gt;  7   BIL002   Studierende    dbl      0</span></span>
-<span></span>
+<span><span class="co">#&gt;  7   BIL002   Studierende    dbl      0</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># All variables starting with "BIL"</span></span>
 <span><span class="fu">labelled</span><span class="fu">::</span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/look_for.html" class="external-link">look_for</a></span><span class="op">(</span></span>
 <span>  <span class="va">df</span>,</span>
@@ -359,7 +363,7 @@ variables in large datasets:</p>
 <span><span class="co">#&gt;                                               [FG10-SB83] Außerhalb der Studie~</span></span>
 <span><span class="co">#&gt;  7   BIL002   Studierende    dbl      0</span></span></code></pre></div>
 <p>For more details:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Tibble as opposed to default printing</span></span>
 <span><span class="fu">labelled</span><span class="fu">::</span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/look_for.html" class="external-link">look_for</a></span><span class="op">(</span></span>
@@ -378,8 +382,9 @@ variables in large datasets:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     6 SEMEST   Semester       chr            0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>       <span style="color: #949494;">&lt;chr&gt;</span> char…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>     7 BIL002   Studierende    dbl            0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>       <span style="color: #949494;">&lt;chr&gt;</span> doub…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: na_values &lt;named list&gt;, na_range &lt;named list&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   n_na &lt;int&gt;, unique_values &lt;int&gt;, range &lt;named list&gt;</span></span></span>
-<span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   n_na &lt;int&gt;, unique_values &lt;int&gt;, range &lt;named list&gt;</span></span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># List columns as character</span></span>
 <span><span class="fu">labelled</span><span class="fu">::</span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/look_for.html" class="external-link">look_for</a></span><span class="op">(</span></span>
 <span>  <span class="va">df</span>,</span>
@@ -403,7 +408,7 @@ variables in large datasets:</p>
 <h2 id="factors">Factors<a class="anchor" aria-label="anchor" href="#factors"></a>
 </h2>
 <p>Use <code><a href="https://larmarange.github.io/labelled/reference/to_factor.html" class="external-link">labelled::to_factor</a></code> for easy factor conversion:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_factor</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span>  </span>
 <span>  <span class="fu">labelled</span><span class="fu">::</span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/to_factor.html" class="external-link">to_factor</a></span><span class="op">(</span></span>
 <span>    levels <span class="op">=</span> <span class="st">"labels"</span>,</span>
@@ -432,7 +437,7 @@ variables in large datasets:</p>
 <div class="section level2">
 <h2 id="gt-summary">GT Summary<a class="anchor" aria-label="anchor" href="#gt-summary"></a>
 </h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">df_factor</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">gtsummary</span><span class="fu">::</span><span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html" class="external-link">tbl_summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
