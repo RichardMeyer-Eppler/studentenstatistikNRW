@@ -129,6 +129,9 @@ linked up:</p>
 institution,</p></li>
 <li><p>links to the Wikidata entry for each institution and a separate
 link to each institution’s German logo, if available,</p></li>
+<li><p>the link to the <a href="https://www.daad.de/en/studying-in-germany/universities/che-ranking/" class="external-link">CHE
+University Ranking</a> for each institution hosted by the German
+Academic Exchange Service,</p></li>
 <li><p>the link for each institution’s <a href="https://www.umultirank.org/" class="external-link">multirank for 2022-2023</a>,</p></li>
 </ul>
 <div class="section level2">
@@ -139,7 +142,7 @@ link to each institution’s German logo, if available,</p></li>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hochschulen</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 540 × 8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 540 × 14</span></span></span>
 <span><span class="co">#&gt;    Hochschule_Signatur `Hs-Nr.` Wiki_ID_DE Wikidata_ID Wiki_Key_EN  Wiki_Logo_DE</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 001                      142     <span style="text-decoration: underline;">342</span>902 Q833822     University_… https://de.…</span></span>
@@ -153,7 +156,9 @@ link to each institution’s German logo, if available,</p></li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 014                      279      <span style="text-decoration: underline;">49</span>915 <span style="color: #BB0000;">NA</span>          University_… https://de.…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 015                      100     <span style="text-decoration: underline;">157</span>292 Q687017     University_… https://de.…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 530 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: ROR_ID &lt;chr&gt;, Multirank &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: ROR_ID &lt;chr&gt;, Multirank &lt;chr&gt;, URL_Hochschule_HRK &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Ort &lt;chr&gt;, Domain_Hochschule_HRK &lt;chr&gt;, CHE_University_ID &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   URL_CHE_DAAD &lt;chr&gt;, URL_CHE_DAAD_ORT &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </div>
 
