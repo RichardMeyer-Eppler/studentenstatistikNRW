@@ -101,8 +101,10 @@ df_ror_germany_education <- resps |>
 
 ### Extracting the data in the list columns for each German research organization in education
 
+Because `df_ror_germany_education` contains many list columns, extracting data can be quite cumbersome. Here are workflows for the most important list columns.
+
 #### Names
-Because `df_ror_germany_education` contains many list columns, extracting data can be quite cumbersome. For illustrative purposes, this is one way of retrieving all content from `df_ror_germany_education[["names"]]` for each organization.
+ For illustrative purposes, this is one way of retrieving all content from `df_ror_germany_education[["names"]]` for each organization.
 
 ```{r names}
 
@@ -155,7 +157,7 @@ df_links <- tibble::tibble(
 
 This is one way of retrieving all content from `df_ror_germany_education[["locations"]]` for each organization.
 
-```{r links}
+```{r locations}
 
 df_locations <- tibble::tibble(
   id = df_ror_germany_education[["id"]],
