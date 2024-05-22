@@ -97,6 +97,7 @@ df_ror_germany_education <- resps |>
     1
   )
 
+df_ror_germany_education
 ```
 
 ### Extracting the data in the list columns for each German research organization in education
@@ -130,6 +131,8 @@ df_names <- tibble::tibble(
     lang,
     dplyr::starts_with("types")
   )
+
+df_names
 ```
 
 
@@ -151,6 +154,7 @@ df_links <- tibble::tibble(
     col = "links"
   ) 
 
+df_links
 ```
 
 #### Locations
@@ -173,4 +177,46 @@ df_locations <- tibble::tibble(
     col = "geonames_details"
   )
 
+df_locations
 ```
+
+#### External IDs
+
+This is one way of retrieving all content from `df_ror_germany_education[["external_ids"]]` for each organization.
+
+```{r external-ids}
+
+df_external_ids <- tibble::tibble(
+  id = df_ror_germany_education[["id"]],
+  external_ids = df_ror_germany_education[["external_ids"]]
+) |> 
+  tidyr::unnest_longer(
+    col = 2,
+    indices_include = TRUE
+  ) |> 
+  tidyr::unnest_wider(
+    col = "external_ids"
+  ) |> 
+  tidyr::unnest_wider(
+    col = "all",
+    names_sep = '_'
+  ) |> 
+  dplyr::select(
+    id,
+    external_ids_id,
+    type,
+    preferred,
+    dplyr::starts_with("all")
+  )
+
+df_external_ids
+
+# Let's filter on all Wikidata entries
+
+df_external_ids |> 
+  dplyr::filter(
+    type == "wikidata"
+  )
+
+```
+
