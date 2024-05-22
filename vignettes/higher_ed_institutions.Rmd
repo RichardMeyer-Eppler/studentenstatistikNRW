@@ -28,6 +28,8 @@ This is the exhaustive list of additional data sources that are linked up:
 
 -   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
 
+-   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service,
+
 -   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
 
 ## The *Hochschulen* Table
