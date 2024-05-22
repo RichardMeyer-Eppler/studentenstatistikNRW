@@ -24,12 +24,14 @@ Suggests:
     forcats,
     gtools,
     here,
+    httr2,
     knitr,
     purrr,
     rmarkdown,
     skimr,
     stringi,
     tibble,
+    tidyr,
     wiesbaden
 VignetteBuilder: 
     knitr

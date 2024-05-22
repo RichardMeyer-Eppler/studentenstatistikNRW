@@ -1,0 +1,174 @@
+---
+title: "Research Organization Registry (ROR)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Research Organization Registry (ROR)}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(studentenstatistikNRW)
+
+```
+
+## The Research Organization Registry (ROR)
+
+> The [Research Organization Registry (ROR)](https://ror.org/) is a global, community-led registry of open persistent identifiers for research organizations. The Research Organization Registry (ROR) includes IDs and metadata for more than 107,000 organizations and counting. Registry data is CC0 and openly available via a search interface, REST API, and data dump. Registry updates are curated through a community process and released at least once a month.
+
+### ROR REST API v2
+
+[Version 2 of the ROR schema and API](https://ror.org/blog/2024-04-15-announcing-ror-v2/) was released on April 15, 2024 ([official API documentation](https://ror.readme.io/v2/docs/basics)). Let us use the REST API to retrieve data on all German research organizations in education.
+
+```{r base-query}
+ror_base_url <- "https://api.ror.org/v2/organizations"
+
+req <- httr2::request(
+  ror_base_url
+) |> 
+  httr2::req_url_query(
+    filter = c(
+      "types:education",
+      "country.country_code:DE"
+    ),
+    .multi = "comma"
+  )
+
+resp <- req |> 
+  httr2::req_perform()
+
+resp_body <- resp |> 
+  httr2::resp_body_json()
+
+no_of_results <- resp_body$number_of_results
+no_of_pages <- ceiling(no_of_results / 20)
+```
+
+> To determine how many pages you will need to retrieve in order to obtain your entire result set, check metadata.number_of_results and divide by 20. Regardless of which page you are on, metadata.number_of_results indicates the total number of results returned by your request.
+
+The total number of search results for a query filtering on `types:education` and `country.country_code:DE` gives `r no_of_results` results. This means we have to request the data for `r no_of_pages` pages. We can implement this with `httr2::iterate_with_offset`.
+
+```{r perform-iteratively}
+
+ror_base_url <- "https://api.ror.org/v2/organizations"
+
+req <- httr2::request(
+  ror_base_url
+) |> 
+  httr2::req_url_query(
+    filter = c(
+      "types:education",
+      "country.country_code:DE"
+    ),
+    .multi = "comma"
+  ) |> 
+  httr2::req_throttle(
+    10
+  )
+
+resps <- httr2::req_perform_iterative(
+  req,
+  next_req = httr2::iterate_with_offset(
+    param_name = "page",
+    resp_pages = function(resp) ceiling(httr2::resp_body_json(resp)$number_of_results / 20)
+  ),
+  max_reqs = Inf
+)
+
+df_ror_germany_education <- resps |> 
+  purrr::map(
+    httr2::resp_body_json
+  ) |> 
+  purrr::map(
+    "items"
+  ) |> 
+  purrr::list_flatten() |> 
+  tibble::tibble() |> 
+  tidyr::unnest_wider(
+    1
+  )
+
+```
+
+### Extracting the data in the list columns for each German research organization in education
+
+#### Names
+Because `df_ror_germany_education` contains many list columns, extracting data can be quite cumbersome. For illustrative purposes, this is one way of retrieving all content from `df_ror_germany_education[["names"]]` for each organization.
+
+```{r names}
+
+df_names <- tibble::tibble(
+  id = df_ror_germany_education[["id"]],
+  names = df_ror_germany_education[["names"]]
+) |> 
+  tidyr::unnest_longer(
+    col = 2,
+    indices_include = TRUE
+  ) |> 
+  tidyr::unnest_wider(
+    col = "names"
+  ) |> 
+  tidyr::unnest_wider(
+    col = "types",
+    names_sep = "_"
+  ) |> 
+  dplyr::select(
+    id,
+    names_id,
+    name = value,
+    lang,
+    dplyr::starts_with("types")
+  )
+```
+
+
+#### Links
+
+This is one way of retrieving all content from `df_ror_germany_education[["links"]]` for each organization.
+
+```{r links}
+
+df_links <- tibble::tibble(
+  id = df_ror_germany_education[["id"]],
+  links = df_ror_germany_education[["links"]]
+) |> 
+  tidyr::unnest_longer(
+    col = 2,
+    indices_include = TRUE
+  ) |> 
+  tidyr::unnest_wider(
+    col = "links"
+  ) 
+
+```
+
+#### Locations
+
+This is one way of retrieving all content from `df_ror_germany_education[["locations"]]` for each organization.
+
+```{r links}
+
+df_locations <- tibble::tibble(
+  id = df_ror_germany_education[["id"]],
+  locations = df_ror_germany_education[["locations"]]
+) |> 
+  tidyr::unnest_longer(
+    col = 2
+  ) |> 
+  tidyr::unnest_wider(
+    col = "locations"
+  ) |> 
+  tidyr::unnest_wider(
+    col = "geonames_details"
+  )
+
+```
