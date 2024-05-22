@@ -24,7 +24,9 @@ As of March 13, 2024, the Federal Statistical Agency (Destatis) lists a total of
 
 This is the exhaustive list of additional data sources that are linked up:
 
--   the German and English Wikipedia article for each institution, including a separate link to each institution's logo, if available,
+-   links to the German and English Wikipedia article for each institution,
+
+-   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
 
 -   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
 
@@ -32,6 +34,7 @@ This is the exhaustive list of additional data sources that are linked up:
 
 ```{r}
 library(studentenstatistikNRW)
+library(tibble)
 
 hochschulen
 ```
