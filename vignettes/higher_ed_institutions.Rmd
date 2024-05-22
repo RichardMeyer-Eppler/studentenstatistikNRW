@@ -1,0 +1,31 @@
+---
+title: "Institutions of Higher Education in Germany"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Institutions of Higher Education in Germany}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+As of March 13, 2024, the Federal Statistical Agency (Destatis) lists a total of 427 institutions of higher education in Germany. In this vignette, we will use this official data source as basis and go through considerable effort to complement this data from other sources. In particular:
+
+-   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) in its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
+
+-   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are as close to the "official numbers" as one can get.
+
+-   As described in the [separate vignette on the global Research Organization Registry (ROR)](ror.html), we use the ROR REST API to retrieve additional data and identifiers which are then matched to the existing data.
+
+This is the exhaustive list of additional data sources that are linked up:
+
+-   the German and English Wikipedia article for each institution, including a separate link to each institution's logo, if available,
+
+-   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
+
+-   
