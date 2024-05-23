@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-As of March 13, 2024, the Federal Statistical Agency (Destatis) lists a total of 427 institutions of higher education in Germany. In this vignette, we will use this official data source as basis and go through considerable effort to complement this data from other sources. In particular:
+As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. In this vignette, we will use this official data source as basis and go through considerable efforts to complement this data with other sources. In particular:
 
--   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) in its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
+-   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
 
--   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are as close to the "official numbers" as one can get.
+-   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are the "most authoritative German numbers" that exist.
 
 -   As described in the [separate vignette on the global Research Organization Registry (ROR)](ror.html), we use the ROR REST API to retrieve additional data and identifiers which are then matched to the existing data.
 
@@ -28,7 +28,9 @@ This is the exhaustive list of additional data sources that are linked up:
 
 -   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
 
--   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service,
+-   the link to each institution on [studieren.de](https://studieren.de/),
+
+-   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service in English,
 
 -   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
 
