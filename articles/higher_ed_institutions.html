@@ -97,14 +97,14 @@
 
     
     
-<p>As of March 13, 2024, the Federal Statistical Agency (Destatis) lists
-a total of 427 institutions of higher education in Germany. In this
-vignette, we will use this official data source as basis and go through
-considerable effort to complement this data from other sources. In
-particular:</p>
+<p>As of March 13, 2024, the Federal Statistical Office of Germany
+(Destatis) lists a total of 427 institutions of higher education in the
+country. In this vignette, we will use this official data source as
+basis and go through considerable efforts to complement this data with
+other sources. In particular:</p>
 <ul>
 <li><p>We will download all key tables for the student statistics (table
-series 372) provided by the Federal Statistical Agency (<a href="https://www.destatis.de/EN" class="external-link">Destatis</a>) in its data collection
+series 372) provided by the Federal Statistical Agency (<a href="https://www.destatis.de/EN" class="external-link">Destatis</a>) on its data collection
 portal (<a href="https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372" class="external-link">Erhebungsportal</a>).
 There are four key tables / csv files containing data on institutions of
 higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.)
@@ -115,8 +115,8 @@ states),</p></li>
 <li><p>we will then match the Destatis data with the <a href="https://www.hochschulkompass.de/hochschulen/downloads.html" class="external-link">list
 of all institutions of higher education in Germany</a> provided by the
 <a href="https://www.hrk.de/home/" class="external-link">German Rector’s Conference (HRK)</a>.
-The Federal Statistical Agency data together with the HRK list are as
-close to the “official numbers” as one can get.</p></li>
+The Federal Statistical Agency data together with the HRK list are the
+“most authoritative German numbers” that exist.</p></li>
 <li><p>As described in the <a href="ror.html">separate vignette on the
 global Research Organization Registry (ROR)</a>, we use the ROR REST API
 to retrieve additional data and identifiers which are then matched to
@@ -129,9 +129,10 @@ linked up:</p>
 institution,</p></li>
 <li><p>links to the Wikidata entry for each institution and a separate
 link to each institution’s German logo, if available,</p></li>
+<li><p>the link to each institution on <a href="https://studieren.de/" class="external-link">studieren.de</a>,</p></li>
 <li><p>the link to the <a href="https://www.daad.de/en/studying-in-germany/universities/che-ranking/" class="external-link">CHE
 University Ranking</a> for each institution hosted by the German
-Academic Exchange Service,</p></li>
+Academic Exchange Service in English,</p></li>
 <li><p>the link for each institution’s <a href="https://www.umultirank.org/" class="external-link">multirank for 2022-2023</a>,</p></li>
 </ul>
 <div class="section level2">
@@ -145,20 +146,20 @@ Academic Exchange Service,</p></li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 540 × 14</span></span></span>
 <span><span class="co">#&gt;    Hochschule_Signatur `Hs-Nr.` Wiki_ID_DE Wikidata_ID Wiki_Key_EN  Wiki_Logo_DE</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 001                      142     <span style="text-decoration: underline;">342</span>902 Q833822     University_… https://de.…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 001                      142     <span style="text-decoration: underline;">342</span>902 Q833822     University_… Logo_Uni-Ka…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 002                      361         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 003                      366    3<span style="text-decoration: underline;">258</span>067 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 004                      375         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 006                      457    1<span style="text-decoration: underline;">378</span>117 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 008                       71      <span style="text-decoration: underline;">31</span>115 Q696757     University_… https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 012                      215      <span style="text-decoration: underline;">55</span>258 Q679134     Paderborn_U… https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 013                      245     <span style="text-decoration: underline;">499</span>480 Q504723     University_… https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 014                      279      <span style="text-decoration: underline;">49</span>915 <span style="color: #BB0000;">NA</span>          University_… https://de.…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 015                      100     <span style="text-decoration: underline;">157</span>292 Q687017     University_… https://de.…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 003                      366    3<span style="text-decoration: underline;">258</span>067 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           Hochschule_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 004                      375         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           Fachhochsch…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 006                      457    1<span style="text-decoration: underline;">378</span>117 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>           Hochschule_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 008                       71      <span style="text-decoration: underline;">31</span>115 Q696757     University_… Uni-duisbur…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 012                      215      <span style="text-decoration: underline;">55</span>258 Q679134     Paderborn_U… Logo_Uni_Pa…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 013                      245     <span style="text-decoration: underline;">499</span>480 Q504723     University_… Logo_Univer…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 014                      279      <span style="text-decoration: underline;">49</span>915 <span style="color: #BB0000;">NA</span>          University_… BUW_Logo-sc…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 015                      100     <span style="text-decoration: underline;">157</span>292 Q687017     University_… Fernunivers…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 530 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: ROR_ID &lt;chr&gt;, Multirank &lt;chr&gt;, URL_Hochschule_HRK &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Ort &lt;chr&gt;, Domain_Hochschule_HRK &lt;chr&gt;, CHE_University_ID &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   URL_CHE_DAAD &lt;chr&gt;, URL_CHE_DAAD_ORT &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: ROR_ID &lt;chr&gt;, Multirank &lt;chr&gt;, Ort &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Domain_Hochschule_HRK &lt;chr&gt;, CHE_DAAD_University_ID &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   CHE_DAAD_Town_ID &lt;chr&gt;, STUDIEREN_ID &lt;chr&gt;, STUDIEREN_KEY &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </div>
 
