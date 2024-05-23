@@ -179,8 +179,8 @@ We can implement this with <code><a href="https://httr2.r-lib.org/reference/iter
 <span>  max_reqs <span class="op">=</span> <span class="cn">Inf</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■                         </span>  21% | ETA:  4s</span></span>
-<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■                      </span>  29% | ETA:  4s</span></span>
-<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span>  82% | ETA:  1s</span></span>
+<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■                     </span>  32% | ETA:  4s</span></span>
+<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span>  86% | ETA:  1s</span></span>
 <span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span> 100% | ETA:  0s</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -253,7 +253,7 @@ organization.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_names</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,424 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,463 × 6</span></span></span>
 <span><span class="co">#&gt;    id                        names_id name                 lang  types_1 types_2</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/009dxjw45        1 Faurecia (Germany)   en    ror_di… label  </span></span>
@@ -266,7 +266,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/05gxhfq53        1 Hochschule der Poli… de    ror_di… label  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/04tenkb98        1 German Graduate Sch… en    ror_di… label  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/04tenkb98        2 Hheilbronn Business… en    alias   <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,414 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,453 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
@@ -289,7 +289,7 @@ organization.</p>
 <span>  <span class="op">)</span> </span>
 <span></span>
 <span><span class="va">df_links</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 802 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 812 × 4</span></span></span>
 <span><span class="co">#&gt;    id                        type      value                            links_id</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/009dxjw45 website   http://www.faurecia.de/                 1</span></span>
@@ -302,7 +302,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/01a2z2x66 website   http://www.iwkoeln.de/en/               1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/01a2z2x66 wikipedia https://en.wikipedia.org/wiki/C…        2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/00nm1ws09 website   http://www.ifnm.net/                    1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 792 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 802 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="locations">Locations<a class="anchor" aria-label="anchor" href="#locations"></a>
@@ -374,20 +374,20 @@ organization.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_external_ids</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,292 × 7</span></span></span>
-<span><span class="co">#&gt;    id                        external_ids_id type    preferred all_1 all_2 all_3</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/009dxjw45               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> https://ror.org/04839sh14               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> https://ror.org/02nq6sy34               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> https://ror.org/02652az59               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> https://ror.org/05gxhfq53               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> https://ror.org/04tenkb98               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> https://ror.org/04tenkb98               2 isni    <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/01a2z2x66               1 grid    grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/01a2z2x66               2 isni    <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/01a2z2x66               3 wikida… <span style="color: #BB0000;">NA</span>        Q958… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,282 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,314 × 9</span></span></span>
+<span><span class="co">#&gt;    id              external_ids_id type  preferred all_1 all_2 all_3 all_4 all_5</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> https://ror.or…               2 isni  <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.or…               1 grid  grid.473… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.or…               2 isni  <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q958… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,304 more rows</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Let's filter on all Wikidata entries</span></span>
@@ -396,20 +396,20 @@ organization.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span></span>
 <span>    <span class="va">type</span> <span class="op">==</span> <span class="st">"wikidata"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 319 × 7</span></span></span>
-<span><span class="co">#&gt;    id                        external_ids_id type    preferred all_1 all_2 all_3</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/01a2z2x66               3 wikida… <span style="color: #BB0000;">NA</span>        Q958… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> https://ror.org/00x67m532               3 wikida… <span style="color: #BB0000;">NA</span>        Q455… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> https://ror.org/05w6fhk97               3 wikida… <span style="color: #BB0000;">NA</span>        Q111… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> https://ror.org/02rm8h934               2 wikida… <span style="color: #BB0000;">NA</span>        Q183… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> https://ror.org/02nq4wt82               3 wikida… <span style="color: #BB0000;">NA</span>        Q302… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> https://ror.org/02qdc9985               3 wikida… <span style="color: #BB0000;">NA</span>        Q314… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> https://ror.org/00ftx0026               3 wikida… <span style="color: #BB0000;">NA</span>        Q322… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/03zh5eq96               3 wikida… <span style="color: #BB0000;">NA</span>        Q162… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/00yq55g44               3 wikida… <span style="color: #BB0000;">NA</span>        Q314… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/015qjqf64               4 wikida… <span style="color: #BB0000;">NA</span>        Q160… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 309 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 305 × 9</span></span></span>
+<span><span class="co">#&gt;    id              external_ids_id type  preferred all_1 all_2 all_3 all_4 all_5</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q958… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q455… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q111… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> https://ror.or…               2 wiki… <span style="color: #BB0000;">NA</span>        Q183… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q328… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q139… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q125… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q150… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q162… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.or…               3 wiki… <span style="color: #BB0000;">NA</span>        Q162… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 295 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
