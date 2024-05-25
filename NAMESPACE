@@ -2,6 +2,7 @@
 
 export("%>%")
 export(clean_df)
+export(col_to_url)
 export(document_format_section)
 export(document_items)
 export(document_table)

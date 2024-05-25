@@ -2,6 +2,7 @@
 reference:
 - title: Metadata
   contents:
+  - hochschulen
   - tables
   - metadata
   - value_labels
@@ -10,6 +11,7 @@ reference:
 - title: Functions
   contents:
   - clean_df
+  - col_to_url
   - document_format_section
   - document_items
   - document_table

@@ -3,8 +3,10 @@ title: "Institutions of Higher Education in Germany"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Institutions of Higher Education in Germany}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -41,4 +43,93 @@ library(studentenstatistikNRW)
 library(tibble)
 
 hochschulen
+```
+
+## Interactive HTML Table created with `gt` Package
+
+```{r, echo = FALSE}
+
+hochschulen |> 
+  col_to_url(
+    dplyr::everything()
+  ) |> 
+  dplyr::select(
+    Logo = Wiki_Logo_DE,
+    Ort,
+    CHE_DAAD_Town_ID,
+    Hochschule_EN,
+    Signatur = Hochschule_Signatur,
+    Wikipedia = Wiki_ID_DE,
+    Wiki_EN = Wiki_ID_EN,
+    Wikidata = Wikidata_ID,
+    Ranking = Multirank,
+    CHE_DAAD_University_ID
+  ) |> 
+  gt::gt(
+    rowname_col = "Hochschule_Signatur",
+    rownames_to_stub	= TRUE
+  ) |> 
+  gt::fmt_url(
+    columns = Wikipedia,
+    label = "de"
+  ) |> 
+  gt::fmt_url(
+    columns = Wiki_EN,
+    label = "en"
+  ) |> 
+  gt::fmt_url(
+    columns = Wikidata,
+    label = "data"
+  ) |> 
+  gt::fmt_url(
+    columns = Ranking,
+    label = "Multirank"
+  ) |>
+  gt::fmt_url(
+    columns = starts_with(
+      "CHE_DAAD"
+    ),
+    label = "CHE-DAAD"
+  ) |>
+  gt::cols_merge(
+    dplyr::starts_with(
+      "Wiki"
+    ),
+    pattern = "{1}, {2}, {3}"
+  ) |>
+  gt::cols_merge(
+    c(
+      Ort,
+      CHE_DAAD_Town_ID
+    ),
+    pattern = "{1} ({2})"
+  ) |>
+  gt::cols_merge(
+    c(
+      Ranking,
+      CHE_DAAD_University_ID
+    ),
+    pattern = "{1}, {2}"
+  ) |>
+  gtExtras::gt_img_rows(
+    columns = Logo,
+    img_source = "web"
+  ) |> 
+  # Inserts <br> for no reason!?
+  gt::sub_missing(
+    missing_text = " "
+  ) |>
+  gt::cols_align(
+    align = "left",
+    columns = c(
+      Hochschule_EN,
+      Ort
+    )
+  ) |> 
+  gt::opt_interactive(
+    use_search = TRUE,
+    use_highlight = TRUE,
+    page_size_default = 50
+  )
+  
 ```
