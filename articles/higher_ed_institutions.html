@@ -143,23 +143,24 @@ Academic Exchange Service in English,</p></li>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hochschulen</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 540 × 14</span></span></span>
-<span><span class="co">#&gt;    Hochschule_Signatur `Hs-Nr.` Wiki_ID_DE Wikidata_ID Wiki_Key_EN  Wiki_Logo_DE</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 001                      142     <span style="text-decoration: underline;">342</span>902 Q833822     University_… Logo_Uni-Ka…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 002                      361    3<span style="text-decoration: underline;">028</span>791 Q619201     <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 003                      366    3<span style="text-decoration: underline;">258</span>067 Q1346417    <span style="color: #BB0000;">NA</span>           Hochschule_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 004                      375    1<span style="text-decoration: underline;">725</span>093 Q1391246    <span style="color: #BB0000;">NA</span>           Fachhochsch…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 006                      457    1<span style="text-decoration: underline;">378</span>117 Q1622148    <span style="color: #BB0000;">NA</span>           Hochschule_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 008                       71      <span style="text-decoration: underline;">31</span>115 Q696757     University_… Uni-duisbur…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 012                      215      <span style="text-decoration: underline;">55</span>258 Q679134     Paderborn_U… Logo_Uni_Pa…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 013                      245     <span style="text-decoration: underline;">499</span>480 Q504723     University_… Logo_Univer…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 014                      279      <span style="text-decoration: underline;">49</span>915 Q447953     University_… BUW_Logo-sc…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 015                      100     <span style="text-decoration: underline;">157</span>292 Q687017     University_… Fernunivers…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 540 × 16</span></span></span>
+<span><span class="co">#&gt;    Hochschule_Signatur Hochschule_EN  `Hs-Nr.` Wiki_ID_DE Wikidata_ID Wiki_ID_EN</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 001                 University of…      142     <span style="text-decoration: underline;">342</span>902 Q833822       18<span style="text-decoration: underline;">160</span>530</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 002                 University of…      361    3<span style="text-decoration: underline;">028</span>791 Q619201             <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 003                 Macromedia Un…      366    3<span style="text-decoration: underline;">258</span>067 Q1346417            <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 004                 FH Diakonie, …      375    1<span style="text-decoration: underline;">725</span>093 Q1391246            <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 006                 German Univer…      457    1<span style="text-decoration: underline;">378</span>117 Q1622148            <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 008                 University of…       71      <span style="text-decoration: underline;">31</span>115 Q696757        3<span style="text-decoration: underline;">492</span>726</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 012                 University of…      215      <span style="text-decoration: underline;">55</span>258 Q679134         <span style="text-decoration: underline;">994</span>579</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 013                 University of…      245     <span style="text-decoration: underline;">499</span>480 Q504723       12<span style="text-decoration: underline;">695</span>897</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 014                 University of…      279      <span style="text-decoration: underline;">49</span>915 Q447953       12<span style="text-decoration: underline;">696</span>005</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 015                 FernUniversit…      100     <span style="text-decoration: underline;">157</span>292 Q687017        3<span style="text-decoration: underline;">978</span>478</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 530 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: ROR_ID &lt;chr&gt;, Multirank &lt;chr&gt;, Ort &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Domain_Hochschule_HRK &lt;chr&gt;, CHE_DAAD_University_ID &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   CHE_DAAD_Town_ID &lt;chr&gt;, STUDIEREN_ID &lt;chr&gt;, STUDIEREN_KEY &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: Wiki_Key_EN &lt;chr&gt;, Wiki_Logo_DE &lt;chr&gt;, ROR_ID &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Multirank &lt;chr&gt;, Ort &lt;chr&gt;, Domain_Hochschule_HRK &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   CHE_DAAD_University_ID &lt;dbl&gt;, CHE_DAAD_Town_ID &lt;chr&gt;, STUDIEREN_ID &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   STUDIEREN_KEY &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </div>
 
