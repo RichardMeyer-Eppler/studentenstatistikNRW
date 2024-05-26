@@ -74,7 +74,7 @@ hochschulen |>
     )
   ) |> 
   dplyr::select(
-    Logo = Wiki_Logo_DE,
+    Logo = Wiki_Logo_DE_Thumbnail_URL,
     IDs,
     Ort,
     CHE_DAAD_Town_ID,
