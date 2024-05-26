@@ -13,12 +13,17 @@ URL: https://github.com/RichardMeyer-Eppler/studentenstatistikNRW, https://richa
 BugReports: 
     https://github.com/RichardMeyer-Eppler/studentenstatistikNRW/issues
 Depends: 
-    R (>= 3.5.0)
+    R (>= 4.2.0)
 Imports: 
     gtools,
+    gt,
     gtsummary,
     labelled,
-    rlang
+    rlang,
+    lifecycle,
+    cli,
+    glue,
+    withr
 Suggests: 
     dplyr,
     forcats,
@@ -28,6 +33,7 @@ Suggests:
     knitr,
     purrr,
     rmarkdown,
+    rvest,
     skimr,
     stringi,
     tibble,

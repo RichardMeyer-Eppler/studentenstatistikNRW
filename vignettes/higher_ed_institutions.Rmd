@@ -49,16 +49,36 @@ hochschulen
 
 ```{r, echo = FALSE}
 
+title <- "Institutions of Higher Education in Germany"
+subtitle <- "Sub"
+source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW"
+source_note <- glue::glue(
+  "<a href = {source_note_link}>{source_note_link}</a>"
+)
+
+# https://www.w3schools.com/tags/tag_summary.asp
+# https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/
+
 hochschulen |> 
   col_to_url(
     dplyr::everything()
+  ) |>
+  dplyr::mutate(
+    IDs = glue::glue(
+      "<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div>{STUDIEREN_KEY}</div></details>",
+      .na = ""
+    ),
+    IDs = purrr::map(
+      IDs,
+      gt::html
+    )
   ) |> 
   dplyr::select(
     Logo = Wiki_Logo_DE,
+    IDs,
     Ort,
     CHE_DAAD_Town_ID,
     Hochschule_EN,
-    Signatur = Hochschule_Signatur,
     Wikipedia = Wiki_ID_DE,
     Wiki_EN = Wiki_ID_EN,
     Wikidata = Wikidata_ID,
@@ -66,8 +86,17 @@ hochschulen |>
     CHE_DAAD_University_ID
   ) |> 
   gt::gt(
-    rowname_col = "Hochschule_Signatur",
-    rownames_to_stub	= TRUE
+    # rowname_col = "Hochschule_Signatur",
+    # rownames_to_stub	= TRUE
+  ) |>
+  gt::tab_header(
+    title = title,
+    subtitle = subtitle
+  ) |> 
+  gt::tab_source_note(
+    source_note = gt::html(
+      source_note
+    )
   ) |> 
   gt::fmt_url(
     columns = Wikipedia,
@@ -116,12 +145,13 @@ hochschulen |>
     img_source = "web"
   ) |> 
   # Inserts <br> for no reason!?
-  gt::sub_missing(
-    missing_text = " "
-  ) |>
+  # gt::sub_missing(
+  #   missing_text = " "
+  # ) |>
   gt::cols_align(
     align = "left",
     columns = c(
+      IDs,
       Hochschule_EN,
       Ort
     )
