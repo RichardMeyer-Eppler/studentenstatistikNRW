@@ -59,6 +59,38 @@ source_note <- glue::glue(
 # https://www.w3schools.com/tags/tag_summary.asp
 # https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/
 
+label_socal_media <- function(x) {
+  label <- dplyr::case_when(
+    stringr::str_detect(
+      x,
+      pattern = "x\\.com"
+    ) ~ "x",
+    stringr::str_detect(
+      x,
+      pattern = "facebook"
+    ) ~ "fb",
+    stringr::str_detect(
+      x,
+      pattern = "youtube"
+    ) ~ "yt",
+    stringr::str_detect(
+      x,
+      pattern = "instagram"
+    ) ~ "insta",
+    stringr::str_detect(
+      x,
+      pattern = "instagram"
+    ) ~ "insta",
+    stringr::str_detect(
+      x,
+      pattern = "p=4033"
+    ) ~ "mastodon",
+    .default = NA_character_
+  )
+  
+  return(label)
+}
+
 hochschulen |> 
   col_to_url(
     dplyr::everything()
@@ -83,7 +115,15 @@ hochschulen |>
     Wiki_EN = Wiki_ID_EN,
     Wikidata = Wikidata_ID,
     Ranking = Multirank,
-    CHE_DAAD_University_ID
+    CHE_DAAD_University_ID,
+    the_id,
+    arwu_id,
+    qs_world_id,
+    social_media_x = x_user,
+    social_media_facebook = facebook_id,
+    social_media_youtube = youtube_channel_id,
+    social_media_insta = insta_id,
+    social_media_mastodon = mastodon_id
   ) |> 
   gt::gt(
     # rowname_col = "Hochschule_Signatur",
@@ -110,6 +150,12 @@ hochschulen |>
     columns = Wikidata,
     label = "data"
   ) |> 
+  gt::fmt_url(
+    columns = dplyr::starts_with(
+      "social_media"
+    ),
+    label = \(x) label_socal_media(x)
+  ) |>
   gt::fmt_url(
     columns = Ranking,
     label = "Multirank"
@@ -140,6 +186,11 @@ hochschulen |>
     ),
     pattern = "{1}, {2}"
   ) |>
+  gt::cols_merge(
+    dplyr::starts_with(
+      "social_media"
+    )
+  ) |> 
   gtExtras::gt_img_rows(
     columns = Logo,
     img_source = "web"
