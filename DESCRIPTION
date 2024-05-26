@@ -17,6 +17,7 @@ Depends:
 Imports: 
     gtools,
     gt,
+    gtExtras,
     gtsummary,
     labelled,
     rlang,
