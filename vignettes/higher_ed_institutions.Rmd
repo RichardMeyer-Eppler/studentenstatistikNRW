@@ -10,6 +10,11 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
+
+# https://www.w3schools.com/css/css_rwd_viewport.asp
+# https://pkgdown.r-lib.org/reference/build_articles.html
+# https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -17,6 +22,12 @@ knitr::opts_chunk$set(
 ```
 
 As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. In this vignette, we will use this official data source as basis and go through considerable efforts to complement this data with other sources. In particular:
+
+<style type="text/css">
+.container template-article{
+  max-width: 1500px !important;
+}
+</style>
 
 -   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
 
@@ -91,17 +102,95 @@ label_socal_media <- function(x) {
   return(label)
 }
 
+label_ranking <- function(x) {
+  label <- dplyr::case_when(
+    stringr::str_detect(
+      x,
+      pattern = "umultirank"
+    ) ~ "umultirank",
+    stringr::str_detect(
+      x,
+      pattern = "daad"
+    ) ~ "che",
+    stringr::str_detect(
+      x,
+      pattern = "timeshighereducation"
+    ) ~ "the",
+    stringr::str_detect(
+      x,
+      pattern = "shanghairanking"
+    ) ~ "arwu",
+    stringr::str_detect(
+      x,
+      pattern = "topuniversities"
+    ) ~ "qs",
+    .default = NA_character_
+  )
+  
+  return(label)
+}
+
+ create_span <- function(string, label) {
+    if(is.na(string)) {
+      return(NA)
+    }
+
+    span <- glue::glue(
+      '<span style="white-space: pre;"><a href="{string}" target="_blank" style="color:#008B8B;text-decoration:underline;text-underline-position: under;display: inline-block;">{label}</a></span>'
+    )
+    
+    return(span)
+ }
+
+build_wiki_span <- function(urls, labels) {
+  
+  wiki_span <- purrr::map2(
+    urls,
+    labels,
+    create_span
+  ) |> 
+    purrr::discard(
+      is.na
+    ) |> 
+    purrr::list_c() |> 
+    stringr::str_flatten(
+      collapse = " "
+    )
+  
+  return(wiki_span)
+}
+
 hochschulen |> 
   col_to_url(
     dplyr::everything()
   ) |>
+  dplyr::rowwise() |>
+  dplyr::mutate(
+    Wiki = build_wiki_span(
+      urls = c(
+        Wiki_ID_DE,
+        Wiki_ID_EN,
+        Wikidata_ID
+      ),
+      labels = c(
+        'de',
+        'en',
+        'data'
+      )
+    )
+  ) |> 
+  dplyr::ungroup() |> 
   dplyr::mutate(
     IDs = glue::glue(
-      "<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div>{STUDIEREN_KEY}</div></details>",
+      "<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div>{gepris_id}</div><div>{STUDIEREN_KEY}</div></details>",
       .na = ""
     ),
     IDs = purrr::map(
       IDs,
+      gt::html
+    ),
+    Wiki = purrr::map(
+      Wiki,
       gt::html
     )
   ) |> 
@@ -111,14 +200,16 @@ hochschulen |>
     Ort,
     CHE_DAAD_Town_ID,
     Hochschule_EN,
-    Wikipedia = Wiki_ID_DE,
-    Wiki_EN = Wiki_ID_EN,
-    Wikidata = Wikidata_ID,
-    Ranking = Multirank,
-    CHE_DAAD_University_ID,
-    the_id,
-    arwu_id,
-    qs_world_id,
+    Wiki,
+    # Wikipedia = Wiki_ID_DE,
+    # Wiki_EN = Wiki_ID_EN,
+    # Wikidata = Wikidata_ID,
+    ranking_multirank = Multirank,
+    ranking_che = CHE_DAAD_University_ID,
+    ranking_the = the_id,
+    # Academic Ranking of World Universities - Shanghai Ranking
+    ranking_arwu = arwu_id,
+    ranking_qs = qs_world_id,
     social_media_x = x_user,
     social_media_facebook = facebook_id,
     social_media_youtube = youtube_channel_id,
@@ -138,18 +229,18 @@ hochschulen |>
       source_note
     )
   ) |> 
-  gt::fmt_url(
-    columns = Wikipedia,
-    label = "de"
-  ) |> 
-  gt::fmt_url(
-    columns = Wiki_EN,
-    label = "en"
-  ) |> 
-  gt::fmt_url(
-    columns = Wikidata,
-    label = "data"
-  ) |> 
+  # gt::fmt_url(
+  #   columns = Wikipedia,
+  #   label = "de"
+  # ) |> 
+  # gt::fmt_url(
+  #   columns = Wiki_EN,
+  #   label = "en"
+  # ) |> 
+  # gt::fmt_url(
+  #   columns = Wikidata,
+  #   label = "data"
+  # ) |> 
   gt::fmt_url(
     columns = dplyr::starts_with(
       "social_media"
@@ -157,55 +248,61 @@ hochschulen |>
     label = \(x) label_socal_media(x)
   ) |>
   gt::fmt_url(
-    columns = Ranking,
-    label = "Multirank"
+    columns = dplyr::starts_with(
+      "ranking"
+    ),
+    label = \(x) label_ranking(x)
   ) |>
   gt::fmt_url(
-    columns = starts_with(
-      "CHE_DAAD"
-    ),
-    label = "CHE-DAAD"
+    columns = CHE_DAAD_Town_ID,
+    label = "CHE-Town"
   ) |>
-  gt::cols_merge(
-    dplyr::starts_with(
-      "Wiki"
-    ),
-    pattern = "{1}, {2}, {3}"
-  ) |>
+  # gt::cols_merge(
+  #   dplyr::starts_with(
+  #     "Wiki"
+  #   ),
+  #   pattern = "{1}, {2}, {3}"
+  # ) |>
   gt::cols_merge(
     c(
       Ort,
       CHE_DAAD_Town_ID
     ),
-    pattern = "{1} ({2})"
+    pattern = "{1}\n({2})"
   ) |>
   gt::cols_merge(
-    c(
-      Ranking,
-      CHE_DAAD_University_ID
-    ),
-    pattern = "{1}, {2}"
+    dplyr::starts_with(
+      "ranking"
+    )
   ) |>
   gt::cols_merge(
     dplyr::starts_with(
       "social_media"
     )
   ) |> 
+  # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
+  # https://www.w3schools.com/tags/att_img_height.asp
   gtExtras::gt_img_rows(
     columns = Logo,
-    img_source = "web"
+    img_source = "web",
+    height = 45
   ) |> 
   # Inserts <br> for no reason!?
   # gt::sub_missing(
   #   missing_text = " "
   # ) |>
+  gt::cols_label(
+    Hochschule_EN = "Hochschule",
+    ranking_multirank = "Rankings",
+    social_media_x = "Social Media"
+  ) |> 
   gt::cols_align(
     align = "left",
-    columns = c(
-      IDs,
-      Hochschule_EN,
-      Ort
-    )
+    columns = dplyr::everything()
+  ) |> 
+  gt::cols_align(
+    align = "right",
+    columns = Logo
   ) |> 
   gt::opt_interactive(
     use_search = TRUE,
