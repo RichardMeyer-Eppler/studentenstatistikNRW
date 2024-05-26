@@ -1,6 +1,6 @@
 #' Hochschulen - Higher education institutions in Germany
 #'
-#' Tbc
+#' TO DO: Datensatzbeschreibung
 #'
 #' @format A tibble with `r get_nrow(hochschulen)` rows and `r get_ncol(hochschulen)` variables:
 #' \describe{
@@ -9,3 +9,7 @@
 #'
 #' @examples
 #' hochschulen
+#'
+#' @source TO DO: Source ergänzen
+'hochschulen'
+
