@@ -1,0 +1,44 @@
+---
+title: "Using the Wiesbaden package with Destatis data"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(studentenstatistikNRW)
+library(httr2)
+```
+
+# Authentification
+
+* See `vignette("wrapping-apis", package = "httr2")`
+
+```{r}
+httr2::secret_has_key(
+  "STUDENTENSTATISTIKNRW_KEY"
+)
+
+wiesbaden::save_credentials(
+  db = "de",
+  user = httr2::secret_decrypt(
+    "F7n1i0Z8YhyeDEYjnNaw14KEYzXc3ICfqGw",
+    "STUDENTENSTATISTIKNRW_KEY"
+  ),
+  password = httr2::secret_decrypt(
+    "HttWvnmkxOru6VKzxox084iIEv8ZrFIqVXEO",
+    "STUDENTENSTATISTIKNRW_KEY"
+  )
+)
+
+wiesbaden::test_login(
+    genesis = c(
+    db = "de"
+  )
+)
+```
+
