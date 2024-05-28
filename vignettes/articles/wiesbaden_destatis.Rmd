@@ -18,27 +18,32 @@ library(httr2)
 
 * See `vignette("wrapping-apis", package = "httr2")`
 
+## Check whether repository secret is available
+
 ```{r}
 httr2::secret_has_key(
   "STUDENTENSTATISTIKNRW_KEY"
 )
+```
 
-wiesbaden::save_credentials(
-  db = "de",
-  user = httr2::secret_decrypt(
-    "F7n1i0Z8YhyeDEYjnNaw14KEYzXc3ICfqGw",
-    "STUDENTENSTATISTIKNRW_KEY"
-  ),
-  password = httr2::secret_decrypt(
-    "HttWvnmkxOru6VKzxox084iIEv8ZrFIqVXEO",
-    "STUDENTENSTATISTIKNRW_KEY"
-  )
-)
+## Test Login for GENESIS-Online
+
+```{r}
+
+# Using wiesbaden::save_credentials() does not work in automated setting, see https://github.com/r-lib/keyring/issues/68
 
 wiesbaden::test_login(
     genesis = c(
-    db = "de"
+      db = "de",
+      user = httr2::secret_decrypt(
+        "F7n1i0Z8YhyeDEYjnNaw14KEYzXc3ICfqGw",
+        "STUDENTENSTATISTIKNRW_KEY"
+      ),
+      password = httr2::secret_decrypt(
+        "HttWvnmkxOru6VKzxox084iIEv8ZrFIqVXEO",
+        "STUDENTENSTATISTIKNRW_KEY"
+      )
   )
 )
-```
 
+```
