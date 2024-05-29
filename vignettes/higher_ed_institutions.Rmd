@@ -15,37 +15,15 @@ editor_options:
 # https://pkgdown.r-lib.org/reference/build_articles.html
 # https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output
 
+# https://r-pkgs.org/vignettes.html
+# https://httr2.r-lib.org/articles/wrapping-apis.html#secret-management
+# https://pkgdown.r-lib.org/articles/linking.html
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
-
-As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. In this vignette, we will use this official data source as basis and go through considerable efforts to complement this data with other sources. In particular:
-
-<style type="text/css">
-.container template-article{
-  max-width: 1500px !important;
-}
-</style>
-
--   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
-
--   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are the "most authoritative German numbers" that exist.
-
--   As described in the [separate vignette on the global Research Organization Registry (ROR)](ror.html), we use the ROR REST API to retrieve additional data and identifiers which are then matched to the existing data.
-
-This is the exhaustive list of additional data sources that are linked up:
-
--   links to the German and English Wikipedia article for each institution,
-
--   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
-
--   the link to each institution on [studieren.de](https://studieren.de/),
-
--   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service in English,
-
--   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
 
 ## The *Hochschulen* Table
 
@@ -58,7 +36,7 @@ hochschulen
 
 ## Interactive HTML Table created with `gt` Package
 
-```{r, echo = FALSE}
+```{r gt-vars, echo = FALSE}
 
 title <- "Institutions of Higher Education in Germany"
 subtitle <- "Sub"
@@ -66,6 +44,10 @@ source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
+
+```
+
+```{r gt-functions, echo = FALSE}
 
 # https://www.w3schools.com/tags/tag_summary.asp
 # https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/
@@ -130,17 +112,21 @@ label_ranking <- function(x) {
   return(label)
 }
 
- create_span <- function(string, label) {
-    if(is.na(string)) {
-      return(NA)
-    }
-
+create_span <- function(string, label) {
+    
+  # background-color: rgba(255, 0, 0, 0.5)
+  if(is.na(string)) {
+    span <- glue::glue(
+      '<span style="white-space: pre;"><a" target="_blank" style="color:rgba(0, 0, 0);display: inline-block;">{label}</a></span>'
+    )
+  } else {
     span <- glue::glue(
       '<span style="white-space: pre;"><a href="{string}" target="_blank" style="color:#008B8B;text-decoration:underline;text-underline-position: under;display: inline-block;">{label}</a></span>'
     )
-    
-    return(span)
- }
+  }
+
+  return(span)
+}
 
 build_wiki_span <- function(urls, labels) {
   
@@ -160,7 +146,260 @@ build_wiki_span <- function(urls, labels) {
   return(wiki_span)
 }
 
+# get_file_ext <- function(file) {
+#   pos <- regexpr("\\.([[:alnum:]]+)$", file)
+#   ifelse(pos > -1L, substring(file, pos + 1L), "")
+# }
+
+# Function for setting the MIME type
+# get_mime_type <- function(file) {
+# 
+#   extension <- tolower(get_file_ext(file))
+# 
+#   switch(
+#     extension,
+#     svg = "image/svg+xml",
+#     jpg = "image/jpeg",
+#     paste("image", extension, sep = "/")
+#   )
+# }
+
+
+# https://github.com/rstudio/gt/blob/a86e11d2d4ba1a0e77bdd73358f49c6ddcac779f/R/image.R#L438C1-L464C2
+# get_image_uri <- function(file) {
+# 
+#   # Create a list of `raw` objects
+#   image_raw <-
+#     lapply(
+#       file, FUN = function(x) {
+#         readBin(
+#           con = x,
+#           what = "raw",
+#           n = file.info(x)$size
+#         )
+#       }
+#     )
+# 
+#   vapply(
+#     seq_along(image_raw),
+#     FUN.VALUE = character(1L),
+#     USE.NAMES = FALSE, FUN = function(x) {
+#       paste0(
+#         "data:", get_mime_type(file[x]),
+#         ";base64,", base64enc::base64encode(image_raw[[x]])
+#       )
+#     }
+#   )
+# }
+
+build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
+  # https://www.w3schools.com/html/html_images.asp
+    # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
+  # https://www.w3schools.com/tags/att_img_height.asp
+  # html <- glue::glue(
+  #   '<a href="{hochschule_url}" target="_blank"> <img src="{logo_url}" alt="{hochschule_name}" style="height:{height}px;"></a>'
+  # )
+  
+  # logo_url <- "https://upload.wikimedia.org/wikipedia/commons/8/81/EUFH_Logo_GSP.png"
+  
+#   img_path <- fs::path_sanitize(
+#     # fs::path(
+#     #   r'(\logos\test\)',
+#       fs::path_file(
+#         logo_url
+# #      )
+#     )
+#   )
+  
+  # height <- 30
+  # hochschule_url <- hs_url[1]
+  
+  img_path <- fs::path_file(
+    logo_url
+  )
+  
+  img_tags <- purrr::map_chr(
+    img_path,
+    gt::local_image,
+    height = height
+  )
+  
+  img_tag_wrangled <- img_tags[1] |> 
+    stringr::str_replace(
+       pattern = glue::glue(
+         'style=\\"height:{height}px;\\">'
+        ),
+       replacement = glue::glue(
+         'style="height:{height}px;border:0px none"</a>'
+       )
+    )
+  
+  html <- glue::glue(
+    '<a href="{hochschule_url}" target="_blank"> {img_tag_wrangled}'
+  )
+  
+  # uri <- get_image_uri(img_path)
+  
+  # html <- glue::glue(
+  #   '<a href="{hochschule_url}" target="_blank"> <img src="{uri}"  style="height:{height}px;border:0px none"</a>'
+  # )
+  
+  return(html)
+}
+
+write_img <- function(logo_url, hochschule_url, hochschule_name, height = 45L) {
+  
+  # fs::dir_create(
+  #   r'(\logos\test\)'
+  # )
+  
+  img_path <- fs::path(
+#    r'(.\vignettes\)',
+    here::here(),
+    fs::path_sanitize(
+      fs::path_file(
+        logo_url
+      )
+    )
+  )
+  
+  df <- tibble::tibble(
+    img_path,
+    logo_url
+  ) |> 
+    dplyr::filter(
+      !is.na(
+        logo_url
+      )
+    )
+  
+  img <- magick::image_read(
+    df$logo_url
+  )
+  
+  img <- magick::image_border(
+    img,
+    "#000080", 
+    "20x10"
+  )
+  
+  magick::image_write(
+    img,
+    df$img_path
+  )
+}
+
+```
+
+```{r, eval = FALSE}
+
+hochschulen_filtered <- hochschulen |> 
+  dplyr::filter(
+    !is.na(
+      Wiki_Logo_DE_Thumbnail_URL
+    )
+  )
+
+# build_logo_html(
+#   logo_url = hochschulen_filtered |>
+#     col_to_url(
+#       dplyr::everything()
+#     ) |>
+#     dplyr::pull(
+#       Wiki_Logo_DE_Thumbnail_URL
+#    ),
+#   hochschule_url = hochschulen_filtered$url,
+#   hochschule_name = hochschulen_filtered$Hochschule
+# )
+
+logo_url <- hochschulen_filtered |>
+    col_to_url(dplyr::everything()) |>
+      dplyr::pull(
+      Wiki_Logo_DE_Thumbnail_URL
+   )
+
+hs_url <- hochschulen_filtered$url
+
+purrr::walk2(
+  logo_url,
+  hs_url,
+  write_img
+)
+
+write_img(
+    logo_url = logo_url[12],
+    hochschule_url = hs_url[12]
+)
+```
+
+
+```{r}
 hochschulen |> 
+  dplyr::filter(
+    !is.na(
+      Wiki_Logo_DE_Thumbnail_URL
+    )
+  ) |>
+  col_to_url(
+    dplyr::everything()
+  ) |>
+  dplyr::select(
+    Wiki_Logo_DE_Thumbnail_URL,
+    url
+  ) |> 
+  # dplyr::mutate(
+  #   Wiki_Logo_DE_Thumbnail_URL = fs::path_sanitize(
+  #     fs::path_file(
+  #       Wiki_Logo_DE_Thumbnail_URL
+  #     )
+  #   )
+  #   # ,Wiki_Logo_DE_Thumbnail_URL = stringr::str_replace_na(
+  #   #   Wiki_Logo_DE_Thumbnail_URL,
+  #   #   replacement = "blank.png"
+  #   # )
+  # ) |> 
+  dplyr::slice_head(
+    n = 5
+  ) |> 
+  dplyr::rowwise() |> 
+  dplyr::mutate(
+    Logo = build_logo_html(
+      logo_url = Wiki_Logo_DE_Thumbnail_URL,
+      hochschule_url = url
+    )
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(
+    Logo = purrr::map(
+      Logo,
+      gt::html
+    )
+  ) |> 
+  gt::gt()
+
+# |> 
+#   gt::text_transform(
+#     fn = function(x) {
+#       gt::local_image(
+#         filename = x,
+#         height = 25L
+#       )
+#     },
+#     locations = gt::cells_body(
+#       columns = Wiki_Logo_DE_Thumbnail_URL
+#     )
+#   )
+```
+
+
+```{r, echo = FALSE, eval = FALSE}
+
+hochschulen |> 
+  dplyr::filter(
+    !is.na(
+      Wiki_Logo_DE_Thumbnail_URL
+    )
+  ) |> 
   col_to_url(
     dplyr::everything()
   ) |>
@@ -181,6 +420,14 @@ hochschulen |>
   ) |> 
   dplyr::ungroup() |> 
   dplyr::mutate(
+    Logo = build_logo_html(
+      logo_url = Wiki_Logo_DE_Thumbnail_URL,
+      hochschule_url = url
+    ),
+    Logo = purrr::map(
+      Logo,
+      gt::html
+    ),
     IDs = glue::glue(
       "<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div>{gepris_id}</div><div>{STUDIEREN_KEY}</div></details>",
       .na = ""
@@ -193,17 +440,18 @@ hochschulen |>
       Wiki,
       gt::html
     )
+    # ,Logo = purrr::map(
+    #   Logo,
+    #   gt::html
+    # )
   ) |> 
   dplyr::select(
-    Logo = Wiki_Logo_DE_Thumbnail_URL,
+    Logo,
     IDs,
     Ort,
     CHE_DAAD_Town_ID,
     Hochschule_EN,
     Wiki,
-    # Wikipedia = Wiki_ID_DE,
-    # Wiki_EN = Wiki_ID_EN,
-    # Wikidata = Wikidata_ID,
     ranking_multirank = Multirank,
     ranking_che = CHE_DAAD_University_ID,
     ranking_the = the_id,
@@ -217,6 +465,7 @@ hochschulen |>
     social_media_mastodon = mastodon_id
   ) |> 
   gt::gt(
+    id = "hochschulen"
     # rowname_col = "Hochschule_Signatur",
     # rownames_to_stub	= TRUE
   ) |>
@@ -229,18 +478,6 @@ hochschulen |>
       source_note
     )
   ) |> 
-  # gt::fmt_url(
-  #   columns = Wikipedia,
-  #   label = "de"
-  # ) |> 
-  # gt::fmt_url(
-  #   columns = Wiki_EN,
-  #   label = "en"
-  # ) |> 
-  # gt::fmt_url(
-  #   columns = Wikidata,
-  #   label = "data"
-  # ) |> 
   gt::fmt_url(
     columns = dplyr::starts_with(
       "social_media"
@@ -257,12 +494,6 @@ hochschulen |>
     columns = CHE_DAAD_Town_ID,
     label = "CHE-Town"
   ) |>
-  # gt::cols_merge(
-  #   dplyr::starts_with(
-  #     "Wiki"
-  #   ),
-  #   pattern = "{1}, {2}, {3}"
-  # ) |>
   gt::cols_merge(
     c(
       Ort,
@@ -280,17 +511,6 @@ hochschulen |>
       "social_media"
     )
   ) |> 
-  # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
-  # https://www.w3schools.com/tags/att_img_height.asp
-  gtExtras::gt_img_rows(
-    columns = Logo,
-    img_source = "web",
-    height = 45
-  ) |> 
-  # Inserts <br> for no reason!?
-  # gt::sub_missing(
-  #   missing_text = " "
-  # ) |>
   gt::cols_label(
     Hochschule_EN = "Hochschule",
     ranking_multirank = "Rankings",
@@ -304,10 +524,59 @@ hochschulen |>
     align = "right",
     columns = Logo
   ) |> 
+  gt::cols_width(
+    Logo ~ gt::px(
+      350L
+    )
+  ) |> 
   gt::opt_interactive(
     use_search = TRUE,
     use_highlight = TRUE,
     page_size_default = 50
-  )
-  
+  )  
+  # Does not work - why!?
+  # |> gt::tab_style(
+  #   style = gt::cell_text(
+  #     v_align = "bottom"
+  #   ),
+  #   locations = gt::cells_body(
+  #     columns = Logo
+  #   )
+  # ) |> 
+  # gt::opt_css(
+  #   css = "
+  #   #hochschulen .rt-td-inner{
+  #     line_height:0%;
+  #   }
+  #   "
+  # )
+
 ```
+
+As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. In this vignette, we will use this official data source as basis and go through considerable efforts to complement this data with other sources. In particular:
+
+<style type="text/css">
+.container template-article{
+  max-width: 1500px !important;
+}
+</style>
+
+-   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
+
+-   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are the "most authoritative German numbers" that exist.
+
+-   As described in `vignette("ror")`, we use the global Research Organization Registry (ROR) REST API to retrieve additional data and identifiers which are then matched to the existing data.
+
+This is the exhaustive list of additional data sources that are linked up:
+
+-   links to the German and English Wikipedia article for each institution,
+
+-   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
+
+-   the link to each institution on [studieren.de](https://studieren.de/),
+
+-   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service in English,
+
+-   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
+
+
