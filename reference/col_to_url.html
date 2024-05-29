@@ -98,26 +98,26 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">col_to_url</span><span class="op">(</span><span class="va">hochschulen</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 540 × 32</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Hochschule_Signatur Hochschule_EN  `Hs-Nr.` Wiki_ID_DE Wikidata_ID Wiki_ID_EN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 001                 University of… 142      https://d… https://ww… https://e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 002                 University of… 361      https://d… https://ww… <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 003                 Macromedia Un… 366      https://d… https://ww… <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 004                 FH Diakonie, … 375      https://d… https://ww… <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 006                 German Univer… 457      https://d… https://ww… <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 008                 University of… 71       https://d… https://ww… https://e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 012                 University of… 215      https://d… https://ww… https://e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 013                 University of… 245      https://d… https://ww… https://e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 014                 University of… 279      https://d… https://ww… https://e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 015                 FernUniversit… 100      https://d… https://ww… https://e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 540 × 34</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Hochschule_Signatur Hochschule  Hochschule_EN `Hs-Nr.` Wiki_ID_DE Wikidata_ID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 001                 Universitä… University o… 142      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 002                 APOLLON Ho… University o… 361      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 003                 Hochschule… Macromedia U… 366      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 004                 Fachhochsc… FH Diakonie,… 375      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 006                 Hochschule… German Unive… 457      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 008                 Universitä… University o… 71       https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 012                 Universitä… University o… 215      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 013                 Universitä… University o… 245      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 014                 Universitä… University o… 279      https://d… https://ww…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 015                 Fernuniver… FernUniversi… 100      https://d… https://ww…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 530 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 26 more variables: Wiki_Key_EN &lt;glue&gt;, Wiki_Logo_DE &lt;glue&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wiki_Logo_DE_File &lt;glue&gt;, Wiki_Logo_DE_Description &lt;glue&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wiki_Logo_DE_URL &lt;glue&gt;, Wiki_Logo_DE_Thumbnail_URL &lt;glue&gt;, ROR_ID &lt;glue&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Multirank &lt;glue&gt;, Ort &lt;glue&gt;, Domain_Hochschule_HRK &lt;glue&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   CHE_DAAD_University_ID &lt;glue&gt;, CHE_DAAD_Town_ID &lt;glue&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   STUDIEREN_ID &lt;glue&gt;, STUDIEREN_KEY &lt;glue&gt;, isni &lt;glue&gt;, gnd_id &lt;glue&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 28 more variables: Wiki_ID_EN &lt;glue&gt;, Wiki_Key_EN &lt;glue&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wiki_Logo_DE &lt;glue&gt;, Wiki_Logo_DE_File &lt;glue&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wiki_Logo_DE_Description &lt;glue&gt;, Wiki_Logo_DE_URL &lt;glue&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wiki_Logo_DE_Thumbnail_URL &lt;glue&gt;, ROR_ID &lt;glue&gt;, Multirank &lt;glue&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Ort &lt;glue&gt;, Domain_Hochschule_HRK &lt;glue&gt;, CHE_DAAD_University_ID &lt;glue&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   CHE_DAAD_Town_ID &lt;glue&gt;, STUDIEREN_ID &lt;glue&gt;, STUDIEREN_KEY &lt;glue&gt;, …</span></span>
 </code></pre></div>
     </div>
   </div>
