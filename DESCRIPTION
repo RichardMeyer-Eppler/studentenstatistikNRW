@@ -26,6 +26,7 @@ Imports:
     glue,
     withr
 Suggests: 
+    base64enc,
     dplyr,
     forcats,
     gtools,
