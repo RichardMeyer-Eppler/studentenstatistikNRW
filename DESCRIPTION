@@ -26,13 +26,13 @@ Imports:
     glue,
     withr
 Suggests: 
-    base64enc,
     dplyr,
     forcats,
     gtools,
     here,
     httr2,
     knitr,
+    magick,
     purrr,
     rmarkdown,
     rvest,
