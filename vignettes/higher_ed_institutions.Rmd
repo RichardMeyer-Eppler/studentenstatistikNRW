@@ -146,52 +146,6 @@ build_wiki_span <- function(urls, labels) {
   return(wiki_span)
 }
 
-# get_file_ext <- function(file) {
-#   pos <- regexpr("\\.([[:alnum:]]+)$", file)
-#   ifelse(pos > -1L, substring(file, pos + 1L), "")
-# }
-
-# Function for setting the MIME type
-# get_mime_type <- function(file) {
-# 
-#   extension <- tolower(get_file_ext(file))
-# 
-#   switch(
-#     extension,
-#     svg = "image/svg+xml",
-#     jpg = "image/jpeg",
-#     paste("image", extension, sep = "/")
-#   )
-# }
-
-
-# https://github.com/rstudio/gt/blob/a86e11d2d4ba1a0e77bdd73358f49c6ddcac779f/R/image.R#L438C1-L464C2
-# get_image_uri <- function(file) {
-# 
-#   # Create a list of `raw` objects
-#   image_raw <-
-#     lapply(
-#       file, FUN = function(x) {
-#         readBin(
-#           con = x,
-#           what = "raw",
-#           n = file.info(x)$size
-#         )
-#       }
-#     )
-# 
-#   vapply(
-#     seq_along(image_raw),
-#     FUN.VALUE = character(1L),
-#     USE.NAMES = FALSE, FUN = function(x) {
-#       paste0(
-#         "data:", get_mime_type(file[x]),
-#         ";base64,", base64enc::base64encode(image_raw[[x]])
-#       )
-#     }
-#   )
-# }
-
 img_path <- function(logo_url) {
   img_path <- fs::path(
     here::here(),
@@ -207,17 +161,8 @@ img_path <- function(logo_url) {
 
 build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   # https://www.w3schools.com/html/html_images.asp
-    # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
+  # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
   # https://www.w3schools.com/tags/att_img_height.asp
-  # html <- glue::glue(
-  #   '<a href="{hochschule_url}" target="_blank"> <img src="{logo_url}" alt="{hochschule_name}" style="height:{height}px;"></a>'
-  # )
-  
-  # logo_url <- "https://upload.wikimedia.org/wikipedia/commons/8/81/EUFH_Logo_GSP.png"
-  
-  
-  # height <- 30
-  # hochschule_url <- hs_url[1]
   
   img_path <- if(
     is.na(logo_url)
@@ -226,6 +171,12 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   } else {
     img_path <- img_path(logo_url)
   }
+  
+  hochschule_url_na <- ifelse(
+    is.na(hochschule_url),
+    "#0",
+    hochschule_url
+  )
   
   img_tag <- gt::local_image(
     filename = img_path,
@@ -238,12 +189,12 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
          'style=\\"height:{height}px;\\">'
         ),
        replacement = glue::glue(
-         'style="height:{height}px;border:0px none"</a>'
+         'style=\\"height:{height}px;border:0px none;\\"</a>'
        )
     )
   
   html <- glue::glue(
-    '<a href="{hochschule_url}" target="_blank"> {img_tag_wrangled}'
+    '<a href="{hochschule_url_na}" target="_blank"> {img_tag_wrangled}'
   )
   
   return(html)
@@ -251,7 +202,7 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
 
 write_img <- function(logo_url, height = 45L) {
   
-  if(is.na(logo_url)) {return()}
+  if(is.na(logo_url)) {return(NA_character_)}
   
   img_path <- img_path(logo_url)
   
@@ -276,22 +227,15 @@ write_img <- function(logo_url, height = 45L) {
     img_resized,
     img_path
   )
+  
+  return(img_path)
 }
 
 ```
 
 ```{r write-images}
 
-hochschulen_filtered <- hochschulen 
-# 
-# |> 
-#   dplyr::filter(
-#     !is.na(
-#       Wiki_Logo_DE_Thumbnail_URL
-#     )
-#   )
-
-logo_url <- hochschulen_filtered |>
+logo_url <- hochschulen[c(1:10),] |>
     col_to_url(
       dplyr::everything()
     ) |>
@@ -300,56 +244,33 @@ logo_url <- hochschulen_filtered |>
    )
 
 # Using purrr shouldn't be necessary because Magick functions are vectorized, but I kept getting errors
-purrr::walk(
-  logo_url,
+
+# purrr::map_chr(logo_url, write_img)
+
+write_image_safely <- purrr::safely(
   write_img
 )
 
-```
-
-
-```{r}
-hochschulen_filtered |> 
-  col_to_url(
-    dplyr::everything()
-  ) |>
-  dplyr::select(
-    Wiki_Logo_DE_Thumbnail_URL,
-    url
+logo_url_written <- purrr::map(
+  logo_url,
+  write_image_safely
+) |> 
+  purrr::map(
+    "result"
   ) |> 
-  # dplyr::slice_head(
-  #   n = 5
-  # )|> 
-  dplyr::rowwise() |> 
-  dplyr::mutate(
-    Logo = build_logo_html(
-      logo_url = Wiki_Logo_DE_Thumbnail_URL,
-      hochschule_url = url
-    )
-  ) |> 
-  dplyr::ungroup() |> 
-  dplyr::mutate(
-    Logo = purrr::map(
-      Logo,
-      gt::html
-    )
-  ) |> 
-  gt::gt()
+  purrr::list_c()
 
 ```
 
+```{r, echo = FALSE}
 
-```{r, echo = FALSE, eval = FALSE}
-
-hochschulen |> 
-  dplyr::filter(
-    !is.na(
-      Wiki_Logo_DE_Thumbnail_URL
-    )
-  ) |> 
+hochschulen[c(1:10),] |> 
   col_to_url(
     dplyr::everything()
   ) |>
+  dplyr::mutate(
+    logo_url = logo_url_written
+  ) |> 
   dplyr::rowwise() |>
   dplyr::mutate(
     Wiki = build_wiki_span(
@@ -363,14 +284,14 @@ hochschulen |>
         'en',
         'data'
       )
+    ),
+    Logo = build_logo_html(
+      logo_url = logo_url,
+      hochschule_url = url
     )
   ) |> 
   dplyr::ungroup() |> 
   dplyr::mutate(
-    Logo = build_logo_html(
-      logo_url = Wiki_Logo_DE_Thumbnail_URL,
-      hochschule_url = url
-    ),
     Logo = purrr::map(
       Logo,
       gt::html
@@ -387,10 +308,6 @@ hochschulen |>
       Wiki,
       gt::html
     )
-    # ,Logo = purrr::map(
-    #   Logo,
-    #   gt::html
-    # )
   ) |> 
   dplyr::select(
     Logo,
