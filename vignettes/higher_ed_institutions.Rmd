@@ -215,19 +215,17 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   
   # logo_url <- "https://upload.wikimedia.org/wikipedia/commons/8/81/EUFH_Logo_GSP.png"
   
-#   img_path <- fs::path_sanitize(
-#     # fs::path(
-#     #   r'(\logos\test\)',
-#       fs::path_file(
-#         logo_url
-# #      )
-#     )
-#   )
   
   # height <- 30
   # hochschule_url <- hs_url[1]
   
-  img_path <- img_path(logo_url)
+  img_path <- if(
+    is.na(logo_url)
+  ) {
+    img_path <- gt::test_image()
+  } else {
+    img_path <- img_path(logo_url)
+  }
   
   img_tag <- gt::local_image(
     filename = img_path,
@@ -248,31 +246,17 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
     '<a href="{hochschule_url}" target="_blank"> {img_tag_wrangled}'
   )
   
-  # uri <- get_image_uri(img_path)
-  
-  # html <- glue::glue(
-  #   '<a href="{hochschule_url}" target="_blank"> <img src="{uri}"  style="height:{height}px;border:0px none"</a>'
-  # )
-  
   return(html)
 }
 
 write_img <- function(logo_url, height = 45L) {
   
+  if(is.na(logo_url)) {return()}
+  
   img_path <- img_path(logo_url)
   
-  df <- tibble::tibble(
-    img_path,
-    logo_url
-  ) |> 
-    dplyr::filter(
-      !is.na(
-        logo_url
-      )
-    )
-  
   img <- magick::image_read(
-    df$logo_url
+    logo_url
   )
   
   img_trimmed <- magick::image_trim(
@@ -290,7 +274,7 @@ write_img <- function(logo_url, height = 45L) {
   
   magick::image_write(
     img_resized,
-    df$img_path
+    img_path
   )
 }
 
@@ -298,12 +282,14 @@ write_img <- function(logo_url, height = 45L) {
 
 ```{r write-images}
 
-hochschulen_filtered <- hochschulen |> 
-  dplyr::filter(
-    !is.na(
-      Wiki_Logo_DE_Thumbnail_URL
-    )
-  )
+hochschulen_filtered <- hochschulen 
+# 
+# |> 
+#   dplyr::filter(
+#     !is.na(
+#       Wiki_Logo_DE_Thumbnail_URL
+#     )
+#   )
 
 logo_url <- hochschulen_filtered |>
     col_to_url(
@@ -331,9 +317,9 @@ hochschulen_filtered |>
     Wiki_Logo_DE_Thumbnail_URL,
     url
   ) |> 
-  dplyr::slice_head(
-    n = 5
-  )|> 
+  # dplyr::slice_head(
+  #   n = 5
+  # )|> 
   dplyr::rowwise() |> 
   dplyr::mutate(
     Logo = build_logo_html(
