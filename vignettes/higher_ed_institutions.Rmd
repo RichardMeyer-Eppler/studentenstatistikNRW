@@ -192,6 +192,19 @@ build_wiki_span <- function(urls, labels) {
 #   )
 # }
 
+img_path <- function(logo_url) {
+  img_path <- fs::path(
+    here::here(),
+    fs::path_sanitize(
+      fs::path_file(
+        logo_url
+      )
+    )
+  )
+  
+  return(img_path)
+}
+
 build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   # https://www.w3schools.com/html/html_images.asp
     # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
@@ -214,17 +227,14 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   # height <- 30
   # hochschule_url <- hs_url[1]
   
-  img_path <- fs::path_file(
-    logo_url
-  )
+  img_path <- img_path(logo_url)
   
-  img_tags <- purrr::map_chr(
-    img_path,
-    gt::local_image,
+  img_tag <- gt::local_image(
+    filename = img_path,
     height = height
   )
-  
-  img_tag_wrangled <- img_tags[1] |> 
+    
+  img_tag_wrangled <- img_tag |> 
     stringr::str_replace(
        pattern = glue::glue(
          'style=\\"height:{height}px;\\">'
@@ -247,21 +257,9 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   return(html)
 }
 
-write_img <- function(logo_url, hochschule_url, hochschule_name, height = 45L) {
+write_img <- function(logo_url, height = 45L) {
   
-  # fs::dir_create(
-  #   r'(\logos\test\)'
-  # )
-  
-  img_path <- fs::path(
-#    r'(.\vignettes\)',
-    here::here(),
-    fs::path_sanitize(
-      fs::path_file(
-        logo_url
-      )
-    )
-  )
+  img_path <- img_path(logo_url)
   
   df <- tibble::tibble(
     img_path,
@@ -277,21 +275,28 @@ write_img <- function(logo_url, hochschule_url, hochschule_name, height = 45L) {
     df$logo_url
   )
   
-  img <- magick::image_border(
-    img,
-    "#000080", 
-    "20x10"
+  img_trimmed <- magick::image_trim(
+    img
+  )
+
+  img_resized <- magick::image_resize(
+    img_trimmed,
+    paste0(
+      "x",
+      height,
+      ">"
+    )
   )
   
   magick::image_write(
-    img,
+    img_resized,
     df$img_path
   )
 }
 
 ```
 
-```{r, eval = FALSE}
+```{r write-images}
 
 hochschulen_filtered <- hochschulen |> 
   dplyr::filter(
@@ -300,46 +305,25 @@ hochschulen_filtered <- hochschulen |>
     )
   )
 
-# build_logo_html(
-#   logo_url = hochschulen_filtered |>
-#     col_to_url(
-#       dplyr::everything()
-#     ) |>
-#     dplyr::pull(
-#       Wiki_Logo_DE_Thumbnail_URL
-#    ),
-#   hochschule_url = hochschulen_filtered$url,
-#   hochschule_name = hochschulen_filtered$Hochschule
-# )
-
 logo_url <- hochschulen_filtered |>
-    col_to_url(dplyr::everything()) |>
-      dplyr::pull(
+    col_to_url(
+      dplyr::everything()
+    ) |>
+    dplyr::pull(
       Wiki_Logo_DE_Thumbnail_URL
    )
 
-hs_url <- hochschulen_filtered$url
-
-purrr::walk2(
+# Using purrr shouldn't be necessary because Magick functions are vectorized, but I kept getting errors
+purrr::walk(
   logo_url,
-  hs_url,
   write_img
 )
 
-write_img(
-    logo_url = logo_url[12],
-    hochschule_url = hs_url[12]
-)
 ```
 
 
 ```{r}
-hochschulen |> 
-  dplyr::filter(
-    !is.na(
-      Wiki_Logo_DE_Thumbnail_URL
-    )
-  ) |>
+hochschulen_filtered |> 
   col_to_url(
     dplyr::everything()
   ) |>
@@ -347,20 +331,9 @@ hochschulen |>
     Wiki_Logo_DE_Thumbnail_URL,
     url
   ) |> 
-  # dplyr::mutate(
-  #   Wiki_Logo_DE_Thumbnail_URL = fs::path_sanitize(
-  #     fs::path_file(
-  #       Wiki_Logo_DE_Thumbnail_URL
-  #     )
-  #   )
-  #   # ,Wiki_Logo_DE_Thumbnail_URL = stringr::str_replace_na(
-  #   #   Wiki_Logo_DE_Thumbnail_URL,
-  #   #   replacement = "blank.png"
-  #   # )
-  # ) |> 
   dplyr::slice_head(
     n = 5
-  ) |> 
+  )|> 
   dplyr::rowwise() |> 
   dplyr::mutate(
     Logo = build_logo_html(
@@ -377,18 +350,6 @@ hochschulen |>
   ) |> 
   gt::gt()
 
-# |> 
-#   gt::text_transform(
-#     fn = function(x) {
-#       gt::local_image(
-#         filename = x,
-#         height = 25L
-#       )
-#     },
-#     locations = gt::cells_body(
-#       columns = Wiki_Logo_DE_Thumbnail_URL
-#     )
-#   )
 ```
 
 
