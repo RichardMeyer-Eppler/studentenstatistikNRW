@@ -587,15 +587,19 @@ hochschulen[c(1:max_rows),] |>
   gt::cols_align(
     align = "right",
     columns = Logo
-  ) |> 
+  ) |>
   gt::cols_width(
     Logo ~ gt::px(
-      350L
+      325L
+    ),
+    IDs ~ gt::px(
+      150L
     )
   ) |> 
   gt::opt_interactive(
     use_search = TRUE,
     use_highlight = TRUE,
+    use_page_size_select = TRUE,
     page_size_default = 50
   ) |> 
   gt::tab_style(
@@ -605,6 +609,20 @@ hochschulen[c(1:max_rows),] |>
     locations = gt::cells_body(
       columns = IDs
     )
+  ) |> 
+  gt::opt_css(
+    css = "
+    #hochschulen rt-td{
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    #hochschulen .rt-align-left{
+      align-items:center;
+    }
+    #hochschulen .rt-align-right{
+      align-items:center;
+    }
+    "
   )
 
 
