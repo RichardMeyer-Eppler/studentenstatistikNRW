@@ -47,6 +47,130 @@ source_note <- glue::glue(
 
 ```
 
+
+```{r relevant-fa-icons, echo = FALSE}
+pattern <- c(
+  "facebook",
+  "instagram",
+  "mastodon",
+  "x-twitter",
+  "youtube"
+) |> 
+  stringr::str_flatten(
+    collapse = "|"
+  )
+
+neg_pattern <- c(
+  "square",
+  "facebook-f",
+  "facebook-messenger"
+) |> 
+  stringr::str_flatten(
+    collapse = "|"
+  )
+
+fa_icons <- fontawesome::fa_metadata()[["icon_names_full_fab"]] |> 
+  stringr::str_subset(
+    pattern = pattern
+  ) |> 
+  stringr::str_subset(
+    pattern = neg_pattern,
+    negate = TRUE
+  )
+```
+
+
+```{r fa-icon-functions, echo = FALSE}
+fa_icon <- function(name, fill = "#333333") {
+  fontawesome::fa(
+    name = name,
+    fill = fill
+  ) |> 
+  as.character() |> 
+  gt::html()
+}
+
+social_media_icons <- function(...) {
+  
+  dots <- rlang::list2(...)
+  
+  if (
+    length(dots) > 0 && !rlang::is_named(dots)
+  ) {
+    cli::cli_abort("All elements of {.arg ...} must be named.")
+  }
+  
+  names <- names(dots)
+  
+  # rlang::arg_match(
+  #   names,
+  #   values = c(
+  #     "facebook",
+  #     "instagram",
+  #     "mastodon",
+  #     "x-twitter",
+  #     "youtube"
+  #   )
+  # )
+  
+  fa_icons <- purrr::map(
+    names,
+    fa_icon
+  )
+  
+  fa_icons_with_link <- purrr::map2(
+    fa_icons, 
+    dots,
+    \(x, y) htmltools::a(
+      x,
+      title = y,
+      href = y,
+      target = "_blank"
+    )
+  )
+
+  fa_icons_no_nas <- purrr::discard(
+    fa_icons_with_link,
+    .p = \(x) is.na(
+      htmltools::tagGetAttribute(
+        x, 
+        attr = "href"
+      )
+    )
+  )
+  
+  div <- htmltools::div(
+    title = "Social Media Icons",
+    role = "img",
+    fa_icons_no_nas
+  )
+  
+  div_out <- as.character(div) |> 
+    gt::html()
+  
+  return(div_out)
+}
+
+# tibble::tribble(
+#   ~facebook, ~instagram,
+#   "https://www.facebook.com/unikassel", "https://www.instagram.com/unikassel",
+#   NA, "https://www.instagram.com/unikassel"
+# ) |> 
+#   dplyr::rowwise() |> 
+#   dplyr::mutate(
+#     social_media = list(
+#       social_media_icons(
+#         "fab fa-facebook" = facebook, 
+#         "fab fa-instagram" = instagram
+#       )
+#     )
+#   ) |> 
+#   dplyr::ungroup() |> 
+#   gt::gt()
+
+```
+
+
 ```{r gt-functions, echo = FALSE}
 
 # https://www.w3schools.com/tags/tag_summary.asp
@@ -233,7 +357,7 @@ write_img <- function(logo_url, height = 45L) {
 
 ```
 
-```{r write-images}
+```{r write-images, echo = FALSE}
 
 logo_url <- hochschulen[c(1:10),] |>
     col_to_url(
@@ -269,6 +393,9 @@ hochschulen[c(1:10),] |>
     dplyr::everything()
   ) |>
   dplyr::mutate(
+    gepris_id_orig = hochschulen[["gepris_id"]][1:10],
+    eu_pic_orig = hochschulen[["eu_pic"]][1:10],
+    ror_id_orig = hochschulen[["ROR_ID"]][1:10],
     logo_url = logo_url_written
   ) |> 
   dplyr::rowwise() |>
@@ -288,6 +415,15 @@ hochschulen[c(1:10),] |>
     Logo = build_logo_html(
       logo_url = logo_url,
       hochschule_url = url
+    ),
+    social_media = list(
+      social_media_icons(
+        "fab fa-facebook" = facebook_id, 
+        "fab fa-instagram" = insta_id,
+        "fab fa-mastodon" = mastodon_id,
+        "fab fa-x-twitter" = x_user,
+        "fab fa-youtube" = youtube_channel_id,
+      )
     )
   ) |> 
   dplyr::ungroup() |> 
@@ -297,7 +433,7 @@ hochschulen[c(1:10),] |>
       gt::html
     ),
     IDs = glue::glue(
-      "<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div>{gepris_id}</div><div>{STUDIEREN_KEY}</div></details>",
+      '<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div><a href="{gepris_id}" target="_blank">GEPRIS {gepris_id_orig}</a><div><a href="{eu_pic}" target="_blank">EU PIC {eu_pic_orig}</a></div><div><a href="{ROR_ID}" target="_blank">ROR {ror_id_orig}</a></div><div>{STUDIEREN_KEY}</div></details>',
       .na = ""
     ),
     IDs = purrr::map(
@@ -322,11 +458,7 @@ hochschulen[c(1:10),] |>
     # Academic Ranking of World Universities - Shanghai Ranking
     ranking_arwu = arwu_id,
     ranking_qs = qs_world_id,
-    social_media_x = x_user,
-    social_media_facebook = facebook_id,
-    social_media_youtube = youtube_channel_id,
-    social_media_insta = insta_id,
-    social_media_mastodon = mastodon_id
+    social_media
   ) |> 
   gt::gt(
     id = "hochschulen"
@@ -342,12 +474,6 @@ hochschulen[c(1:10),] |>
       source_note
     )
   ) |> 
-  gt::fmt_url(
-    columns = dplyr::starts_with(
-      "social_media"
-    ),
-    label = \(x) label_socal_media(x)
-  ) |>
   gt::fmt_url(
     columns = dplyr::starts_with(
       "ranking"
@@ -370,15 +496,10 @@ hochschulen[c(1:10),] |>
       "ranking"
     )
   ) |>
-  gt::cols_merge(
-    dplyr::starts_with(
-      "social_media"
-    )
-  ) |> 
   gt::cols_label(
     Hochschule_EN = "Hochschule",
     ranking_multirank = "Rankings",
-    social_media_x = "Social Media"
+    social_media = "Social Media"
   ) |> 
   gt::cols_align(
     align = "left",
