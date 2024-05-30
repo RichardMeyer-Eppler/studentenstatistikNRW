@@ -181,9 +181,8 @@ We can implement this with <code><a href="https://httr2.r-lib.org/reference/iter
 <span>  <span class="op">)</span>,</span>
 <span>  max_reqs <span class="op">=</span> <span class="cn">Inf</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■                          </span>  18% | ETA:  6s</span></span>
-<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■                         </span>  21% | ETA:  6s</span></span>
-<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span>  64% | ETA:  3s</span></span>
+<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■                          </span>  18% | ETA:  5s</span></span>
+<span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span>  61% | ETA:  3s</span></span>
 <span><span class="co">#&gt; Iterating <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span> 100% | ETA:  0s</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -256,7 +255,7 @@ organization.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_names</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,462 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,448 × 6</span></span></span>
 <span><span class="co">#&gt;    id                        names_id name                 lang  types_1 types_2</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/0473a4773        1 Hertie School        en    ror_di… label  </span></span>
@@ -269,7 +268,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/0076zct58        2 Hochschule Anhalt    de    label   <span style="color: #BB0000;">NA</span>     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/01z1z7017        1 FKE                  <span style="color: #BB0000;">NA</span>    acronym <span style="color: #BB0000;">NA</span>     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/01z1z7017        2 Forschungsinstitut … de    ror_di… label  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,452 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,438 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
@@ -292,7 +291,7 @@ organization.</p>
 <span>  <span class="op">)</span> </span>
 <span></span>
 <span><span class="va">df_links</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 835 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 828 × 4</span></span></span>
 <span><span class="co">#&gt;    id                        type      value                            links_id</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/0473a4773 website   http://www.hertie-school.org            1</span></span>
@@ -305,7 +304,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/05jgq9443 website   http://www.bbaw.de/en/                  1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/05jgq9443 wikipedia http://en.wikipedia.org/wiki/Be…        2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/00k62pe27 website   http://www.th-wildau.de/                1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 825 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 818 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="locations">Locations<a class="anchor" aria-label="anchor" href="#locations"></a>
@@ -377,7 +376,7 @@ organization.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_external_ids</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,369 × 7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,308 × 7</span></span></span>
 <span><span class="co">#&gt;    id                        external_ids_id type    preferred all_1 all_2 all_3</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/0473a4773               1 grid    grid.424… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
@@ -390,7 +389,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/0076zct58               1 grid    grid.427… grid… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/0076zct58               2 isni    <span style="color: #BB0000;">NA</span>        0000… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/0076zct58               3 wikida… <span style="color: #BB0000;">NA</span>        Q162… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,359 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,298 more rows</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Let's filter on all Wikidata entries</span></span>
@@ -399,7 +398,7 @@ organization.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span></span>
 <span>    <span class="va">type</span> <span class="op">==</span> <span class="st">"wikidata"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 362 × 7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 357 × 7</span></span></span>
 <span><span class="co">#&gt;    id                        external_ids_id type    preferred all_1 all_2 all_3</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> https://ror.org/0473a4773               3 wikida… <span style="color: #BB0000;">NA</span>        Q317… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
@@ -412,7 +411,7 @@ organization.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> https://ror.org/01t4pxy10               3 wikida… <span style="color: #BB0000;">NA</span>        Q125… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> https://ror.org/05874db82               2 wikida… <span style="color: #BB0000;">NA</span>        Q302… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> https://ror.org/01fzsd381               3 wikida… <span style="color: #BB0000;">NA</span>        Q156… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 352 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 347 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
