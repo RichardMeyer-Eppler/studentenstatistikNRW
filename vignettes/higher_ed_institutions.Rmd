@@ -45,6 +45,15 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 max_rows <- 20L
+table_width <- 1200L
+university_logo_height <- 45L
+
+org_urls <- list(
+  eu_pic = "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register",
+  gepris = "https://gepris.dfg.de/gepris/OCTOPUS?language=en",
+  hrk = "https://www.hochschulkompass.de/hochschulen/downloads.html",
+  ror = "https://ror.org"
+)
 
 ```
 
@@ -82,10 +91,11 @@ fa_icons <- fontawesome::fa_metadata()[["icon_names_full_fab"]] |>
 
 
 ```{r fa-icon-functions, echo = FALSE}
-fa_icon <- function(name, fill = "#333333") {
+fa_icon <- function(name, height = "1.1em", fill = "#333333") {
   fontawesome::fa(
     name = name,
-    fill = fill
+    fill = fill,
+    height = height
   ) |> 
   as.character() |> 
   gt::html()
@@ -265,7 +275,7 @@ img_path <- function(logo_url) {
   return(img_path)
 }
 
-build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
+build_logo_html <- function(logo_url, hochschule_url, height = university_logo_height) {
   # https://www.w3schools.com/html/html_images.asp
   # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
   # https://www.w3schools.com/tags/att_img_height.asp
@@ -306,7 +316,7 @@ build_logo_html <- function(logo_url, hochschule_url, height = 45L) {
   return(html)
 }
 
-write_img <- function(logo_url, height = 45L) {
+write_img <- function(logo_url, height = university_logo_height) {
   
   if(is.na(logo_url)) {return(NA_character_)}
   
@@ -462,25 +472,25 @@ hochschulen[c(1:max_rows),] |>
       id_function(
         label = Hochschule_Signatur,
         list(
-          org_url = 'https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register',
+          org_url = org_urls[["eu_pic"]],
           org_label = 'EU PIC',
           org_id_url = eu_pic,
           org_id_label = eu_pic_orig
         ),
         list(
-          org_url = 'https://gepris.dfg.de/gepris/OCTOPUS?language=en',
+          org_url = org_urls[["gepris"]],
           org_label = 'GEPRIS',
           org_id_url = gepris_id,
           org_id_label = gepris_id_orig
         ),
         list(
-          org_url = 'https://www.hochschulkompass.de/hochschulen/downloads.html',
+          org_url = org_urls[["hrk"]],
           org_label = 'HRK',
           org_id_url = `Hs-Nr.`,
           org_id_label = hs_nr_orig
         ),
         list(
-          org_url = 'https://ror.org',
+          org_url = org_urls[["ror"]],
           org_label = 'ROR',
           org_id_url = ROR_ID,
           org_id_label = ror_id_orig
@@ -597,7 +607,7 @@ hochschulen[c(1:max_rows),] |>
     )
   ) |> 
   gt::opt_interactive(
-    use_search = TRUE,
+    #use_search = TRUE, # not really useful with so many columns having multiple values
     use_highlight = TRUE,
     use_page_size_select = TRUE,
     page_size_default = 50
@@ -609,6 +619,10 @@ hochschulen[c(1:max_rows),] |>
     locations = gt::cells_body(
       columns = IDs
     )
+  ) |> 
+  gt::tab_options(
+    container.width = gt::px(table_width),
+    table.width = gt::px(table_width)
   ) |> 
   gt::opt_css(
     css = "
@@ -624,24 +638,6 @@ hochschulen[c(1:max_rows),] |>
     }
     "
   )
-
-
-  # Does not work - why!?
-  # |> gt::tab_style(
-  #   style = gt::cell_text(
-  #     v_align = "bottom"
-  #   ),
-  #   locations = gt::cells_body(
-  #     columns = Logo
-  #   )
-  # ) |> 
-  # gt::opt_css(
-  #   css = "
-  #   #hochschulen .rt-td-inner{
-  #     line_height:0%;
-  #   }
-  #   "
-  # )
 
 ```
 
