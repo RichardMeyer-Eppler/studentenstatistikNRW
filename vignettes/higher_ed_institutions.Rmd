@@ -44,6 +44,7 @@ source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
+max_rows <- 20L
 
 ```
 
@@ -102,16 +103,7 @@ social_media_icons <- function(...) {
   
   names <- names(dots)
   
-  # rlang::arg_match(
-  #   names,
-  #   values = c(
-  #     "facebook",
-  #     "instagram",
-  #     "mastodon",
-  #     "x-twitter",
-  #     "youtube"
-  #   )
-  # )
+  dots_not_na <- !is.na(dots)
   
   fa_icons <- purrr::map(
     names,
@@ -119,8 +111,8 @@ social_media_icons <- function(...) {
   )
   
   fa_icons_with_link <- purrr::map2(
-    fa_icons, 
-    dots,
+    fa_icons[dots_not_na], 
+    dots[dots_not_na],
     \(x, y) htmltools::a(
       x,
       title = y,
@@ -128,21 +120,11 @@ social_media_icons <- function(...) {
       target = "_blank"
     )
   )
-
-  fa_icons_no_nas <- purrr::discard(
-    fa_icons_with_link,
-    .p = \(x) is.na(
-      htmltools::tagGetAttribute(
-        x, 
-        attr = "href"
-      )
-    )
-  )
   
   div <- htmltools::div(
     title = "Social Media Icons",
     role = "img",
-    fa_icons_no_nas
+    fa_icons_with_link
   )
   
   div_out <- as.character(div) |> 
@@ -153,19 +135,19 @@ social_media_icons <- function(...) {
 
 # tibble::tribble(
 #   ~facebook, ~instagram,
-#   "https://www.facebook.com/unikassel", "https://www.instagram.com/unikassel",
+#  "https://www.facebook.com/unikassel", "https://www.instagram.com/unikassel",
 #   NA, "https://www.instagram.com/unikassel"
-# ) |> 
-#   dplyr::rowwise() |> 
+# ) |>
+#   dplyr::rowwise() |>
 #   dplyr::mutate(
 #     social_media = list(
 #       social_media_icons(
-#         "fab fa-facebook" = facebook, 
+#         "fab fa-facebook" = facebook,
 #         "fab fa-instagram" = instagram
 #       )
 #     )
-#   ) |> 
-#   dplyr::ungroup() |> 
+#   ) |>
+#   dplyr::ungroup() |>
 #   gt::gt()
 
 ```
@@ -359,7 +341,7 @@ write_img <- function(logo_url, height = 45L) {
 
 ```{r write-images, echo = FALSE}
 
-logo_url <- hochschulen[c(1:10),] |>
+logo_url <- hochschulen[c(1:max_rows),] |>
     col_to_url(
       dplyr::everything()
     ) |>
@@ -386,20 +368,125 @@ logo_url_written <- purrr::map(
 
 ```
 
+
+```{r id-functions, echo = FALSE}
+
+id_function <- function(label, ...) {
+  dots <- rlang::list2(...)
+  
+  nas <- purrr::map_chr(
+    dots,
+    "org_id_label"
+  ) |> 
+    is.na()
+  
+  # If all IDs are NA return just the label
+  if(
+    length(
+      dots[!nas]
+    ) == 0
+  ) {
+    return(label)
+  }
+  
+  create_table_row <- function(
+    list, 
+    a_style = "color:#008B8B;text-decoration:underline;text-underline-position: under;display:inline-block;"
+  ) {
+    org_url <- list$org_url
+    org_label <- list$org_label
+    org_id_url <- list$org_id_url
+    org_id_label <- list$org_id_label
+    
+    # Inherits from div.rt-td-inner min-width: 100px; width: 100px;
+    
+    html <- htmltools::tags$tr(
+      style = "min-width:200px",
+      htmltools::tags$td(
+        htmltools::tags$a(
+          href = org_url,
+          style = a_style,
+          target = "_blank",
+          org_label
+        )
+      ),
+      htmltools::tags$td(
+        htmltools::tags$a(
+          href = org_id_url,
+          style = a_style,
+          target = "_blank",
+          org_id_label
+        )
+      )
+    )
+  }
+  
+  list_table_rows <- purrr::map(
+    dots[!nas],
+    create_table_row
+  )
+  
+  table_out <- htmltools::tags$details(
+    htmltools::tags$summary(
+      label
+    ),
+    htmltools::tags$table(
+      list_table_rows
+    )
+  ) |> 
+  as.character() |> 
+  gt::html()
+  
+  return(table_out)
+}
+
+```
+
+
 ```{r, echo = FALSE}
 
-hochschulen[c(1:10),] |> 
+hochschulen[c(1:max_rows),] |> 
   col_to_url(
     dplyr::everything()
   ) |>
   dplyr::mutate(
-    gepris_id_orig = hochschulen[["gepris_id"]][1:10],
-    eu_pic_orig = hochschulen[["eu_pic"]][1:10],
-    ror_id_orig = hochschulen[["ROR_ID"]][1:10],
+    gepris_id_orig = hochschulen[["gepris_id"]][1:max_rows],
+    eu_pic_orig = hochschulen[["eu_pic"]][1:max_rows],
+    hs_nr_orig = `[[`(hochschulen, "Hs-Nr.")[1:max_rows],
+    ror_id_orig = hochschulen[["ROR_ID"]][1:max_rows],
     logo_url = logo_url_written
   ) |> 
   dplyr::rowwise() |>
   dplyr::mutate(
+    IDs = list(
+      id_function(
+        label = Hochschule_Signatur,
+        list(
+          org_url = 'https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register',
+          org_label = 'EU PIC',
+          org_id_url = eu_pic,
+          org_id_label = eu_pic_orig
+        ),
+        list(
+          org_url = 'https://gepris.dfg.de/gepris/OCTOPUS?language=en',
+          org_label = 'GEPRIS',
+          org_id_url = gepris_id,
+          org_id_label = gepris_id_orig
+        ),
+        list(
+          org_url = 'https://www.hochschulkompass.de/hochschulen/downloads.html',
+          org_label = 'HRK',
+          org_id_url = `Hs-Nr.`,
+          org_id_label = hs_nr_orig
+        ),
+        list(
+          org_url = 'https://ror.org',
+          org_label = 'ROR',
+          org_id_url = ROR_ID,
+          org_id_label = ror_id_orig
+        )
+      )
+    ),
     Wiki = build_wiki_span(
       urls = c(
         Wiki_ID_DE,
@@ -430,14 +517,6 @@ hochschulen[c(1:10),] |>
   dplyr::mutate(
     Logo = purrr::map(
       Logo,
-      gt::html
-    ),
-    IDs = glue::glue(
-      '<details><summary>{Hochschule_Signatur}</summary><div>Hs-Nr.  {`Hs-Nr.`}</div><div><a href="{gepris_id}" target="_blank">GEPRIS {gepris_id_orig}</a><div><a href="{eu_pic}" target="_blank">EU PIC {eu_pic_orig}</a></div><div><a href="{ROR_ID}" target="_blank">ROR {ror_id_orig}</a></div><div>{STUDIEREN_KEY}</div></details>',
-      .na = ""
-    ),
-    IDs = purrr::map(
-      IDs,
       gt::html
     ),
     Wiki = purrr::map(
@@ -518,7 +597,17 @@ hochschulen[c(1:10),] |>
     use_search = TRUE,
     use_highlight = TRUE,
     page_size_default = 50
-  )  
+  ) |> 
+  gt::tab_style(
+    style = gt::cell_text(
+      align = "left"
+    ),
+    locations = gt::cells_body(
+      columns = IDs
+    )
+  )
+
+
   # Does not work - why!?
   # |> gt::tab_style(
   #   style = gt::cell_text(
