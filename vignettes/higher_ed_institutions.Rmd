@@ -44,7 +44,7 @@ source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
-max_rows <- 20L
+max_rows <- 50L
 table_width <- 1200L
 university_logo_height <- 45L
 
