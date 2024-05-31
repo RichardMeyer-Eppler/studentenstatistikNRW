@@ -453,6 +453,76 @@ id_function <- function(label, ...) {
 ```
 
 
+```{r rankings, echo = FALSE}
+rankings_html <- function(...) {
+  
+  dots <- rlang::list2(...)
+  dots_not_na <- !is.na(dots)
+  
+  labels <- purrr::map_chr(
+    dots[dots_not_na],
+    label_ranking
+  )
+  
+  create_span <- function(
+    url, 
+    url_label,
+    a_style = "color:#008B8B;text-decoration:underline;text-underline-position: under;"
+  ) {
+    
+     html <- htmltools::span(
+      style = "white-space: pre;",
+      htmltools::a(
+        {url_label},
+        href = url,
+        target = "_blank",
+        style = a_style
+      )
+    )
+     
+     return(html)
+  }
+  
+  list_spans <- purrr::map2(
+    dots[dots_not_na],
+    labels,
+    create_span
+  ) |> 
+    htmltools::tagList()
+  
+  spans_out <- list_spans |> 
+    as.character() |> 
+    gt::html()
+  
+  return(spans_out)
+}
+
+#debugonce(label_socal_media)
+#debugonce(rankings_html)
+
+# tibble::tribble(
+#   ~umultirank, ~the,
+#   "https://www.umultirank.org/study-at/university-of-kassel-rankings/", "https://www.timeshighereducation.com/world-university-rankings/university-kassel"
+# ) |>
+#   dplyr::rowwise() |>
+#   dplyr::mutate(
+#     rankings = rankings_html(
+#         umultirank,
+#         the
+#     )
+#   ) |>
+#   dplyr::ungroup() |>
+#   dplyr::mutate(
+#     rankings = purrr::map(
+#       rankings,
+#       gt::html
+#     )
+#   ) |> 
+#  gt::gt()
+```
+
+
+
 ```{r, echo = FALSE}
 
 hochschulen[c(1:max_rows),] |> 
@@ -521,8 +591,17 @@ hochschulen[c(1:max_rows),] |>
         "fab fa-x-twitter" = x_user,
         "fab fa-youtube" = youtube_channel_id,
       )
+    ),
+    Rankings = list(
+      rankings_html(
+        Multirank,
+        CHE_DAAD_University_ID,
+        the_id,
+        arwu_id,
+        qs_world_id
+      )
     )
-  ) |> 
+  ) |>
   dplyr::ungroup() |> 
   dplyr::mutate(
     Logo = purrr::map(
@@ -531,6 +610,10 @@ hochschulen[c(1:max_rows),] |>
     ),
     Wiki = purrr::map(
       Wiki,
+      gt::html
+    ),
+    Rankings = purrr::map(
+      Rankings,
       gt::html
     )
   ) |> 
@@ -541,12 +624,7 @@ hochschulen[c(1:max_rows),] |>
     CHE_DAAD_Town_ID,
     Hochschule_EN,
     Wiki,
-    ranking_multirank = Multirank,
-    ranking_che = CHE_DAAD_University_ID,
-    ranking_the = the_id,
-    # Academic Ranking of World Universities - Shanghai Ranking
-    ranking_arwu = arwu_id,
-    ranking_qs = qs_world_id,
+    Rankings,
     social_media
   ) |> 
   gt::gt(
@@ -564,12 +642,6 @@ hochschulen[c(1:max_rows),] |>
     )
   ) |> 
   gt::fmt_url(
-    columns = dplyr::starts_with(
-      "ranking"
-    ),
-    label = \(x) label_ranking(x)
-  ) |>
-  gt::fmt_url(
     columns = CHE_DAAD_Town_ID,
     label = "CHE-Town"
   ) |>
@@ -580,14 +652,8 @@ hochschulen[c(1:max_rows),] |>
     ),
     pattern = "{1}\n({2})"
   ) |>
-  gt::cols_merge(
-    dplyr::starts_with(
-      "ranking"
-    )
-  ) |>
   gt::cols_label(
     Hochschule_EN = "Hochschule",
-    ranking_multirank = "Rankings",
     social_media = "Social Media"
   ) |> 
   gt::cols_align(
