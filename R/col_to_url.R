@@ -36,6 +36,18 @@ col_to_url <- function(df, columns) {
         ) ~ glue::glue(
           "https://ror.org/{col_vec_char}"
         ),
+      col_name == "RISIS_ORGREG_ENTITY_ID" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://register.orgreg.joanneum.at/#/entity-details/{col_vec_char}"
+        ),
+      col_name == "WHED_ID" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://www.whed.net/institutions/{col_vec_char}"
+        ),
       col_name == "Wiki_ID_DE" &
         !is.na(
           df[[columns_to_format[i]]]
