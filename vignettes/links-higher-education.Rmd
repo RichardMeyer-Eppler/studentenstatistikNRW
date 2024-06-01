@@ -40,14 +40,15 @@ library(studentenstatistikNRW)
 
 # Databases
 
-* [GENESIS - Database of the
-Federal Statistical Office of Germany](https://www-genesis.destatis.de)
+* [GENESIS - Database of the Federal Statistical Office of Germany](https://www-genesis.destatis.de)
 * [Gemeinsames Statistikportal - Statistische Ämter des Bundes un der Länder](https://www.statistikportal.de)
 * [Landesdatenbank NRW](https://www.landesdatenbank.nrw.de)
 * [Bildungsmonitoring](https://www.bildungsmonitoring.de)
 * [Regionalstatistik](https://www.regionalstatistik.de)
 * [OECD Data Explorer](https://data-explorer.oecd.org)
 * [CHE - Hochschuldaten](https://hochschuldaten.che.de)
+* [International Association of Universities - World Higher Education Database](https://whed.net)
+* [ETER European Tertiary Education Register](https://eter-project.com/)
 
 # Official Agencies
 
