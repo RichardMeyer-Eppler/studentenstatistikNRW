@@ -458,10 +458,21 @@ rankings_html <- function(...) {
   
   dots <- rlang::list2(...)
   dots_not_na <- !is.na(dots)
-  
+
   labels <- purrr::map_chr(
     dots[dots_not_na],
     label_ranking
+  )
+  
+  # Could do this in css
+  # https://css-tricks.com/how-to-add-commas-between-a-list-of-items-dynamically-with-css/
+  # https://blog.union.io/code/2018/03/07/add-commas-with-css/
+  labels_with_comma <- dplyr::case_when(
+    labels != labels[length(labels)] ~ paste0(
+      labels,
+      ","
+    ),
+    .default = labels
   )
   
   create_span <- function(
@@ -471,7 +482,7 @@ rankings_html <- function(...) {
   ) {
     
      html <- htmltools::span(
-      style = "white-space: pre;",
+      #style = "white-space: pre;",
       htmltools::a(
         {url_label},
         href = url,
@@ -485,7 +496,7 @@ rankings_html <- function(...) {
   
   list_spans <- purrr::map2(
     dots[dots_not_na],
-    labels,
+    labels_with_comma,
     create_span
   ) |> 
     htmltools::tagList()
@@ -517,7 +528,7 @@ rankings_html <- function(...) {
 #       rankings,
 #       gt::html
 #     )
-#   ) |> 
+#   ) |>
 #  gt::gt()
 ```
 
@@ -594,10 +605,10 @@ hochschulen[c(1:max_rows),] |>
     ),
     Rankings = list(
       rankings_html(
-        Multirank,
-        CHE_DAAD_University_ID,
-        the_id,
         arwu_id,
+        CHE_DAAD_University_ID,
+        Multirank,
+        the_id,
         qs_world_id
       )
     )
