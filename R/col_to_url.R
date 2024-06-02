@@ -168,6 +168,12 @@ col_to_url <- function(df, columns) {
         ) ~ glue::glue(
           "https://www.linkedin.com/company/{col_vec_char}"
         ),
+      col_name == "DAAD_ORT" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://www.study-in-germany.de/en/germany/cities/{col_vec_char}/"
+        ),
       .default = col_vec_char
     )
   }
