@@ -67,6 +67,8 @@ library(studentenstatistikNRW)
 
 * [DFG - Die deutsche Forschungslandschaft](https://www.gerit.org/de/search?display=map&q&type=group)
 
+* [DAAD - CHE University Ranking Universities & Towns](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns)
+
 * [Hochschulen in Deutschland im Überblick - Google Maps](https://studieren.de/landkarte-unis-deutschland.0.html)
 
 * [IT.NRW - Interaktive Hochschulkarte für Nordrhein-Westfalen](https://url.nrw/hochschulkarte)
