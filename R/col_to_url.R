@@ -94,7 +94,13 @@ col_to_url <- function(df, columns) {
         !is.na(
           df[[columns_to_format[i]]]
         ) ~ glue::glue(
-          "https://gepris.dfg.de/gepris/institution/{col_vec_char}"
+          "https://gepris.dfg.de/gepris/institution/{col_vec_char}?language=en"
+        ),
+      col_name == "gerit_id" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://gerit.org/en/institutiondetail/{col_vec_char}"
         ),
       col_name == "eu_pic" &
         !is.na(
@@ -150,6 +156,18 @@ col_to_url <- function(df, columns) {
         ) ~ glue::glue(
           "https://wikidata-externalid-url.toolforge.org/?p=4033&id={col_vec_char}"
         ),
+      col_name == "tiktok_id" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://www.tiktok.com/@{col_vec_char}"
+        ),
+      col_name == "linkedin_id" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://www.linkedin.com/company/{col_vec_char}"
+        )
       .default = col_vec_char
     )
   }
