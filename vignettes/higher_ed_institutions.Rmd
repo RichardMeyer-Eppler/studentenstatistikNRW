@@ -760,4 +760,11 @@ This is the exhaustive list of additional data sources that are linked up:
 
 -   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
 
+```{r cleanup-images}
+
+fs::file_delete(
+  logo_url_written[!is.na(logo_url_written)]
+)
+
+```
 
