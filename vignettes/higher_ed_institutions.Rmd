@@ -51,6 +51,7 @@ university_logo_height <- 45L
 org_urls <- list(
   eu_pic = "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register",
   gepris = "https://gepris.dfg.de/gepris/OCTOPUS?language=en",
+  gerit = "https://gerit.org/en/",
   hrk = "https://www.hochschulkompass.de/hochschulen/downloads.html",
   ror = "https://ror.org",
   whed = "https://www.whed.net",
@@ -539,11 +540,15 @@ rankings_html <- function(...) {
 ```{r, echo = FALSE}
 
 hochschulen[c(1:max_rows),] |> 
+  dplyr::mutate(
+    gerit_id = gepris_id,
+  ) |> 
   col_to_url(
     dplyr::everything()
   ) |>
   dplyr::mutate(
     gepris_id_orig = hochschulen[["gepris_id"]][1:max_rows],
+    gerit_id_orig = hochschulen[["gepris_id"]][1:max_rows],
     eu_pic_orig = hochschulen[["eu_pic"]][1:max_rows],
     hs_nr_orig = `[[`(hochschulen, "Hs-Nr.")[1:max_rows],
     ror_id_orig = hochschulen[["ROR_ID"]][1:max_rows],
@@ -567,6 +572,12 @@ hochschulen[c(1:max_rows),] |>
           org_label = 'GEPRIS',
           org_id_url = gepris_id,
           org_id_label = gepris_id_orig
+        ),
+        list(
+          org_url = org_urls[["gerit"]],
+          org_label = 'GERiT',
+          org_id_url = gerit_id,
+          org_id_label = gerit_id_orig
         ),
         list(
           org_url = org_urls[["hrk"]],

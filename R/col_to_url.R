@@ -167,7 +167,7 @@ col_to_url <- function(df, columns) {
           df[[columns_to_format[i]]]
         ) ~ glue::glue(
           "https://www.linkedin.com/company/{col_vec_char}"
-        )
+        ),
       .default = col_vec_char
     )
   }
