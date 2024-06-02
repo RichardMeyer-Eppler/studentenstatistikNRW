@@ -63,9 +63,15 @@ library(studentenstatistikNRW)
 * [Centrum für Hochschulentwicklung](https://www.che.de)
 * [Rheform](https://www.rheform.de/)
 
-# Various Links
+# Maps
+
+* [DFG - Die deutsche Forschungslandschaft](https://www.gerit.org/de/search?display=map&q&type=group)
 
 * [Hochschulen in Deutschland im Überblick - Google Maps](https://studieren.de/landkarte-unis-deutschland.0.html)
+
+* [IT.NRW - Interaktive Hochschulkarte für Nordrhein-Westfalen](https://url.nrw/hochschulkarte)
+
+# Various Links
 
 * [https://studieren.de/suche.0.html?lt=university&rs=list&sort=alphabetical](https://studieren.de/suche.0.html?lt=university&rs=list&sort=alphabetical)
 
@@ -76,6 +82,7 @@ library(studentenstatistikNRW)
 * [Wissenschaftsrat - Was kommt nach dem Wachstum? Der demografische Wandel erreicht das Hochschulsystem](https://www.wissenschaftsrat.de/download/2024/VS_Bericht_2024_Jan)
 
 * [CHE - European Higher Education Sector Observatory](https://www.che.de/projekt/european-higher-education-sector-observatory/)
+
 * [Hochschulkompass](https://www.hochschulkompass.de)
 
 * [Bildungsmonitoring - 05--F Nordrhein-Westfalen - Hochschulen und Berufsakademien](https://www.bildungsmonitoring.de/bildung/online?operation=statistic&levelindex=0&levelid=1715598325071&code=05--F#abreadcrumb)
