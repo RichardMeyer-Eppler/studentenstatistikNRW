@@ -52,12 +52,16 @@ org_urls <- list(
   eu_pic = "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register",
   gepris = "https://gepris.dfg.de/gepris/OCTOPUS?language=en",
   gerit = "https://gerit.org/en/",
-  hrk = "https://www.hochschulkompass.de/hochschulen/downloads.html",
+  hrk = "https://www.hochschulkompass.de/en/higher-education-institutions/downloads.html",
   ror = "https://ror.org",
   whed = "https://www.whed.net",
   risis = "https://register.orgreg.joanneum.at"
 )
 
+ort_urls <- list(
+  daad_cities = "https://www.study-in-germany.de/en/germany/cities/",
+  daad_che_cities = "https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns"
+)
 ```
 
 
@@ -541,7 +545,7 @@ rankings_html <- function(...) {
 
 hochschulen[c(1:max_rows),] |> 
   dplyr::mutate(
-    gerit_id = gepris_id,
+    gerit_id = gepris_id
   ) |> 
   col_to_url(
     dplyr::everything()
@@ -554,6 +558,16 @@ hochschulen[c(1:max_rows),] |>
     ror_id_orig = hochschulen[["ROR_ID"]][1:max_rows],
     risis_orgreg_entity_id_orig = hochschulen[["RISIS_ORGREG_ENTITY_ID"]][1:max_rows],
     whed_id_orig = hochschulen[["WHED_ID"]][1:max_rows],
+    DAAD_ORT_LABEL = dplyr::if_else(
+      is.na(DAAD_ORT),
+      NA,
+      Ort
+    ),
+    CHE_DAAD_Town_ID_Label = dplyr::if_else(
+      is.na(CHE_DAAD_Town_ID),
+      NA,
+      Ort
+    ),
     logo_url = logo_url_written
   ) |> 
   dplyr::rowwise() |>
@@ -602,6 +616,23 @@ hochschulen[c(1:max_rows),] |>
           org_label = 'WHED',
           org_id_url = WHED_ID,
           org_id_label = whed_id_orig
+        )
+      )
+    ),
+    Ort = list(
+      id_function(
+        label = Ort,
+        list(
+          org_url = ort_urls[["daad_cities"]],
+          org_label = 'DAAD',
+          org_id_url = DAAD_ORT,
+          org_id_label = DAAD_ORT_LABEL
+        ),
+        list(
+          org_url = ort_urls[["daad_che_cities"]],
+          org_label = 'DAAD CHE',
+          org_id_url = CHE_DAAD_Town_ID,
+          org_id_label = CHE_DAAD_Town_ID_Label
         )
       )
     ),
@@ -659,7 +690,6 @@ hochschulen[c(1:max_rows),] |>
     Logo,
     IDs,
     Ort,
-    CHE_DAAD_Town_ID,
     Hochschule_EN,
     Wiki,
     Rankings,
@@ -679,17 +709,6 @@ hochschulen[c(1:max_rows),] |>
       source_note
     )
   ) |> 
-  gt::fmt_url(
-    columns = CHE_DAAD_Town_ID,
-    label = "CHE-Town"
-  ) |>
-  gt::cols_merge(
-    c(
-      Ort,
-      CHE_DAAD_Town_ID
-    ),
-    pattern = "{1}\n({2})"
-  ) |>
   gt::cols_label(
     Hochschule_EN = "Hochschule",
     social_media = "Social Media"
@@ -721,7 +740,9 @@ hochschulen[c(1:max_rows),] |>
       align = "left"
     ),
     locations = gt::cells_body(
-      columns = IDs
+      columns = c(
+        IDs, Ort
+      )
     )
   ) |> 
   gt::tab_options(
