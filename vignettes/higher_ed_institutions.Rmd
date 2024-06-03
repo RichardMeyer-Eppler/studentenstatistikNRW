@@ -44,7 +44,7 @@ source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
-max_rows <- 50L
+max_rows <- nrow(hochschulen)
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -270,11 +270,14 @@ build_wiki_span <- function(urls, labels) {
 }
 
 img_path <- function(logo_url) {
+  
+  logo_url_decoded <- URLdecode(logo_url)
+  
   img_path <- fs::path(
     here::here(),
     fs::path_sanitize(
       fs::path_file(
-        logo_url
+        logo_url_decoded
       )
     )
   )
@@ -286,6 +289,15 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
   # https://www.w3schools.com/html/html_images.asp
   # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
   # https://www.w3schools.com/tags/att_img_height.asp
+  
+  # stringi::stri_unescape_unicode(
+  #   gsub("%", paste0("\\", "u00"), logo_url_written[16], fixed = T)
+  # )
+  # hochsch
+  #       logo_url = logo_url,
+  #     hochschule_url = url
+  # URLdecode(logo_url_written[16])
+  # 
   
   img_path <- if(
     is.na(logo_url)
@@ -325,14 +337,37 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
 
 write_img <- function(logo_url, height = university_logo_height) {
   
-  if(is.na(logo_url)) {return(NA_character_)}
+  if(is.na(logo_url)) {return(fs::path(NA))}
   
   img_path <- img_path(logo_url)
-  
-  img <- magick::image_read(
-    logo_url
+  img_ext <- tolower(
+    fs::path_ext(
+      img_path
+    )
   )
   
+  if(img_ext == "svg") {
+    download.file(
+      url = URLdecode(logo_url),
+      destfile = img_path,
+      quiet = TRUE,
+      cacheOK = TRUE,
+      method = "libcurl"
+    )
+    
+    return(img_path)
+  }
+  
+  if(img_ext == "svg") {
+    img <- magick::image_read_svg(
+      logo_url
+    )
+  } else {
+    img <- magick::image_read(
+      logo_url
+    )
+  }
+
   img_trimmed <- magick::image_trim(
     img
   )
@@ -362,22 +397,35 @@ logo_url <- hochschulen[c(1:max_rows),] |>
     col_to_url(
       dplyr::everything()
     ) |>
+    dplyr::mutate(
+      logo_url = dplyr::case_when(
+        tolower(
+          fs::path_ext(
+            Wiki_Logo_DE_URL
+          )
+        ) == "svg" ~ Wiki_Logo_DE_URL,
+        .default = Wiki_Logo_DE_Thumbnail_URL
+      )
+    ) |> 
     dplyr::pull(
-      Wiki_Logo_DE_Thumbnail_URL
+      logo_url
    )
 
 # Using purrr shouldn't be necessary because Magick functions are vectorized, but I kept getting errors
-
 # purrr::map_chr(logo_url, write_img)
 
 write_image_safely <- purrr::safely(
   write_img
 )
 
-logo_url_written <- purrr::map(
+#debugonce(write_img)
+
+list_logo_url_written <- purrr::map(
   logo_url,
   write_image_safely
-) |> 
+)
+
+logo_url_written <- list_logo_url_written |> 
   purrr::map(
     "result"
   ) |> 
