@@ -45,6 +45,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 max_rows <- nrow(hochschulen)
+#max_rows <- 5
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -317,6 +318,29 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
     filename = img_path,
     height = height
   )
+  
+  file_ext <- tolower(
+    dplyr::coalesce(
+      fs::path_ext(NA_character_),
+      ""
+    )
+  )
+  
+  if(file_ext == "svg") {
+    img_tag <- htmltools::a(
+      href = hochschule_url_na,
+      target = "_blank",
+      htmltools::img(
+        src = logo_url
+      )
+    )
+    
+    img_tag_gt <- img_tag |> 
+      as.character() |> 
+      gt::html()
+    
+    return(img_tag_gt)
+  }
     
   img_tag_wrangled <- img_tag |> 
     stringr::str_replace(
@@ -414,15 +438,18 @@ logo_url <- hochschulen[c(1:max_rows),] |>
 # Using purrr shouldn't be necessary because Magick functions are vectorized, but I kept getting errors
 # purrr::map_chr(logo_url, write_img)
 
-write_image_safely <- purrr::safely(
+write_img_safely <- purrr::safely(
   write_img
 )
 
 #debugonce(write_img)
 
 list_logo_url_written <- purrr::map(
+  #"https://upload.wikimedia.org/wikipedia/commons/e/e5/Ebc-hochschule-logo.jpg",
   logo_url,
-  write_image_safely
+  write_img_safely
+  #logo_url[540],
+  #write_img
 )
 
 logo_url_written <- list_logo_url_written |> 
@@ -843,7 +870,7 @@ This is the exhaustive list of additional data sources that are linked up:
 ```{r cleanup-images}
 
 fs::file_delete(
-  logo_url_written[!is.na(logo_url_written)]
+  unique(logo_url_written[!is.na(logo_url_written)])
 )
 
 ```
