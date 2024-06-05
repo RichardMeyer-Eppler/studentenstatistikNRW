@@ -156,13 +156,13 @@ col_to_url <- function(df, columns) {
         ) ~ glue::glue(
           "https://wikidata-externalid-url.toolforge.org/?p=4033&id={col_vec_char}"
         ),
-      col_name == "tiktok_id" &
+      col_name == "tiktok" &
         !is.na(
           df[[columns_to_format[i]]]
         ) ~ glue::glue(
           "https://www.tiktok.com/@{col_vec_char}"
         ),
-      col_name == "linkedin_id" &
+      col_name == "linkedin" &
         !is.na(
           df[[columns_to_format[i]]]
         ) ~ glue::glue(
