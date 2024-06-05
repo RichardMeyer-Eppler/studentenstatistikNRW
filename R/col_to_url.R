@@ -141,8 +141,17 @@ col_to_url <- function(df, columns) {
       col_name == "youtube_channel_id" &
         !is.na(
           df[[columns_to_format[i]]]
+        ) & stringr::str_detect(
+            df[[columns_to_format[i]]],
+            pattern = "^UC"
         ) ~ glue::glue(
           "https://www.youtube.com/channel/{col_vec_char}"
+        ),
+      col_name == "youtube_channel_id" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        )  ~ glue::glue(
+          "https://www.youtube.com/col_vec_char}"
         ),
       col_name == "insta_id" &
         !is.na(
