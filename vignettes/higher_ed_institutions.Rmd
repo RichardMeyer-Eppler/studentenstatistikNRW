@@ -44,9 +44,9 @@ source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
-max_rows <- nrow(hochschulen)
+#max_rows <- nrow(hochschulen)
 max_rows <- 5
-#table_width <- 1200L
+table_width <- 1200L
 university_logo_height <- 45L
 
 org_urls <- list(
@@ -72,7 +72,9 @@ pattern <- c(
   "instagram",
   "mastodon",
   "x-twitter",
-  "youtube"
+  "youtube",
+  "tiktok",
+  "linkedin"
 ) |> 
   stringr::str_flatten(
     collapse = "|"
@@ -81,7 +83,8 @@ pattern <- c(
 neg_pattern <- c(
   "square",
   "facebook-f",
-  "facebook-messenger"
+  "facebook-messenger",
+  "fab fa-linkedin-in"
 ) |> 
   stringr::str_flatten(
     collapse = "|"
@@ -152,7 +155,7 @@ social_media_icons <- function(...) {
 }
 
 # tibble::tribble(
-#   ~facebook, ~instagram,
+#   ~linkedin, ~tiktok,
 #  "https://www.facebook.com/unikassel", "https://www.instagram.com/unikassel",
 #   NA, "https://www.instagram.com/unikassel"
 # ) |>
@@ -160,8 +163,8 @@ social_media_icons <- function(...) {
 #   dplyr::mutate(
 #     social_media = list(
 #       social_media_icons(
-#         "fab fa-facebook" = facebook,
-#         "fab fa-instagram" = instagram
+#         "fab fa-linkedin" = linkedin,
+#         "fab fa-tiktok" = tiktok
 #       )
 #     )
 #   ) |>
@@ -176,37 +179,37 @@ social_media_icons <- function(...) {
 # https://www.w3schools.com/tags/tag_summary.asp
 # https://themockup.blog/posts/2020-10-31-embedding-custom-features-in-gt-tables/
 
-label_socal_media <- function(x) {
-  label <- dplyr::case_when(
-    stringr::str_detect(
-      x,
-      pattern = "x\\.com"
-    ) ~ "x",
-    stringr::str_detect(
-      x,
-      pattern = "facebook"
-    ) ~ "fb",
-    stringr::str_detect(
-      x,
-      pattern = "youtube"
-    ) ~ "yt",
-    stringr::str_detect(
-      x,
-      pattern = "instagram"
-    ) ~ "insta",
-    stringr::str_detect(
-      x,
-      pattern = "instagram"
-    ) ~ "insta",
-    stringr::str_detect(
-      x,
-      pattern = "p=4033"
-    ) ~ "mastodon",
-    .default = NA_character_
-  )
-  
-  return(label)
-}
+# label_socal_media <- function(x) {
+#   label <- dplyr::case_when(
+#     stringr::str_detect(
+#       x,
+#       pattern = "x\\.com"
+#     ) ~ "x",
+#     stringr::str_detect(
+#       x,
+#       pattern = "facebook"
+#     ) ~ "fb",
+#     stringr::str_detect(
+#       x,
+#       pattern = "youtube"
+#     ) ~ "yt",
+#     stringr::str_detect(
+#       x,
+#       pattern = "instagram"
+#     ) ~ "insta",
+#     stringr::str_detect(
+#       x,
+#       pattern = "linkedin",
+#     ) ~ "linkedin",
+#     stringr::str_detect(
+#       x,
+#       pattern = "p=4033"
+#     ) ~ "mastodon",
+#     .default = NA_character_
+#   )
+#   
+#   return(label)
+# }
 
 label_ranking <- function(x) {
   label <- dplyr::case_when(
@@ -731,9 +734,11 @@ hochschulen[c(1:max_rows),] |>
       social_media_icons(
         "fab fa-facebook" = facebook_id, 
         "fab fa-instagram" = insta_id,
+        "fab fa-linkedin" = linkedin,
         "fab fa-mastodon" = mastodon_id,
+        "fab fa-tiktok" = tiktok,
         "fab fa-x-twitter" = x_user,
-        "fab fa-youtube" = youtube_channel_id,
+        "fab fa-youtube" = youtube_channel_id
       )
     ),
     Rankings = list(
