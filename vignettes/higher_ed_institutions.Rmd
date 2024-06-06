@@ -45,7 +45,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 5
+max_rows <- 20L
 table_width <- 1200L
 university_logo_height <- 45L
 
