@@ -183,6 +183,18 @@ col_to_url <- function(df, columns) {
         ) ~ glue::glue(
           "https://www.study-in-germany.de/en/germany/cities/{col_vec_char}/"
         ),
+      col_name == "STUDIEREN_ID" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://studieren.de/hochschule.t-0.{col_vec_char}.html"
+        ),
+      col_name == "zeit_che_university" &
+        !is.na(
+          df[[columns_to_format[i]]]
+        ) ~ glue::glue(
+          "https://studiengaenge.zeit.de/hochschule/{col_vec_char}"
+        ),
       .default = col_vec_char
     )
   }
