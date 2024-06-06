@@ -45,7 +45,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 50L
+max_rows <- 30L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -61,7 +61,14 @@ org_urls <- list(
 
 ort_urls <- list(
   daad_cities = "https://www.study-in-germany.de/en/germany/cities/",
-  daad_che_cities = "https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns"
+  daad_che_cities = "https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns",
+  zeit_che_cities = "https://studiengaenge.zeit.de/studienorte/deutschland"
+)
+
+university_urls <- list(
+  daad_che = "https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns",
+  studieren_de = "https://studieren.de/hochschulliste.0.html",
+  zeit_che = "https://studiengaenge.zeit.de/hochschulen"
 )
 ```
 
@@ -623,19 +630,21 @@ rankings_html <- function(...) {
 
 hochschulen[c(1:max_rows),] |> 
   dplyr::mutate(
-    gerit_id = gepris_id
+    gerit_id = gepris_id,
+    zeit_che_university = `Hs-Nr.`,
+    zeit_che_university_orig = zeit_che_university,
+    gepris_id_orig = gepris_id,
+    gerit_id_orig = gerit_id,
+    eu_pic_orig = eu_pic,
+    hs_nr_orig = `Hs-Nr.`, #`[[`(hochschulen, "Hs-Nr."),
+    ror_id_orig = ROR_ID,
+    risis_orgreg_entity_id_orig = RISIS_ORGREG_ENTITY_ID,
+    whed_id_orig = WHED_ID,
   ) |> 
   col_to_url(
     dplyr::everything()
-  ) |>
+  ) |> 
   dplyr::mutate(
-    gepris_id_orig = hochschulen[["gepris_id"]][1:max_rows],
-    gerit_id_orig = hochschulen[["gepris_id"]][1:max_rows],
-    eu_pic_orig = hochschulen[["eu_pic"]][1:max_rows],
-    hs_nr_orig = `[[`(hochschulen, "Hs-Nr.")[1:max_rows],
-    ror_id_orig = hochschulen[["ROR_ID"]][1:max_rows],
-    risis_orgreg_entity_id_orig = hochschulen[["RISIS_ORGREG_ENTITY_ID"]][1:max_rows],
-    whed_id_orig = hochschulen[["WHED_ID"]][1:max_rows],
     DAAD_ORT_LABEL = dplyr::if_else(
       is.na(DAAD_ORT),
       NA,
@@ -645,6 +654,21 @@ hochschulen[c(1:max_rows),] |>
       is.na(CHE_DAAD_Town_ID),
       NA,
       Ort
+    ),
+    STUDIEREN_HS_LABEL = dplyr::if_else(
+      is.na(STUDIEREN_ID),
+      NA,
+      hochschulen[["STUDIEREN_ID"]][1:max_rows]
+    ),
+    CHE_DAAD_HS_LABEL = dplyr::if_else(
+      is.na(CHE_DAAD_University_ID),
+      NA,
+      hochschulen[["CHE_DAAD_University_ID"]][1:max_rows]
+    ),
+    ZEIT_CHE_HS_LABEL = dplyr::if_else(
+      is.na(zeit_che_university),
+      NA,
+      zeit_che_university_orig
     ),
     logo_url = logo_url_written
   ) |> 
@@ -711,6 +735,29 @@ hochschulen[c(1:max_rows),] |>
           org_label = 'DAAD CHE',
           org_id_url = CHE_DAAD_Town_ID,
           org_id_label = CHE_DAAD_Town_ID_Label
+        )
+      )
+    ),
+    Hochschule_EN = list(
+      id_function(
+        label = Hochschule_EN,
+        list(
+          org_url = university_urls[["daad_che"]],
+          org_label = 'DAAD CHE',
+          org_id_url = CHE_DAAD_University_ID,
+          org_id_label = CHE_DAAD_HS_LABEL
+        ),
+        list(
+          org_url = university_urls[["studieren_de"]],
+          org_label = 'studieren.de',
+          org_id_url = STUDIEREN_ID,
+          org_id_label = STUDIEREN_HS_LABEL
+        ),
+        list(
+          org_url = university_urls[["zeit_che"]],
+          org_label = 'ZEIT CHE',
+          org_id_url = zeit_che_university,
+          org_id_label = ZEIT_CHE_HS_LABEL
         )
       )
     ),
@@ -807,6 +854,9 @@ hochschulen[c(1:max_rows),] |>
     ),
     IDs ~ gt::px(
       150L
+    ),
+    Hochschule_EN ~ gt::px(
+      250L
     )
   ) |> 
   gt::opt_interactive(
@@ -821,7 +871,7 @@ hochschulen[c(1:max_rows),] |>
     ),
     locations = gt::cells_body(
       columns = c(
-        IDs, Ort
+        IDs, Ort, Hochschule_EN
       )
     )
   ) |> 
