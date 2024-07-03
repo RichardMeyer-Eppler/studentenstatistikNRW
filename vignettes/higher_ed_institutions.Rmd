@@ -19,6 +19,9 @@ editor_options:
 # https://httr2.r-lib.org/articles/wrapping-apis.html#secret-management
 # https://pkgdown.r-lib.org/articles/linking.html
 
+library(studentenstatistikNRW)
+library(tibble)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
