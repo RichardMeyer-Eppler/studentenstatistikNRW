@@ -25,14 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## The *Hochschulen* Table
-
-```{r}
-library(studentenstatistikNRW)
-library(tibble)
-
-hochschulen
-```
+As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. The table below lists all these institutions, together with links providing a wide variety of further information for each institution (see documentation below).
 
 ## Interactive HTML Table created with `gt` Package
 
@@ -632,6 +625,10 @@ hochschulen[c(1:max_rows),] |>
   dplyr::mutate(
     gerit_id = gepris_id,
     zeit_che_university = `Hs-Nr.`,
+    CHE_DAAD_University_ID = as.character(
+      CHE_DAAD_University_ID
+    ),
+    CHE_DAAD_University_ID_orig = CHE_DAAD_University_ID,
     zeit_che_university_orig = zeit_che_university,
     gepris_id_orig = gepris_id,
     gerit_id_orig = gerit_id,
@@ -663,7 +660,7 @@ hochschulen[c(1:max_rows),] |>
     CHE_DAAD_HS_LABEL = dplyr::if_else(
       is.na(CHE_DAAD_University_ID),
       NA,
-      hochschulen[["CHE_DAAD_University_ID"]][1:max_rows]
+      CHE_DAAD_University_ID_orig
     ),
     ZEIT_CHE_HS_LABEL = dplyr::if_else(
       is.na(zeit_che_university),
@@ -896,33 +893,108 @@ hochschulen[c(1:max_rows),] |>
 
 ```
 
-As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. In this vignette, we will use this official data source as basis and go through considerable efforts to complement this data with other sources. In particular:
 
-<style type="text/css">
-.container template-article{
-  max-width: 1500px !important;
-}
-</style>
 
--   We will download all key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states),
+```{r, echo = FALSE, eval = FALSE}
+# <style type="text/css">
+# .container template-article{
+#   max-width: 1500px !important;
+# }
+# </style>
+```
 
--   we will then match the Destatis data with the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are the "most authoritative German numbers" that exist.
+### Data source
 
--   As described in `vignette("ror")`, we use the global Research Organization Registry (ROR) REST API to retrieve additional data and identifiers which are then matched to the existing data.
+The data is sourced from the following tables and lists:
 
-This is the exhaustive list of additional data sources that are linked up:
+- The key tables for the student statistics (table series 372) provided by the Federal Statistical Agency ([Destatis](https://www.destatis.de/EN)) on its data collection portal ([Erhebungsportal](https://erhebungsportal.estatistik.de/Erhebungsportal/informationen/statistik-der-studenten-372)). There are four key tables / csv files containing data on institutions of higher education in Germany: 1.) Hochschule, 2.) HochschulStandort, 3.) HochschuleErsteinschreibung, and 4.) HochschulFachbereich, each with slight differences in how and where institutions are counted (e.g. when a university has subsidiary campuses in other cities and German states, or in the classification of university hospitals),
 
--   links to the German and English Wikipedia article for each institution,
+-   the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/). The Federal Statistical Agency data together with the HRK list are the "most authoritative German numbers" that exist.
 
--   links to the Wikidata entry for each institution and a separate link to each institution's German logo, if available,
+-   the German and English Wikipedia article for each institution,
 
--   the link to each institution on [studieren.de](https://studieren.de/),
+-   the Wikidata entry for each institution,
 
--   the link to the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/) for each institution hosted by the German Academic Exchange Service in English,
+-   Logos are sourced as [data URIs](https://en.wikipedia.org/wiki/Data_URI_scheme) from [Wikimedia Commons](https://commons.wikimedia.org) (preferred), or from the German or English Wikipedia entry. If available, [SVGs](https://en.wikipedia.org/wiki/SVG) are preferred to raster formats.
 
--   the link for each institution's [multirank for 2022-2023](https://www.umultirank.org/),
+-   as described in `vignette("ror")`, we use the global Research Organization Registry (ROR) REST API to retrieve additional data and identifiers which are then matched to the existing data.
 
-```{r cleanup-images, eval = FALSE}
+### Identifiers
+
+If available, the following identifiers for each institution are included:
+
+- the 9-digit Participant Identification Code (PIC) used in the [EU Funding & Tenders Portal](https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register) ([Wikidata Property P5785](https://www.wikidata.org/wiki/Property:P5785)),
+
+- the identifier for the GEPRIS database of funded research projects, published by the German Research Foundation (DFG) ([Wikidata Property P4870](https://www.wikidata.org/wiki/Property:P4870)),
+
+- the German Research Institution (GERiT) ID of each institution (see [https://gerit.org/en/about](https://gerit.org/en/about)),
+
+- the ID used by the [German Rector's Conference (HRK)](https://www.hrk.de/home/),
+
+- the  Research Infrastructure for Research and Innovation Studies (RISIS) ID [see https://register.orgreg.joanneum.at/#/about/1](https://register.orgreg.joanneum.at/#/about/1)). Note that a free account is required to use their services.
+
+- the Research Organization Registry (ROR) ID (see `vignette("ror")` and [Wikidata Property P6782](https://www.wikidata.org/wiki/Property:P6782)),
+
+- the ID of the [World Higher Education Database](https://www.whed.net) by the International Association of Universities.
+
+## City
+
+If available, the following websites based on the institution's city are linked:
+
+- the [German Foreign Exchange Service](https://www.study-in-germany.de/en/germany/cities/) page,
+
+- the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) page as hosted by the German Academic Exchange Service.
+
+## Institutions of higher education
+
+If available, the following websites providing further details on each instituion of higher eduation and their programs are linked:
+
+- the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) as hosted by the German Academic Exchange Service,
+
+- the [studieren.de](https://studieren.de/hochschulliste.0.html) page,
+
+- the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) as hosted by ZEIT Online / Hey Studium.
+
+## Rankings
+
+If available, the following rankings are linked:
+
+- the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) as hosted by the German Academic Exchange Service,
+
+- the [U-Multirank](https://www.umultirank.org/) ([Wikidata Property P5600](https://www.wikidata.org/wiki/Property:P5600)),
+
+- the [Times Higher Education Ranking](https://www.timeshighereducation.com/world-university-rankings/2024/world-ranking) ([Wikidata Property P5586](https://www.wikidata.org/wiki/Property:P5586)),
+
+- the [Shanghai Ranking](https://www.shanghairanking.com/institution) ([Wikidata Property P5242](https://www.wikidata.org/wiki/Property:P5242)),
+
+- the [QS World University Rankings](https://www.topuniversities.com/universities) ([Wikidata Property P5584](https://www.wikidata.org/wiki/Property:P5584)).
+
+### Social Media
+
+If available, the social media sites are linked:
+
+- Facebook,
+- Instagram,
+- Linkedin,
+- Mastodon,
+- TikTok,
+- X,
+- Youtube.
+
+## APIs
+
+The following APIs were helpful in creating the data above:
+
+- [YouYoube Data API v3](https://developers.google.com/youtube/v3/docs) for retrieving the proper channel IDs,
+
+- [Wiki Core REST API](https://api.wikimedia.org/wiki/Core_REST_API) to search for Wikipedia entries and retrieve translated pages,
+
+- [Wikidata SPARQL query service](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/Wikidata_Query_Help) to obtain data from Wikidata pages (can be queried through the `{WikidataR}` package),
+
+- [SOAP XML web service from Destatis](https://www-genesis.destatis.de/genesis/online?Menu=Webservice#abreadcrumb) to obtain data from the Federal Statistical Office of Germany (can be queried through the  `{wiesbaden}` package)
+
+
+```{r cleanup-images, echo = FALSE, eval = FALSE}
 
 fs::file_delete(
   unique(logo_url_written[!is.na(logo_url_written)])
