@@ -41,7 +41,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 30L
+max_rows <- 50L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -292,7 +292,7 @@ img_path <- function(logo_url) {
   return(img_path)
 }
 
-build_logo_html <- function(logo_url, hochschule_url, height = university_logo_height) {
+build_logo_html <- function(logo_url, hochschule_url, height = university_logo_height, data_uri = NULL) {
   # https://www.w3schools.com/html/html_images.asp
   # https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
   # https://www.w3schools.com/tags/att_img_height.asp
@@ -320,17 +320,31 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
     hochschule_url
   )
   
-  img_tag <- gt::local_image(
-    filename = img_path,
-    height = height
-  )
-  
   file_ext <- tolower(
     dplyr::coalesce(
-      fs::path_ext(NA_character_),
-      ""
+      fs::path_ext(img_path),
+      NA_character_
     )
   )
+  
+  if(!is.na(data_uri)) {
+    img_tag <- htmltools::a(
+      href = hochschule_url_na,
+      target = "_blank",
+      htmltools::img(
+        src = data_uri
+        ,style = glue::glue(
+          "height:{university_logo_height}px;border:0px none;"
+        )
+      )
+    ) 
+    
+    img_tag_gt <- img_tag |> 
+      as.character() |> 
+      gt::html()
+
+    return(img_tag_gt)
+  }
   
   if(file_ext == "svg") {
     img_tag <- htmltools::a(
@@ -347,22 +361,72 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
     
     return(img_tag_gt)
   }
-    
-  img_tag_wrangled <- img_tag |> 
-    stringr::str_replace(
-       pattern = glue::glue(
-         'style=\\"height:{height}px;\\">'
-        ),
-       replacement = glue::glue(
-         'style=\\"height:{height}px;border:0px none;\\"</a>'
-       )
-    )
   
-  html <- glue::glue(
-    '<a href="{hochschule_url_na}" target="_blank"> {img_tag_wrangled}'
+  img_uri <- gt:::get_image_uri(
+    file = img_path
   )
   
-  return(html)
+  img_tag <- htmltools::a(
+    href = hochschule_url_na,
+    target = "_blank",
+    htmltools::img(
+      src = img_uri
+      ,style = glue::glue(
+          "height:{university_logo_height}px;border:0px none;"
+       )
+    )
+  )
+    
+  img_tag_gt <- img_tag |> 
+    as.character() |> 
+    gt::html()
+  
+  return(img_tag_gt)
+  
+  # img_tag <- gt::local_image(
+  #   filename = img_path,
+  #   height = height
+  # )
+  # 
+  # pattern_backslash <- stringr::regex(
+  #   '(?<=\\()(.*?)(?=\\))'
+  # )
+  # 
+  # stringr::str_remove_all(
+  #   gt::local_image(gt::test_image(type="svg")),
+  #   stringr::fixed(
+  #     r'(\\)'
+  #   )
+  # )
+  # 
+  
+  # 
+  # htmltools::a(
+  #   href = "wwww.test.ca",
+  #  # href = hochschule_url_na,
+  #   target = "_blank",
+  #   gt::local_image(gt::test_image(type="svg"))
+  # )
+  # 
+  # test <- gt::local_image(gt::test_image(type="svg")) |> htmltools::as.tags()
+  # 
+  # test$style
+  # 
+  # img_tag_wrangled <- img_tag |> 
+  #   stringr::str_replace(
+  #      pattern = glue::glue(
+  #        'style=\\"height:{height}px;\\">'
+  #       ),
+  #      replacement = glue::glue(
+  #        'style=\\"height:{height}px;border:0px none;\\"</a>'
+  #      )
+  #   )
+  # 
+  # html <- glue::glue(
+  #   '<a href="{hochschule_url_na}" target="_blank"> {img_tag_wrangled}'
+  # )
+  
+ # return(html)
 }
 
 write_img <- function(logo_url, height = university_logo_height) {
@@ -422,7 +486,6 @@ write_img <- function(logo_url, height = university_logo_height) {
 ```
 
 ```{r write-images, echo = FALSE}
-
 logo_url <- hochschulen[c(1:max_rows),] |>
     col_to_url(
       dplyr::everything()
@@ -433,7 +496,9 @@ logo_url <- hochschulen[c(1:max_rows),] |>
           fs::path_ext(
             Wiki_Logo_DE_URL
           )
-        ) == "svg" ~ Wiki_Logo_DE_URL,
+        ) == "svg" &
+        # Uni Jena == 11615
+        Hochschulart_Hochschule_Signatur != "11615" ~ Wiki_Logo_DE_URL,
         .default = Wiki_Logo_DE_Thumbnail_URL
       )
     ) |> 
@@ -639,7 +704,28 @@ hochschulen[c(1:max_rows),] |>
     hs_nr_orig = `Hs-Nr.`, #`[[`(hochschulen, "Hs-Nr."),
     ror_id_orig = ROR_ID,
     risis_orgreg_entity_id_orig = RISIS_ORGREG_ENTITY_ID,
+    studieren_id_orig = STUDIEREN_ID,
     whed_id_orig = WHED_ID,
+    logo = fs::path_file(
+      img_path(
+        Wiki_Logo_DE_URL
+      )
+    )
+  ) |> 
+   dplyr::left_join(
+    hochschulen_logos,
+    by = dplyr::join_by(
+      logo
+    ),
+    na_matches = "never"
+  ) |> 
+  # dplyr::filter(
+  #   fs::path_ext(
+  #     logo
+  #   ) == "svg"
+  # ) |> 
+  dplyr::select(
+    -logo
   ) |> 
   col_to_url(
     dplyr::everything()
@@ -658,7 +744,7 @@ hochschulen[c(1:max_rows),] |>
     STUDIEREN_HS_LABEL = dplyr::if_else(
       is.na(STUDIEREN_ID),
       NA,
-      hochschulen[["STUDIEREN_ID"]][1:max_rows]
+      studieren_id_orig
     ),
     CHE_DAAD_HS_LABEL = dplyr::if_else(
       is.na(CHE_DAAD_University_ID),
@@ -775,7 +861,8 @@ hochschulen[c(1:max_rows),] |>
     ),
     Logo = build_logo_html(
       logo_url = logo_url,
-      hochschule_url = url
+      hochschule_url = url,
+      data_uri = logo_data_uri
     ),
     social_media = list(
       social_media_icons(
