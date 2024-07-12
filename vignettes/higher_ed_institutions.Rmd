@@ -1,6 +1,8 @@
 ---
 title: "Institutions of Higher Education in Germany"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_document:
+    toc: false
 vignette: >
   %\VignetteIndexEntry{Institutions of Higher Education in Germany}
   %\VignetteEncoding{UTF-8}
@@ -10,6 +12,8 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
+# Random table of contents on a vignette #1349
+# https://github.com/r-lib/pkgdown/issues/1349
 
 # https://www.w3schools.com/css/css_rwd_viewport.asp
 # https://pkgdown.r-lib.org/reference/build_articles.html
