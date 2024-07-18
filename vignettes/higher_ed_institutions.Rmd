@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of 427 institutions of higher education in the country. The table below lists all these institutions, together with links providing a wide variety of further information for each institution (see documentation below).
+As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of [427 institutions of higher education in the country](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/Tabellen/hochschulen-hochschularten.html?nn=209416). The table below lists most of these institutions, together with links providing a wide variety of additional information.
 
 ## Interactive HTML Table created with `gt` Package
 
@@ -45,7 +45,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 50L
+max_rows <- 75L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -1025,11 +1025,11 @@ If available, the following identifiers for each institution are included:
 
 - the ID used by the [German Rector's Conference (HRK)](https://www.hrk.de/home/),
 
-- the  Research Infrastructure for Research and Innovation Studies (RISIS) ID [see https://register.orgreg.joanneum.at/#/about/1](https://register.orgreg.joanneum.at/#/about/1)). Note that a free account is required to use their services.
+- the ETER ([European Tertiary Education Register](https://eter-project.com/)) ID by the Research Infrastructure for Research and Innovation Studies (RSIS) [see https://register.orgreg.joanneum.at/#/about/1](https://register.orgreg.joanneum.at/#/about/1)). Note that a free account is required to use their services.
 
 - the Research Organization Registry (ROR) ID (see `vignette("ror")` and [Wikidata Property P6782](https://www.wikidata.org/wiki/Property:P6782)),
 
-- the ID of the [World Higher Education Database](https://www.whed.net) by the International Association of Universities.
+- the ID of the [World Higher Education Database (WHED)](https://www.whed.net) by the International Association of Universities.
 
 ## City
 
@@ -1063,17 +1063,23 @@ If available, the following rankings are linked:
 
 - the [QS World University Rankings](https://www.topuniversities.com/universities) ([Wikidata Property P5584](https://www.wikidata.org/wiki/Property:P5584)).
 
-### Social Media
+## Social Media
 
-If available, the social media sites are linked:
+If available, these social media sites are linked:
 
-- Facebook,
-- Instagram,
-- Linkedin,
-- Mastodon,
-- TikTok,
-- X,
-- Youtube.
+- Facebook ([Wikidata Property P2013](https://www.wikidata.org/wiki/Property:P2013)),
+
+- Instagram ([Wikidata Property P2003](https://www.wikidata.org/wiki/Property:P2003)),
+
+- Linkedin ([Wikidata Property P4264](https://www.wikidata.org/wiki/Property:P4264)),
+
+- Mastodon ([Wikidata Property P4033](https://www.wikidata.org/wiki/Property:P4033)),
+
+- TikTok ([Wikidata Property P7085](https://www.wikidata.org/wiki/Property:P7085)),
+
+- X ([Wikidata Property P2002](https://www.wikidata.org/wiki/Property:P2002)),
+
+- Youtube ([Wikidata Property P2397](https://www.wikidata.org/wiki/Property:P2397)).
 
 ## APIs
 
@@ -1085,8 +1091,39 @@ The following APIs were helpful in creating the data above:
 
 - [Wikidata SPARQL query service](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/Wikidata_Query_Help) to obtain data from Wikidata pages (can be queried through the `{WikidataR}` package),
 
-- [SOAP XML web service from Destatis](https://www-genesis.destatis.de/genesis/online?Menu=Webservice#abreadcrumb) to obtain data from the Federal Statistical Office of Germany (can be queried through the  `{wiesbaden}` package)
+- [SOAP XML web service from Destatis](https://www-genesis.destatis.de/genesis/online?Menu=Webservice#abreadcrumb) to obtain data from the Federal Statistical Office of Germany (can be queried through the  `{wiesbaden}` package).
 
+## A rant about the Higher Education Compass / Hochschulkompass and data licences
+
+One obvious addition to the `hochschulen` dataset would be a link to the [Higher Education Compass / Hochschulkompass](https://www.hochschulkompass.de/en/higher-education-institutions.html) by the HRK. Unfortunately, the compass website uses a lot of obfuscating Javascript to make direct links very difficult. Now, the HRK is a semi-public institution funded by the [Stiftung zur Förderung der Hochschulrektorenkonferenz](https://www.hrk.de/hrk-at-a-glance/structure/#:~:text=Administration%20and%20Budget). This foundation mainly raises its funds through grants from the Länder and from the Federal Ministry of Education and Research. Moreover, the mostly public members (around 271 institutions of higher education) of the HRK pay annual membership fees.
+
+According to the website, "all information found in the Higher Education Compass is authorized by the universities and is updated by employees at the universities themselves". Against this backdrop, it is incomprehensible that the HRK deems it worthwhile to protect the Higher Education Compass data. Use of this data by the public and/or private competitors to provide better offerings with additional data or different UI should be encouraged, not made more difficult! After all, this is non-confidential data on public institutions largely paid for by taxpayers' money, administered by staff mostly in the public sector...
+
+The `hochschulen` dataset consciously consists almost exclusively of identifiers and links, so as to avoid data licencing issues. Particularly the private providers, like ZEIT or studieren.de, naturally have a vested business interest to protect their data and to discourage direct links as best they can.
+
+## About this project
+
+Like most good projects, this one started out of a sense of annoyance. In particular, I looked at the Destatis list of [427 institutions of higher education](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/Tabellen/hochschulen-hochschularten.html?nn=209416) and realized that they did NOT provide a detailed breakdown of the members institutions in each category. For the time being, only the Länder statistical agencies provide this level of detail. Moreover, I noticed that the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/) did not use the instituional identifiers used by the Länder statistical agencies (as one would expect). Nor did their numbers match up with Destatis. I will admit, writing these two slights down, I may come off as easily annoyed - but I can assure you, these sort of things can be heart-wrenching, really!
+
+Annoyed as I was, I started to dig, and dig, and dig a little deeper still. I discovered along the way that trying to count institutions of higher education was by no means a particularly innovative endeavor - after all, [ETER](https://eter-project.com) does it at the European level, [WHED](https://www.whed.net) does it for the global level, [GERiT](https://gerit.org/en) and [ROR](https://ror.org) do it for research institutions (slightly different emphasis). Had I known about these initiatives from the start - rather than stumbling upon them during the process - I would have avoided a lot of work. Alas, the proof of the pudding is in the eating...
+
+## Aims of this project
+
+A lot of the data assembled in the `hochschulen` dataset will find its more permanent home on Wikidata - another great resource I have only come to appreciate as this project has progressed. For the time being, the idea is that this data set can save other people time matching up different data sources and IDs. People who do work on rankings, or people who work in communication departments come to mind, but there are certainly lots of other applications.
+
+## To Dos
+
+- Add bundesland to gt table
+- Consistent use of English in the `hochschulen` dataset, rename German columns
+- Document every column of the `hochschulen` dataset
+- Crop whitespace for svg logo images, e.g. for the Chemnitz University of Technology (11305)
+- The CHE-Ranking is currently listed twice: in the hochschule column and in the ranking column
+- The HRK ID in the ID column should have no URL attached to it
+- Find a better home for this article (own R package? Personal website?)
+- Find a way to get rid of the floating TOC for this vignette
+- Cite R packages used
+- Updata Wikidata with missing social media links and other identifiers
+- Provide csv download of raw data
 
 ```{r cleanup-images, echo = FALSE, eval = FALSE}
 
