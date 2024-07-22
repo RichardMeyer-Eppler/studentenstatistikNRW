@@ -1,8 +1,6 @@
 ---
 title: "Institutions of Higher Education in Germany"
-output:
-  rmarkdown::html_document:
-    toc: false
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Institutions of Higher Education in Germany}
   %\VignetteEncoding{UTF-8}
@@ -14,6 +12,8 @@ editor_options:
 ```{r, include = FALSE}
 # Random table of contents on a vignette #1349
 # https://github.com/r-lib/pkgdown/issues/1349
+# https://github.com/r-lib/pkgdown/issues/1357
+# https://github.com/r-lib/pkgdown/blob/d5e60a7232ee5f414f2a1de2aca5bf44054e7a08/vignettes/test/output.Rmd#L3-L5
 
 # https://www.w3schools.com/css/css_rwd_viewport.asp
 # https://pkgdown.r-lib.org/reference/build_articles.html
@@ -34,18 +34,16 @@ knitr::opts_chunk$set(
 
 As of March 13, 2024, the Federal Statistical Office of Germany (Destatis) lists a total of [427 institutions of higher education in the country](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/Tabellen/hochschulen-hochschularten.html?nn=209416). The table below lists most of these institutions, together with links providing a wide variety of additional information.
 
-## Interactive HTML Table created with `gt` Package
-
 ```{r gt-vars, echo = FALSE}
 
 title <- "Institutions of Higher Education in Germany"
-subtitle <- "Sub"
+#subtitle <- "Sub"
 source_note_link <- "https://richardmeyer-eppler.github.io/studentenstatistikNRW"
 source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 75L
+max_rows <- 100L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -723,11 +721,6 @@ hochschulen[c(1:max_rows),] |>
     ),
     na_matches = "never"
   ) |> 
-  # dplyr::filter(
-  #   fs::path_ext(
-  #     logo
-  #   ) == "svg"
-  # ) |> 
   dplyr::select(
     -logo
   ) |> 
@@ -919,8 +912,8 @@ hochschulen[c(1:max_rows),] |>
     # rownames_to_stub	= TRUE
   ) |>
   gt::tab_header(
-    title = title,
-    subtitle = subtitle
+    title = title
+    #,subtitle = subtitle
   ) |> 
   gt::tab_source_note(
     source_note = gt::html(
@@ -1095,11 +1088,11 @@ The following APIs were helpful in creating the data above:
 
 ## A rant about the Higher Education Compass / Hochschulkompass and data licences
 
-One obvious addition to the `hochschulen` dataset would be a link to the [Higher Education Compass / Hochschulkompass](https://www.hochschulkompass.de/en/higher-education-institutions.html) by the HRK. Unfortunately, the compass website uses a lot of obfuscating Javascript to make direct links very difficult. Now, the HRK is a semi-public institution funded by the [Stiftung zur Förderung der Hochschulrektorenkonferenz](https://www.hrk.de/hrk-at-a-glance/structure/#:~:text=Administration%20and%20Budget). This foundation mainly raises its funds through grants from the Länder and from the Federal Ministry of Education and Research. Moreover, the mostly public members (around 271 institutions of higher education) of the HRK pay annual membership fees.
+One obvious addition to the `?hochschulen` dataset would be a link to the [Higher Education Compass / Hochschulkompass](https://www.hochschulkompass.de/en/higher-education-institutions.html) by the HRK. Unfortunately, the compass website uses a lot of obfuscating Javascript to make direct links very difficult. Now, the HRK is a semi-public institution funded by the [Stiftung zur Förderung der Hochschulrektorenkonferenz](https://www.hrk.de/hrk-at-a-glance/structure/#:~:text=Administration%20and%20Budget). This foundation mainly raises its funds through grants from the Länder and from the Federal Ministry of Education and Research. Moreover, the mostly public members (around 271 institutions of higher education) of the HRK pay annual membership fees.
 
 According to the website, "all information found in the Higher Education Compass is authorized by the universities and is updated by employees at the universities themselves". Against this backdrop, it is incomprehensible that the HRK deems it worthwhile to protect the Higher Education Compass data. Use of this data by the public and/or private competitors to provide better offerings with additional data or different UI should be encouraged, not made more difficult! After all, this is non-confidential data on public institutions largely paid for by taxpayers' money, administered by staff mostly in the public sector...
 
-The `hochschulen` dataset consciously consists almost exclusively of identifiers and links, so as to avoid data licencing issues. Particularly the private providers, like ZEIT or studieren.de, naturally have a vested business interest to protect their data and to discourage direct links as best they can.
+The `?hochschulen` dataset consciously consists almost exclusively of identifiers and links, so as to avoid data licencing issues. Particularly the private providers, like ZEIT or studieren.de, naturally have a vested business interest to protect their data and to discourage direct links as best they can.
 
 ## About this project
 
@@ -1109,13 +1102,13 @@ Annoyed as I was, I started to dig, and dig, and dig a little deeper still. I di
 
 ## Aims of this project
 
-A lot of the data assembled in the `hochschulen` dataset will find its more permanent home on Wikidata - another great resource I have only come to appreciate as this project has progressed. For the time being, the idea is that this data set can save other people time matching up different data sources and IDs. People who do work on rankings, or people who work in communication departments come to mind, but there are certainly lots of other applications.
+A lot of the data assembled in the `?hochschulen` dataset will find its more permanent home on Wikidata - another great resource I have only come to appreciate as this project has progressed. For the time being, the idea is that this data set can save other people time matching up different data sources and IDs. People who do work on rankings, or people who work in communication departments come to mind, but there are certainly lots of other applications.
 
 ## To Dos
 
 - Add bundesland to gt table
-- Consistent use of English in the `hochschulen` dataset, rename German columns
-- Document every column of the `hochschulen` dataset
+- Consistent use of English in the `?hochschulen` dataset, rename German columns
+- Document every column of the `?hochschulen` dataset
 - Crop whitespace for svg logo images, e.g. for the Chemnitz University of Technology (11305)
 - The CHE-Ranking is currently listed twice: in the hochschule column and in the ranking column
 - The HRK ID in the ID column should have no URL attached to it
@@ -1132,4 +1125,3 @@ fs::file_delete(
 )
 
 ```
-
