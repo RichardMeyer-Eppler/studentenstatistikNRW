@@ -1,8 +1,6 @@
 ---
 title: "Institutions of Higher Education in Germany"
 output: rmarkdown::html_vignette
-pkgdown:
-  as_is: true
 vignette: >
   %\VignetteIndexEntry{Institutions of Higher Education in Germany}
   %\VignetteEncoding{UTF-8}
@@ -49,7 +47,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 100L
+max_rows <- 150L
 table_width <- 1200L
 university_logo_height <- 45L
 
