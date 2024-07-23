@@ -47,7 +47,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 200L
+max_rows <- 250L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -994,7 +994,7 @@ hochschulen[c(1:max_rows),] |>
 # </style>
 ```
 
-### Data source
+### Data source {.unlisted .unnumbered}
 
 The data is sourced from the following tables and lists:
 
