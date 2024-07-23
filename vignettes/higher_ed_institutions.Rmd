@@ -10,6 +10,9 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
+# suppress a section title from toc #1430
+# https://github.com/r-lib/pkgdown/issues/1430
+
 ## Floating TOC issue
 # Random table of contents on a vignette #1349
 # https://github.com/r-lib/pkgdown/issues/1349
@@ -994,7 +997,7 @@ hochschulen[c(1:max_rows),] |>
 # </style>
 ```
 
-### Data source {.unlisted .unnumbered}
+### Data source
 
 The data is sourced from the following tables and lists:
 
