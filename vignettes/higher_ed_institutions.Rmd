@@ -12,6 +12,7 @@ editor_options:
 ```{r, include = FALSE}
 # suppress a section title from toc #1430
 # https://github.com/r-lib/pkgdown/issues/1430
+# https://github.com/r-lib/pkgdown/pull/1432/commits/8a4643f855d14f67704d6cfa2ba25fadbc4dfaa2
 
 ## Floating TOC issue
 # Random table of contents on a vignette #1349
@@ -50,7 +51,7 @@ source_note <- glue::glue(
   "<a href = {source_note_link}>{source_note_link}</a>"
 )
 #max_rows <- nrow(hochschulen)
-max_rows <- 250L
+max_rows <- 200L
 table_width <- 1200L
 university_logo_height <- 45L
 
@@ -997,7 +998,7 @@ hochschulen[c(1:max_rows),] |>
 # </style>
 ```
 
-### Data source
+### Data source {.unlisted .unnumbered}
 
 The data is sourced from the following tables and lists:
 
