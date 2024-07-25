@@ -13,8 +13,9 @@ editor_options:
 # suppress a section title from toc #1430
 # https://github.com/r-lib/pkgdown/issues/1430
 # https://github.com/r-lib/pkgdown/pull/1432/commits/8a4643f855d14f67704d6cfa2ba25fadbc4dfaa2
+# https://afeld.github.io/bootstrap-toc/#:~:text=in%20the%20sidebar.-,Skipping,-To%20prevent%20a
 
-## Floating TOC issue
+# <h2 data-toc-skip>Floating TOC issue
 # Random table of contents on a vignette #1349
 # https://github.com/r-lib/pkgdown/issues/1349
 # documentation on toc depth #1357
@@ -998,7 +999,7 @@ hochschulen[c(1:max_rows),] |>
 # </style>
 ```
 
-<h3 data-toc-skip>Data source{data-toc-skip}</h3>
+<h3 data-toc-skip>Data source</h3>
 
 The data is sourced from the following tables and lists:
 
@@ -1014,7 +1015,7 @@ The data is sourced from the following tables and lists:
 
 -   as described in `vignette("ror")`, we use the global Research Organization Registry (ROR) REST API to retrieve additional data and identifiers which are then matched to the existing data.
 
-### Identifiers
+<h3 data-toc-skip>Identifiers</h3>
 
 If available, the following identifiers for each institution are included:
 
@@ -1032,7 +1033,7 @@ If available, the following identifiers for each institution are included:
 
 - the ID of the [World Higher Education Database (WHED)](https://www.whed.net) by the International Association of Universities.
 
-## City
+<h2 data-toc-skip>City</h2>
 
 If available, the following websites based on the institution's city are linked:
 
@@ -1040,7 +1041,7 @@ If available, the following websites based on the institution's city are linked:
 
 - the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) page as hosted by the German Academic Exchange Service.
 
-## Institutions of higher education
+<h2 data-toc-skip>Institutions of higher education</h2>
 
 If available, the following websites providing further details on each instituion of higher eduation and their programs are linked:
 
@@ -1050,7 +1051,7 @@ If available, the following websites providing further details on each instituio
 
 - the [CHE University Ranking](https://www.daad.de/en/studying-in-germany/universities/che-ranking/?che-a=universities-and-towns) as hosted by ZEIT Online / Hey Studium.
 
-## Rankings
+<h2 data-toc-skip>Rankings</h2>
 
 If available, the following rankings are linked:
 
@@ -1064,7 +1065,7 @@ If available, the following rankings are linked:
 
 - the [QS World University Rankings](https://www.topuniversities.com/universities) ([Wikidata Property P5584](https://www.wikidata.org/wiki/Property:P5584)).
 
-## Social Media
+<h2 data-toc-skip>Social Media</h2>
 
 If available, these social media sites are linked:
 
@@ -1082,7 +1083,7 @@ If available, these social media sites are linked:
 
 - Youtube ([Wikidata Property P2397](https://www.wikidata.org/wiki/Property:P2397)).
 
-## APIs
+<h2 data-toc-skip>APIs</h2>
 
 The following APIs were helpful in creating the data above:
 
@@ -1094,7 +1095,7 @@ The following APIs were helpful in creating the data above:
 
 - [SOAP XML web service from Destatis](https://www-genesis.destatis.de/genesis/online?Menu=Webservice#abreadcrumb) to obtain data from the Federal Statistical Office of Germany (can be queried through the  `{wiesbaden}` package).
 
-## A rant about the Higher Education Compass / Hochschulkompass and data licences
+<h2 data-toc-skip>A rant about the Higher Education Compass / Hochschulkompass and data licences</h2>
 
 One obvious addition to the `?hochschulen` dataset would be a link to the [Higher Education Compass / Hochschulkompass](https://www.hochschulkompass.de/en/higher-education-institutions.html) by the HRK. Unfortunately, the compass website uses a lot of obfuscating Javascript to make direct links very difficult. Now, the HRK is a semi-public institution funded by the [Stiftung zur Förderung der Hochschulrektorenkonferenz](https://www.hrk.de/hrk-at-a-glance/structure/#:~:text=Administration%20and%20Budget). This foundation mainly raises its funds through grants from the Länder and from the Federal Ministry of Education and Research. Moreover, the mostly public members (around 271 institutions of higher education) of the HRK pay annual membership fees.
 
@@ -1102,17 +1103,17 @@ According to the website, "all information found in the Higher Education Compass
 
 The `?hochschulen` dataset consciously consists almost exclusively of identifiers and links, so as to avoid data licencing issues. Particularly the private providers, like ZEIT or studieren.de, naturally have a vested business interest to protect their data and to discourage direct links as best they can.
 
-## About this project
+<h2 data-toc-skip>About this project</h2>
 
 Like most good projects, this one started out of a sense of annoyance. In particular, I looked at the Destatis list of [427 institutions of higher education](https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Hochschulen/Tabellen/hochschulen-hochschularten.html?nn=209416) and realized that they did NOT provide a detailed breakdown of the members institutions in each category. For the time being, only the Länder statistical agencies provide this level of detail. Moreover, I noticed that the [list of all institutions of higher education in Germany](https://www.hochschulkompass.de/hochschulen/downloads.html) provided by the [German Rector's Conference (HRK)](https://www.hrk.de/home/) did not use the instituional identifiers used by the Länder statistical agencies (as one would expect). Nor did their numbers match up with Destatis. I will admit, writing these two slights down, I may come off as easily annoyed - but I can assure you, these sort of things can be heart-wrenching, really!
 
 Annoyed as I was, I started to dig, and dig, and dig a little deeper still. I discovered along the way that trying to count institutions of higher education was by no means a particularly innovative endeavor - after all, [ETER](https://eter-project.com) does it at the European level, [WHED](https://www.whed.net) does it for the global level, [GERiT](https://gerit.org/en) and [ROR](https://ror.org) do it for research institutions (slightly different emphasis). Had I known about these initiatives from the start - rather than stumbling upon them during the process - I would have avoided a lot of work. Alas, the proof of the pudding is in the eating...
 
-## Aims of this project
+<h2 data-toc-skip>Aims of this project</h2>
 
 A lot of the data assembled in the `?hochschulen` dataset will find its more permanent home on Wikidata - another great resource I have only come to appreciate as this project has progressed. For the time being, the idea is that this data set can save other people time matching up different data sources and IDs. People who do work on rankings, or people who work in communication departments come to mind, but there are certainly lots of other applications.
 
-## To Dos
+<h2 data-toc-skip>To Dos</h2>
 
 - Add bundesland to gt table
 - Consistent use of English in the `?hochschulen` dataset, rename German columns
