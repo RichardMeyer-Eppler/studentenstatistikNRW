@@ -998,7 +998,7 @@ hochschulen[c(1:max_rows),] |>
 # </style>
 ```
 
-### Data source {.unlisted .unnumbered}
+<h3 data-toc-skip>Data source{data-toc-skip}</h3>
 
 The data is sourced from the following tables and lists:
 
