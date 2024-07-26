@@ -9,7 +9,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 # suppress a section title from toc #1430
 # https://github.com/r-lib/pkgdown/issues/1430
 # https://github.com/r-lib/pkgdown/pull/1432/commits/8a4643f855d14f67704d6cfa2ba25fadbc4dfaa2
@@ -287,18 +287,49 @@ build_wiki_span <- function(urls, labels) {
   return(wiki_span)
 }
 
+
+file_name <- function(path) {
+    
+  # path <- "https://upload.wikimedia.org/wikipedia/commons/0/0e/Hochschule_f%C3%BCr_Oekonomie_%26_Management_2012_logo.svg"
+  
+  file_path <- path |> 
+      fs::path_file()
+  
+  file_ext <- file_path |> 
+    fs::path_ext()
+  
+  file_name <- file_path |> 
+      fs::path_ext_remove() |> 
+      fs::path_sanitize() |> 
+      stringr::str_replace_all(
+        pattern = "[[:punct:]]",
+        replacement = "_"
+      )
+  
+  file_name_full <- paste0(
+    file_name,
+    ".",
+    file_ext
+  )
+    
+  return(file_name_full)
+}
+
 img_path <- function(logo_url) {
+  
+  nas <- is.na(logo_url)
   
   logo_url_decoded <- URLdecode(logo_url)
   
+  file <- logo_url_decoded |> 
+    file_name()
+  
   img_path <- fs::path(
     here::here(),
-    fs::path_sanitize(
-      fs::path_file(
-        logo_url_decoded
-      )
-    )
+    file
   )
+  
+  img_path[nas] <- NA
   
   return(img_path)
 }
@@ -363,7 +394,10 @@ build_logo_html <- function(logo_url, hochschule_url, height = university_logo_h
       target = "_blank",
       htmltools::img(
         src = logo_url
-      )
+      ),
+      style = glue::glue(
+          "height:{university_logo_height}px;border:0px none;"
+       )
     )
     
     img_tag_gt <- img_tag |> 
@@ -698,7 +732,7 @@ rankings_html <- function(...) {
 
 
 
-```{r, echo = FALSE}
+```{r gt-table, echo = FALSE}
 
 hochschulen[c(1:max_rows),] |> 
   dplyr::mutate(
@@ -991,7 +1025,7 @@ hochschulen[c(1:max_rows),] |>
 
 
 
-```{r, echo = FALSE, eval = FALSE}
+```{r css-test, echo = FALSE, eval = FALSE}
 # <style type="text/css">
 # .container template-article{
 #   max-width: 1500px !important;
